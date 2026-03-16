@@ -113,7 +113,7 @@
     <section id="result-section" class="hidden pb-32 px-6 max-w-6xl mx-auto">
         <div class="bg-white rounded-[40px] shadow-2xl overflow-hidden flex flex-col md:flex-row border border-slate-100">
             <div class="md:w-1/2 relative h-[400px] md:h-auto border-r border-slate-100">
-                <img id="res-img" src="" class="w-full h-full object-cover">
+                <img id="res-img" src="" class="w-full h-full object-cover object-center">
                 <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-5 py-2.5 text-[10px] font-bold tracking-[0.2em] text-slate-800 rounded-lg shadow-sm">MILLER COLOR PALETTE</div>
             </div>
             <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center bg-white">
@@ -143,11 +143,11 @@
     <section id="ai-result-section" class="hidden pb-32 px-6 max-w-6xl mx-auto">
         <div class="bg-white rounded-[40px] shadow-2xl overflow-hidden flex flex-col md:flex-row border border-slate-100">
             <div class="md:w-1/2 relative h-[400px] md:h-auto border-r border-slate-100 bg-white overflow-hidden">
-                <img id="ai-dynamic-base" src="ai-blank-living.jpg" class="absolute inset-0 w-full h-full object-cover">
+                <img id="ai-dynamic-base" src="ai-blank-living.jpg" class="absolute inset-0 w-full h-full object-cover object-center">
                 
-                <div id="ai-dynamic-overlay" class="absolute inset-0 mix-blend-multiply transition-colors duration-1000 ease-in-out" style="background-color: transparent; -webkit-mask-size: cover; mask-size: cover;"></div>
+                <div id="ai-dynamic-overlay" class="absolute inset-0 mix-blend-multiply transition-colors duration-1000 ease-in-out" style="background-color: transparent; -webkit-mask-size: cover; -webkit-mask-position: center; mask-size: cover; mask-position: center;"></div>
                 
-                <div id="ai-sheen-overlay" class="absolute inset-0 mix-blend-screen opacity-30 transition-opacity duration-1000 ease-in-out pointer-events-none" style="background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 60%); -webkit-mask-size: cover; mask-size: cover;"></div>
+                <div id="ai-sheen-overlay" class="absolute inset-0 mix-blend-screen opacity-30 transition-opacity duration-1000 ease-in-out pointer-events-none" style="background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 60%); -webkit-mask-size: cover; -webkit-mask-position: center; mask-size: cover; mask-position: center;"></div>
                 
                 <div class="absolute inset-0 bg-slate-900/5 pointer-events-none"></div>
                 <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-5 py-2.5 text-[10px] font-bold tracking-[0.2em] text-slate-800 rounded-lg shadow-sm">AI 质感渲染系统</div>
@@ -321,7 +321,7 @@
                     let formattedReply = data.reply.replace(/\n/g, '<br>');
                     document.getElementById('ai-response-text').innerHTML = formattedReply;
 
-                    // 正则提取所有 AI 推荐的颜色 (如：Color Is 0588 曜石暗影 (HEX: #22252A))
+                    // 正则提取所有 AI 推荐的颜色
                     const colorRegex = /(Color Is \d{4} [^\(]+?)\s*\(HEX:\s*(#[0-9A-Fa-f]{6})\)/gi;
                     const matches = [...data.reply.matchAll(colorRegex)];
 
