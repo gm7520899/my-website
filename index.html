@@ -3,28 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 智能色彩顾问 | 蜜乐涂料 Miller Paint</title>
+    <title>蜜乐涂料 Miller Paint | 源自1890年的美国高端色彩</title>
+    
+    <meta property="og:title" content="蜜乐涂料 | 始于1890年的美国色彩专家">
+    <meta property="og:image" content="share-cover.jpg"> 
+    <meta name="description" content="蜜乐涂料（Miller Paint）为中国家庭带来环保、持久且极具艺术感的北美高端墙面解决方案。">
+
+    <link rel="icon" href="favicon.png" type="image/png">
+
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        // 在此处粘贴你从百度统计后台获取的 JS 代码
+    </script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
         
-        body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; overflow-x: hidden; background-color: #faf9f6; }
+        body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+        
         .font-serif-en { font-family: 'Playfair Display', serif; }
         
-        .option-card { transition: all 0.3s ease; border: 2px solid transparent; background-color: white; }
-        .option-card:hover { border-color: #e2e8f0; transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
-        .option-card.selected { border-color: #1e3a8a; background-color: #eff6ff; color: #1e3a8a; }
-        
-        .loader-bar { width: 0%; height: 2px; background-color: #1e3a8a; transition: width 0.5s ease; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.5)), url('hero-image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .gold-banner-bg {
+            background-image: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.85)), url('gold-banner-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .img-hover-zoom { transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .group:hover .img-hover-zoom { transform: scale(1.05); }
+
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate-fade-up { animation: fadeUp 0.8s ease-out forwards; }
+        .animate-fade-up { animation: fadeUp 1s ease-out forwards; }
     </style>
 </head>
-<body class="text-slate-800 antialiased">
+<body class="bg-[#faf9f6] text-slate-800">
 
     <nav class="fixed w-full z-[100] flex justify-between items-center px-6 md:px-8 py-5 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100/50">
         <div class="flex flex-col">
@@ -36,16 +60,18 @@
                 <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
             </a>
         </div>
+        
         <div class="hidden lg:flex items-center space-x-6 text-[14px] font-bold text-slate-700 tracking-wide">
             <a href="story.html" class="px-3 py-2 hover:text-blue-900 transition-colors">品牌故事</a>
             <a href="products.html" class="px-3 py-2 hover:text-blue-900 transition-colors">产品中心</a>
-            <a href="ai-color.html" class="px-3 py-2 text-blue-900 border-b-2 border-blue-900 pb-1">AI 色彩顾问</a> 
+            <a href="ai-color.html" class="px-3 py-2 hover:text-blue-900 transition-colors">AI 色彩顾问</a> 
             <a href="colors.html" class="px-3 py-2 hover:text-blue-900 transition-colors">色彩灵感</a>
             <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="px-3 py-2 hover:text-blue-900 transition-colors flex items-center gap-1">
                 在线色卡 <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
             </a>
             <a href="contact.html" class="px-3 py-2 hover:text-blue-900 transition-colors">联系我们</a>
         </div>
+
         <div class="flex items-center gap-4">
             <a href="contact.html" class="hidden sm:block bg-slate-900 text-white px-8 py-3 text-sm font-bold hover:bg-blue-900 transition-colors duration-300 shadow-lg">获取样漆</a>
             <button id="mobile-menu-btn" class="lg:hidden text-slate-900 p-2 focus:outline-none">
@@ -64,367 +90,203 @@
         <div class="flex flex-col items-center justify-center flex-grow space-y-8 text-2xl font-bold text-slate-800 pb-20">
             <a href="story.html" class="hover:text-blue-900">品牌故事</a>
             <a href="products.html" class="hover:text-blue-900">产品中心</a>
-            <a href="ai-color.html" class="text-blue-900">AI 色彩顾问</a>
+            <a href="ai-color.html" class="hover:text-blue-900">AI 色彩顾问</a>
             <a href="colors.html" class="hover:text-blue-900">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="hover:text-blue-900">在线色卡</a>
             <a href="contact.html" class="hover:text-blue-900">联系我们</a>
+            <a href="contact.html" class="bg-blue-900 text-white px-12 py-4 rounded-sm text-lg mt-4 shadow-lg">获取样漆</a>
         </div>
     </div>
 
-    <section class="relative pt-40 pb-24 px-8 flex flex-col items-center justify-center min-h-[45vh] bg-[url('ai-banner-bg.jpg')] bg-cover bg-center">
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/10 to-transparent z-0"></div>
-        <div class="relative z-10 text-center max-w-4xl mx-auto text-white animate-fade-up drop-shadow-xl">
-            <h4 class="font-serif-en tracking-[0.2em] mb-4 text-sm uppercase opacity-90 drop-shadow-md">Miller AI Consultant</h4>
-            <h1 class="text-4xl md:text-5xl font-bold mb-6 tracking-wide drop-shadow-md">描绘心中的理想空间</h1>
-            <p class="text-lg font-light max-w-2xl mx-auto leading-relaxed drop-shadow text-white/95">告诉我们您的需求，Miller 智能顾问将为您匹配专属的色彩方案、光泽度及涂料系统。</p>
+    <section class="relative h-screen flex items-center justify-center hero-bg text-white">
+        <div class="text-center px-4 max-w-5xl relative z-10 animate-fade-up">
+            <span class="font-serif-en text-xl md:text-2xl tracking-[0.3em] uppercase mb-6 block opacity-80">The Art of Paint</span>
+            <h1 class="text-5xl md:text-[5.5rem] font-bold mb-8 leading-[1.1] tracking-tight">色彩，<span class="font-light">空间的灵魂</span></h1>
+            <p class="text-lg md:text-2xl mb-12 font-light opacity-90 max-w-2xl mx-auto leading-relaxed">
+                自 1890 年起，我们将北美的自然灵感、顶尖的光泽控制与纯粹的环保科技，细腻地融入每一滴涂料之中。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6 items-center">
+                <a href="colors.html" class="bg-white text-slate-900 px-10 py-4 font-bold hover:bg-gray-100 transition duration-300 w-full sm:w-auto tracking-wide">探索灵感色系</a>
+                <a href="products.html" class="border border-white/60 px-10 py-4 font-bold hover:bg-white hover:text-slate-900 transition duration-300 backdrop-blur-sm w-full sm:w-auto tracking-wide">浏览专业产品</a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce opacity-60">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </div>
     </section>
 
-    <section class="py-16 px-6 max-w-3xl mx-auto" id="interaction-section">
-        
-        <div class="flex justify-center mb-10 animate-fade-up">
-            <div class="bg-slate-100 p-1.5 rounded-full inline-flex relative shadow-inner">
-                <button id="tab-quiz" onclick="switchMode('quiz')" class="relative z-10 px-8 py-3 text-sm font-bold rounded-full transition-all duration-300 text-white bg-blue-900 shadow-md">快速选择引导</button>
-                <button id="tab-ai" onclick="switchMode('ai')" class="relative z-10 px-8 py-3 text-sm font-bold rounded-full transition-all duration-300 text-slate-500 hover:text-slate-800">大模型自由定制</button>
-            </div>
-        </div>
-
-        <div id="quiz-container" class="block transition-all duration-500">
-            <div class="mb-12 quiz-step" id="step-1">
-                <h3 class="text-2xl font-bold mb-6 text-slate-900">1. 您计划涂刷哪个空间？</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center" onclick="selectOption(1, 'living', this)"><span class="text-3xl block mb-2">🛋️</span><span class="font-bold text-sm text-slate-700">客厅</span></button>
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center" onclick="selectOption(1, 'bedroom', this)"><span class="text-3xl block mb-2">🛏️</span><span class="font-bold text-sm text-slate-700">卧室</span></button>
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center" onclick="selectOption(1, 'bathroom', this)"><span class="text-3xl block mb-2">🛁</span><span class="font-bold text-sm text-slate-700">厨卫空间</span></button>
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center" onclick="selectOption(1, 'kids', this)"><span class="text-3xl block mb-2">🧸</span><span class="font-bold text-sm text-slate-700">儿童房</span></button>
+    <section class="py-32 px-8 max-w-7xl mx-auto bg-[#faf9f6]">
+        <div class="grid md:grid-cols-3 gap-16 md:gap-24 relative">
+            <div class="hidden md:block absolute top-12 left-1/6 right-1/6 h-[1px] bg-slate-200 z-0"></div>
+            
+            <div class="text-center relative z-10 group">
+                <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] group-hover:-translate-y-2 transition duration-500">
+                    <svg class="w-10 h-10 text-blue-900 font-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                 </div>
+                <h3 class="text-2xl font-bold mb-4 tracking-wider text-slate-900">极致纯净</h3>
+                <p class="text-slate-500 leading-relaxed font-light">超越国际标准的超低 VOC 排放，甄选顶尖树脂，为您打造真正的“即刷即住”母婴级室内环境。</p>
             </div>
-            <div class="mb-12 quiz-step opacity-30 pointer-events-none transition-opacity duration-500" id="step-2">
-                <h3 class="text-2xl font-bold mb-6 text-slate-900">2. 您期望的氛围是？</h3>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center font-medium text-slate-700 tracking-wider" onclick="selectOption(2, 'warm', this)">温暖治愈</button>
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center font-medium text-slate-700 tracking-wider" onclick="selectOption(2, 'minimal', this)">极简清冷</button>
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center font-medium text-slate-700 tracking-wider" onclick="selectOption(2, 'luxury', this)">深邃奢华</button>
+            <div class="text-center relative z-10 group">
+                <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] group-hover:-translate-y-2 transition duration-500">
+                    <svg class="w-10 h-10 text-blue-900 font-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
                 </div>
+                <h3 class="text-2xl font-bold mb-4 tracking-wider text-slate-900">非凡质感</h3>
+                <p class="text-slate-500 leading-relaxed font-light">得益于独家色彩实验室，从绝美的平光到高阶的丝缎光，完美控制光线折射，展现墙面的奢华肌理。</p>
             </div>
-            <div class="mb-12 quiz-step opacity-30 pointer-events-none transition-opacity duration-500" id="step-3">
-                <h3 class="text-2xl font-bold mb-6 text-slate-900">3. 该空间的自然采光如何？</h3>
-                <div class="grid grid-cols-2 gap-4">
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center text-sm font-medium text-slate-700 tracking-wide" onclick="selectOption(3, 'bright', this)">☀️ 采光极佳，阳光充足</button>
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center text-sm font-medium text-slate-700 tracking-wide" onclick="selectOption(3, 'dark', this)">☁️ 采光一般，偏暗</button>
+            <div class="text-center relative z-10 group">
+                <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] group-hover:-translate-y-2 transition duration-500">
+                    <svg class="w-10 h-10 text-blue-900 font-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                 </div>
-            </div>
-            <div class="text-center mt-12">
-                <button id="submit-btn" class="bg-slate-300 text-slate-500 px-12 py-4 rounded-full font-bold transition-all duration-300 pointer-events-none tracking-widest" onclick="generateResult()">智能匹配专属方案</button>
-            </div>
-        </div>
-
-        <div id="ai-container" class="hidden transition-all duration-500">
-            <div class="bg-white p-8 md:p-12 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100">
-                <h3 class="text-2xl font-bold mb-4 text-slate-900 text-center">告诉我们您的具体需求</h3>
-                <p class="text-slate-500 mb-8 text-sm text-center max-w-lg mx-auto leading-relaxed">有特定的痛点或极其个性化的灵感？例如：房间朝向、特殊的软装搭配、或者对防霉、耐擦洗的特殊要求。</p>
-                <div class="relative mb-8">
-                    <textarea id="userInput" rows="6" class="w-full p-6 rounded-2xl border-2 border-slate-100 bg-slate-50 focus:bg-white focus:border-blue-900 focus:ring-0 transition-all duration-300 resize-none outline-none text-slate-700 leading-relaxed" placeholder="例如：我的儿童房采光很好，想选一个偏粉色的色调，家里有小孩墙面需要好清理打扫..."></textarea>
-                </div>
-                <div class="text-center">
-                    <button id="ai-submit-btn" class="bg-blue-900 text-white px-12 py-4 rounded-full font-bold transition-all duration-300 hover:bg-slate-900 hover:-translate-y-1 shadow-lg tracking-widest" onclick="askAI()">深度演算专属方案</button>
-                </div>
+                <h3 class="text-2xl font-bold mb-4 tracking-wider text-slate-900">岁月捍卫</h3>
+                <p class="text-slate-500 leading-relaxed font-light">源自 1890 年的匠心。采用专有陶瓷增强技术与高分子交联树脂，耐擦洗、防霉变，经得起漫长岁月的考验。</p>
             </div>
         </div>
     </section>
 
-    <section id="loading-section" class="hidden py-32 text-center max-w-xl mx-auto">
-        <h3 class="text-xl font-bold text-blue-900 mb-4 animate-pulse tracking-widest uppercase">Analyzing...</h3>
-        <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
-            <div class="loader-bar" id="loader"></div>
+    <section class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col lg:flex-row items-center gap-20">
+            <div class="lg:w-5/12">
+                <h4 class="font-serif-en text-gray-400 tracking-[0.2em] mb-4">TEXTURE & SHEEN</h4>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-slate-900 leading-tight">光影游走间，<br><span class="font-light text-blue-900">重塑空间艺术。</span></h2>
+                <p class="text-slate-500 text-lg leading-relaxed mb-6 font-light">
+                    高级的涂料，不仅仅是颜色的附着。蜜乐涂料（Miller Paint）为您提供从绝对哑光（Flat）到奢华半光（Semi-Gloss）的精密光泽体系。
+                </p>
+                <p class="text-slate-500 text-lg leading-relaxed mb-10 font-light">
+                    哑光饰面犹如柔焦滤镜，能完美吸收光线，巧妙隐藏墙面微小瑕疵；而独特的缎光与柔光，则能在自然光的轻抚下，勾勒出墙面与木饰面最迷人的立体肌理。
+                </p>
+                <a href="products.html" class="group inline-flex items-center text-blue-900 font-bold tracking-widest uppercase border-b border-blue-900 pb-1 hover:text-slate-600 hover:border-slate-600 transition-colors">
+                    了解光泽度体系 
+                    <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+            
+            <div class="lg:w-7/12 relative w-full h-[600px] hidden md:block">
+                <div class="absolute top-0 right-0 w-4/5 h-[500px] overflow-hidden rounded-sm group shadow-2xl z-10">
+                    <img src="texture-main.jpg" alt="涂料肌理展示" class="w-full h-full object-cover img-hover-zoom">
+                </div>
+                <div class="absolute bottom-0 left-0 w-1/2 h-[350px] overflow-hidden rounded-sm group shadow-xl z-20 border-8 border-white">
+                    <img src="texture-detail.jpg" alt="光泽度细节" class="w-full h-full object-cover img-hover-zoom">
+                </div>
+            </div>
+            <div class="w-full h-[350px] overflow-hidden rounded-sm shadow-xl md:hidden">
+                <img src="texture-main.jpg" alt="涂料肌理展示" class="w-full h-full object-cover">
+            </div>
         </div>
-        <p class="text-sm text-slate-500 mt-6 tracking-wide" id="loading-text">交叉比对空间光影参数...</p>
     </section>
 
-    <section id="result-section" class="hidden pb-32 px-6 max-w-6xl mx-auto">
-        <div class="bg-white rounded-[40px] shadow-2xl overflow-hidden flex flex-col md:flex-row border border-slate-100">
-            <div class="md:w-1/2 relative h-[400px] md:h-auto border-r border-slate-100">
-                <img id="res-img" src="" class="w-full h-full object-cover">
-                <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-5 py-2.5 text-[10px] font-bold tracking-[0.2em] text-slate-800 rounded-lg shadow-sm">MILLER COLOR PALETTE</div>
+    <section class="py-24 gold-banner-bg text-white relative">
+        <div class="max-w-6xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between relative z-10 gap-12">
+            <div class="md:w-2/3 text-center md:text-left">
+                <span class="text-yellow-400 font-bold tracking-[0.2em] text-sm mb-4 block">GLOBAL STANDARD</span>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">荣获 SCS 室内空气质量<br><span class="text-yellow-400 font-light">金级认证 (Gold)</span></h2>
+                <p class="text-lg font-light opacity-90 leading-relaxed max-w-xl mx-auto md:mx-0">
+                    蜜乐涂料旗下核心内墙全系产品，均通过了全球最严苛的 SCS Indoor Advantage™ Gold 认证，确保零妥协的室内呼吸安全。
+                </p>
             </div>
-            <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center bg-white">
-                <h4 class="text-blue-900 font-bold tracking-[0.2em] text-xs mb-4 uppercase">Your Custom Solution</h4>
-                <h2 class="text-3xl font-bold mb-4 text-slate-900" id="res-title">正在生成...</h2>
-                <div class="flex items-center gap-4 mb-8 bg-slate-50 w-fit px-5 py-3 rounded-lg border border-slate-100">
-                    <div id="res-color-box" class="w-10 h-10 rounded-full shadow-inner border border-black/5"></div>
-                    <div class="flex flex-col">
-                        <span class="text-slate-900 font-bold tracking-wider text-sm" id="res-color-code">Miller 0000</span>
-                        <span class="text-slate-400 font-medium text-[10px] tracking-widest uppercase mt-0.5" id="res-hex">HEX #000000</span>
+            <div class="md:w-1/3 flex justify-center">
+                <div class="w-40 h-40 md:w-48 md:h-48 bg-white/10 backdrop-blur-md rounded-full p-6 flex items-center justify-center border border-yellow-400/30 shadow-[0_0_50px_rgba(234,179,8,0.2)] hover:scale-105 transition-transform duration-500">
+                    <img src="image_3cdb5c.png" alt="SCS Gold Certified" class="w-full h-full object-contain drop-shadow-lg filter brightness-110 contrast-125">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-[#faf9f6]">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold text-slate-900 mb-6">源自西北太平洋的自然调色盘</h2>
+                <p class="text-slate-500 font-light text-lg max-w-2xl mx-auto">以雄伟的山脉、深邃的森林和多变的海岸线为灵感，我们将大自然最引人入胜的色彩，提炼进每一桶涂料中。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:auto-rows-[250px]">
+                <div class="md:col-span-7 md:row-span-2 h-[300px] md:h-auto overflow-hidden group relative rounded-sm shadow-md">
+                    <img src="color-gallery-1.jpg" alt="空间色彩展示1" class="w-full h-full object-cover img-hover-zoom">
+                    <div class="absolute inset-0 bg-slate-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+                        <span class="text-white font-light tracking-wider text-sm">Miller Paint / Deep Tones</span>
                     </div>
                 </div>
-                <p class="text-slate-600 leading-relaxed mb-10 font-light text-sm" id="res-desc">方案描述加载中...</p>
-                <div class="bg-slate-50 p-6 rounded-xl mb-10 border border-slate-100">
-                    <h5 class="font-bold text-slate-800 mb-4 border-b border-slate-200 pb-3 text-sm tracking-wide">系统级涂料搭配</h5>
-                    <ul class="space-y-4 text-sm text-slate-600">
-                        <li class="flex flex-col gap-1"><span class="text-xs uppercase tracking-widest text-slate-400">墙面产品</span> <strong id="res-product" class="text-blue-900 font-medium">产品</strong></li>
-                        <li class="flex flex-col gap-1"><span class="text-xs uppercase tracking-widest text-slate-400">推荐光泽</span> <strong id="res-sheen" class="text-blue-900 font-medium">光泽</strong></li>
-                        <li class="flex flex-col gap-1"><span class="text-xs uppercase tracking-widest text-slate-400">底层处理</span> <strong id="res-primer" class="text-slate-800 font-medium">底漆</strong></li>
-                    </ul>
+                <div class="md:col-span-5 md:row-span-1 h-[200px] md:h-auto overflow-hidden group relative rounded-sm shadow-md bg-blue-900 flex items-center justify-center">
+                    <img src="color-gallery-2.jpg" alt="色彩样板" class="w-full h-full object-cover img-hover-zoom mix-blend-overlay opacity-80">
+                    <h3 class="absolute text-white text-2xl font-serif-en tracking-widest z-10">COLOR INSPIRATION</h3>
                 </div>
-                <div class="flex items-center gap-4">
-                    <a href="contact.html" class="bg-slate-900 text-white text-center px-8 py-3.5 rounded-full text-sm font-bold hover:bg-blue-900 transition-colors shadow-md tracking-widest uppercase">获取样漆与色卡</a>
-                    <button class="text-xs text-slate-400 hover:text-slate-600 transition-colors uppercase tracking-widest font-medium" onclick="location.reload()">↺ 重新测试</button>
+                <div class="md:col-span-5 md:row-span-1 h-[200px] md:h-auto overflow-hidden group relative rounded-sm shadow-md">
+                    <img src="color-gallery-3.jpg" alt="空间色彩展示3" class="w-full h-full object-cover img-hover-zoom">
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="ai-result-section" class="hidden pb-32 px-6 max-w-6xl mx-auto">
-        <div class="bg-white rounded-[40px] shadow-2xl overflow-hidden flex flex-col md:flex-row border border-slate-100">
             
-            <div class="md:w-1/2 relative h-[400px] md:h-auto border-r border-slate-100 bg-white overflow-hidden">
-                <img id="ai-dynamic-base" src="ai-blank-living.jpg" class="absolute inset-0 w-full h-full object-cover">
-                
-                <div id="ai-dynamic-overlay" 
-                     class="absolute inset-0 mix-blend-multiply transition-colors duration-1000 ease-in-out" 
-                     style="background-color: transparent; -webkit-mask-image: url('ai-mask-living.png'); -webkit-mask-size: cover; -webkit-mask-position: center; mask-image: url('ai-mask-living.png'); mask-size: cover; mask-position: center;">
-                </div>
-                
-                <div class="absolute inset-0 bg-slate-900/5 pointer-events-none"></div>
-                <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-5 py-2.5 text-[10px] font-bold tracking-[0.2em] text-slate-800 rounded-lg shadow-sm">
-                    实时色彩渲染系统
-                </div>
-                
-                <div id="ai-hex-badge" class="hidden absolute top-6 right-6 bg-white/90 backdrop-blur-md px-3 py-1.5 text-[10px] font-bold tracking-widest text-slate-800 rounded-full shadow-md flex items-center gap-2">
-                    <div id="ai-hex-dot" class="w-2.5 h-2.5 rounded-full border border-slate-200"></div>
-                    <span id="ai-hex-text">#000000</span>
-                </div>
-            </div>
-
-            <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center bg-white">
-                <h4 class="text-blue-900 font-bold tracking-[0.2em] text-xs mb-6 uppercase flex items-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-                    深度定制报告
-                </h4>
-                
-                <div id="ai-response-text" class="text-slate-700 leading-relaxed mb-10 font-light text-[15px] space-y-4">
-                    方案加载中...
-                </div>
-                
-                <div class="border-t border-slate-100 pt-8 mt-auto flex flex-col sm:flex-row gap-4 items-center">
-                    <a href="contact.html" class="w-full sm:w-auto bg-slate-900 text-white text-center px-8 py-3.5 rounded-full text-sm font-bold hover:bg-blue-900 transition-colors shadow-md tracking-widest uppercase">获取样漆与色卡</a>
-                    <button class="text-xs text-slate-400 hover:text-slate-600 transition-colors uppercase tracking-widest font-medium" onclick="location.reload()">↺ 提出新需求</button>
-                </div>
+            <div class="text-center mt-16">
+                <a href="colors.html" class="inline-block border border-slate-300 text-slate-700 px-12 py-4 text-sm font-bold tracking-widest uppercase hover:bg-slate-900 hover:text-white transition-colors duration-300">
+                    探索全色系图谱
+                </a>
             </div>
         </div>
     </section>
 
-    <footer class="bg-slate-900 text-slate-400 py-16 px-8 border-t border-slate-800 mt-12">
-        <div class="max-w-7xl mx-auto text-center">
-            <p class="text-[11px] font-medium tracking-[0.2em] uppercase opacity-60">© 2026 Miller Paint. 玉兰集团版权所有</p>
+    <section class="bg-white py-32 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-20 px-8">
+            <div class="md:w-1/2 relative group hidden md:block">
+                <div class="absolute inset-0 bg-blue-50 transform translate-x-6 translate-y-6 z-0 transition-transform duration-500 group-hover:translate-x-8 group-hover:translate-y-8"></div>
+                <img src="product-showcase.jpg" alt="Miller Paint" class="relative z-10 w-full h-auto object-cover shadow-xl grayscale-[20%] group-hover:grayscale-0 transition duration-700">
+            </div>
+            <div class="w-full md:hidden mb-8">
+                <img src="product-showcase.jpg" alt="Miller Paint" class="w-full h-auto object-cover shadow-lg rounded-sm">
+            </div>
+
+            <div class="md:w-1/2">
+                <h4 class="text-blue-900 font-bold tracking-[0.2em] text-sm mb-4">IN PARTNERSHIP WITH YULAN</h4>
+                <h2 class="text-3xl md:text-5xl font-bold mb-8 text-slate-900 leading-tight">专为中国家庭臻选的<br>全能墙面方案</h2>
+                <p class="text-slate-500 mb-10 text-lg leading-relaxed font-light">
+                    通过玉兰集团深厚的家居审美底蕴，我们将蜜乐涂料引入中国。针对中国多样的气候条件，从底漆到面漆，为您提供系统级的全方位保护。
+                </p>
+                <div class="space-y-6 mb-12">
+                    <div class="flex items-start">
+                        <span class="text-blue-900 mt-1 mr-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+                        <div>
+                            <h5 class="font-bold text-slate-900 mb-1">强效抗污，一抹即净</h5>
+                            <p class="text-sm text-slate-500 font-light">独特的交联树脂配方，轻松抵御指纹与日常污渍。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-blue-900 mt-1 mr-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+                        <div>
+                            <h5 class="font-bold text-slate-900 mb-1">漆膜柔韧，长效保护</h5>
+                            <p class="text-sm text-slate-500 font-light">极高的固含量带来优异的膜厚，有效覆盖基层微小瑕疵与细纹。</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="story.html" class="bg-blue-900 text-white px-10 py-4 font-bold hover:bg-slate-900 transition duration-300 shadow-md inline-block">
+                    阅读品牌故事
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer-contact" class="bg-slate-900 text-slate-300 py-20 px-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="text-center md:text-left">
+                <div class="mb-4 font-bold tracking-[0.2em] uppercase text-xl text-white">Miller Paint</div>
+                <p class="text-sm font-light opacity-60">源自 1890 · 北美色彩专家</p>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="text-sm opacity-60 mb-2">© 2026 Miller Paint. 玉兰集团版权所有</p>
+                <p class="text-xs opacity-40 font-light">The art of living begins with a single stroke.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // --- 双模式切换逻辑 ---
-        function switchMode(mode) {
-            const tabQuiz = document.getElementById('tab-quiz');
-            const tabAi = document.getElementById('tab-ai');
-            const quizContainer = document.getElementById('quiz-container');
-            const aiContainer = document.getElementById('ai-container');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-            if (mode === 'quiz') {
-                tabQuiz.className = "relative z-10 px-8 py-3 text-sm font-bold rounded-full transition-all duration-300 text-white bg-blue-900 shadow-md";
-                tabAi.className = "relative z-10 px-8 py-3 text-sm font-bold rounded-full transition-all duration-300 text-slate-500 hover:text-slate-800";
-                quizContainer.classList.remove('hidden');
-                aiContainer.classList.add('hidden');
-            } else {
-                tabAi.className = "relative z-10 px-8 py-3 text-sm font-bold rounded-full transition-all duration-300 text-white bg-blue-900 shadow-md";
-                tabQuiz.className = "relative z-10 px-8 py-3 text-sm font-bold rounded-full transition-all duration-300 text-slate-500 hover:text-slate-800";
-                aiContainer.classList.remove('hidden');
-                quizContainer.classList.add('hidden');
-            }
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? '' : 'hidden';
         }
 
-        // --- 固定引导模式 ---
-        let userChoices = { step1: '', step2: '', step3: '' };
-
-        function selectOption(step, value, btnElement) {
-            userChoices[`step${step}`] = value;
-            let siblings = btnElement.parentElement.children;
-            for(let btn of siblings) { btn.classList.remove('selected'); }
-            btnElement.classList.add('selected');
-
-            if(step === 1) {
-                document.getElementById('step-2').classList.remove('opacity-30', 'pointer-events-none');
-            } else if (step === 2) {
-                document.getElementById('step-3').classList.remove('opacity-30', 'pointer-events-none');
-            } else if (step === 3) {
-                let submitBtn = document.getElementById('submit-btn');
-                submitBtn.classList.remove('bg-slate-300', 'text-slate-500', 'pointer-events-none');
-                submitBtn.classList.add('bg-blue-900', 'text-white', 'shadow-lg', 'hover:bg-blue-800');
-            }
-        }
-
-        function generateResult() {
-            document.getElementById('interaction-section').classList.add('hidden');
-            document.getElementById('loading-section').classList.remove('hidden');
-            
-            let loader = document.getElementById('loader');
-            let loadText = document.getElementById('loading-text');
-            
-            setTimeout(() => { loader.style.width = '35%'; loadText.innerText = "交叉比对 Miller 百年色彩库..."; }, 600);
-            setTimeout(() => { loader.style.width = '80%'; loadText.innerText = "智能演算底面合一与光泽系统..."; }, 1600);
-            setTimeout(() => { loader.style.width = '100%'; }, 2400);
-
-            setTimeout(() => {
-                document.getElementById('loading-section').classList.add('hidden');
-                showResult();
-            }, 3000);
-        }
-
-        const colorDatabase = {
-            'living_warm_bright': { title: "治愈燕麦 (Warm Oatmeal)", hex: "#E6DFD3", code: "Miller 0192", desc: "温暖的燕麦色能最大限度地折射自然光。营造极其温馨、放松的包裹感，是全家人聚集的绝佳基调色。", prod: "Premium™ 经典面漆", sheen: "Matte (哑光)", primer: "Premium PVA 封闭底漆", img: "ai-res-living-warm.jpg" },
-            'living_warm_dark': { title: "陶土赤茶 (Terracotta)", hex: "#B86A53", code: "Miller 0054", desc: "采光差的房间如果强刷白墙会显得灰暗单调。用醇厚的陶土红顺势而为，赋予暗空间极强的艺术张力。", prod: "Evolution® 至臻面漆", sheen: "Satin (缎光)", primer: "Premium PVA 封闭底漆", img: "ai-res-living-terracotta.jpg" },
-            'living_minimal_bright': { title: "极简云白 (Cloud White)", hex: "#F4F4F4", code: "Miller 0011", desc: "极其适合自然光充沛的极简空间。带有微弱灰度的云白能完美兼容现代家具，让公共空间显得清透。", prod: "Evolution® 至臻面漆", sheen: "Flat (纯平哑光)", primer: "Premium PVA 封闭底漆", img: "ai-res-living-minimal.jpg" },
-            'living_minimal_dark': { title: "高级暖灰 (Warm Grey)", hex: "#8A8A8A", code: "Miller 0540", desc: "高级暖灰能在弱光下展现出极其丰富的层次感，让空间显得静谧、内敛且极具设计格调。", prod: "Premium™ 经典面漆", sheen: "Matte (哑光)", primer: "Premium PVA 封闭底漆", img: "ai-res-living-grey.jpg" },
-            'living_luxury_bright': { title: "深林谧境 (Deep Forest)", hex: "#2C3E38", code: "Miller 0452", desc: "阳光照射下的深邃墨绿不显压抑，反而能呈现出剧院般的奢华质感与老钱风底蕴。", prod: "Evolution® 至臻面漆", sheen: "Satin (缎光)", primer: "Premium PVA 封闭底漆", img: "ai-res-living-forest.jpg" },
-            'living_luxury_dark': { title: "曜石暗影 (Obsidian Dark)", hex: "#22252A", code: "Miller 0588", desc: "放弃无效的提亮，用深邃的曜石色系搭配重点局部照明，打造出极高阶的私密会客氛围。", prod: "Evolution® 至臻面漆", sheen: "Soft Sheen (柔光)", primer: "Premium PVA 封闭底漆", img: "ai-res-living-dark.jpg" },
-            'bed_warm_bright': { title: "柔和奶白 (Creamy White)", hex: "#FDFBF7", code: "Miller 0005", desc: "比纯白多了一丝醇厚的奶油感，视觉上毫无攻击性，极具亲和力，唤醒清晨的最佳选择。", prod: "Acro Pure® 极净面漆", sheen: "Matte (哑光)", primer: "Acro Pure® 环保底漆", img: "ai-res-bed-cream.jpg" },
-            'bed_warm_dark': { title: "高定灰褐 (Greige Elegance)", hex: "#A59E96", code: "Miller 0214", desc: "介于灰色与米色之间的完美平衡，比纯灰更暖，比纯白更包裹，打造顶级酒店套房般的安睡环境。", prod: "Acro Pure® 极净面漆", sheen: "Matte (哑光)", primer: "Acro Pure® 环保底漆", img: "ai-res-bed-greige.jpg" },
-            'bed_minimal': { title: "静谧灰蓝 (Muted Fog Blue)", hex: "#7A8B99", code: "Miller 0632", desc: "带有灰调的低饱和蓝色，像轻柔的薄雾一样让人瞬间平静。具有极佳的视觉降温与助眠效果。", prod: "Acro Pure® 极净面漆", sheen: "Flat (纯平哑光)", primer: "Acro Pure® 环保底漆", img: "ai-res-bed-blue.jpg" },
-            'bed_luxury_bright': { title: "深林谧境 (Deep Forest)", hex: "#2C3E38", code: "Miller 0452", desc: "大胆使用墨绿色！它能营造出极具安全感的包裹氛围，让整个卧室充满静谧的奢华感。", prod: "Evolution® 至臻面漆", sheen: "Matte (哑光)", primer: "Premium PVA 封闭底漆", img: "ai-res-bed-luxury.jpg" },
-            'bed_luxury_dark': { title: "晨曦玫瑰 (Dusty Rose)", hex: "#C5A8A4", code: "Miller 0089", desc: "带有灰度的脏玫瑰色在弱光下更能显现出剧院般的丝绒质感，赋予私密空间独特的柔情与高级感。", prod: "Evolution® 至臻面漆", sheen: "Satin (缎光)", primer: "Premium PVA 封闭底漆", img: "ai-res-bed-rose.jpg" },
-            'bathroom': { title: "微风鼠尾草 (Sage Breeze)", hex: "#A8B5A1", code: "Miller 0411", desc: "水疗般的鼠尾草绿，同时强制搭配了 Vapor-Lok 特种防潮底漆系统，无惧发霉隐患。", prod: "Acro HP® 高性能面漆", sheen: "Semi-Gloss (半光)", primer: "Vapor-Lok 特种防潮底漆", img: "ai-res-bathroom.jpg" },
-            'kids': { title: "柔和奶黄 (Soft Butter)", hex: "#FCF5D8", code: "Miller 0122", desc: "强制匹配了趋零VOC的母婴级 Acro Pure 极净底面系统，确保最高级别的呼吸安全。", prod: "Acro Pure® 极净面漆", sheen: "Satin (缎光)", primer: "Acro Pure® 环保底漆", img: "ai-res-kids.jpg" }
-        };
-
-        function showResult() {
-            let res;
-            const c = userChoices;
-            if (c.step1 === 'kids') { res = colorDatabase['kids']; }
-            else if (c.step1 === 'bathroom') { res = colorDatabase['bathroom']; }
-            else if (c.step1 === 'living') {
-                if (c.step2 === 'warm' && c.step3 === 'bright') res = colorDatabase['living_warm_bright'];
-                else if (c.step2 === 'warm' && c.step3 === 'dark') res = colorDatabase['living_warm_dark'];
-                else if (c.step2 === 'minimal' && c.step3 === 'bright') res = colorDatabase['living_minimal_bright'];
-                else if (c.step2 === 'minimal' && c.step3 === 'dark') res = colorDatabase['living_minimal_dark'];
-                else if (c.step2 === 'luxury' && c.step3 === 'bright') res = colorDatabase['living_luxury_bright'];
-                else if (c.step2 === 'luxury' && c.step3 === 'dark') res = colorDatabase['living_luxury_dark'];
-                else res = colorDatabase['living_warm_bright'];
-            }
-            else if (c.step1 === 'bedroom') {
-                if (c.step2 === 'warm' && c.step3 === 'bright') res = colorDatabase['bed_warm_bright'];
-                else if (c.step2 === 'warm' && c.step3 === 'dark') res = colorDatabase['bed_warm_dark'];
-                else if (c.step2 === 'minimal') res = colorDatabase['bed_minimal']; 
-                else if (c.step2 === 'luxury' && c.step3 === 'bright') res = colorDatabase['bed_luxury_bright']; 
-                else if (c.step2 === 'luxury' && c.step3 === 'dark') res = colorDatabase['bed_luxury_dark']; 
-                else res = colorDatabase['bed_warm_bright'];
-            }
-            else { res = colorDatabase['living_warm_bright']; }
-
-            document.getElementById('res-title').innerText = res.title;
-            document.getElementById('res-color-box').style.backgroundColor = res.hex;
-            document.getElementById('res-color-code').innerText = res.code; 
-            document.getElementById('res-hex').innerText = "HEX " + res.hex; 
-            document.getElementById('res-desc').innerText = res.desc;
-            document.getElementById('res-product').innerText = res.prod;
-            document.getElementById('res-sheen').innerText = res.sheen;
-            document.getElementById('res-primer').innerText = res.primer; 
-            document.getElementById('res-img').src = res.img;
-
-            document.getElementById('result-section').classList.remove('hidden');
-            setTimeout(() => { document.getElementById('result-section').scrollIntoView({behavior: 'smooth', block: 'center'}); }, 100);
-        }
-
-        // --- 调用大模型与局部蒙版染色逻辑 ---
-        async function askAI() {
-            const input = document.getElementById('userInput').value.trim();
-            if (!input) {
-                alert("请先告诉顾问您的具体需求哦！");
-                document.getElementById('userInput').focus();
-                return;
-            }
-
-            // 1. 智能匹配对应空间的素颜底图 和 墙面局部蒙版图
-            let baseImgUrl = 'ai-blank-living.jpg'; 
-            let maskImgUrl = 'ai-mask-living.png'; 
-
-            if (input.includes('卧') || input.includes('睡')) {
-                baseImgUrl = 'ai-blank-bed.jpg';
-                maskImgUrl = 'ai-mask-bed.png';
-            }
-            else if (input.includes('厨') || input.includes('卫') || input.includes('厕所')) {
-                baseImgUrl = 'ai-blank-bath.jpg';
-                maskImgUrl = 'ai-mask-bath.png';
-            }
-            else if (input.includes('儿童') || input.includes('小孩') || input.includes('宝宝')) {
-                baseImgUrl = 'ai-blank-kids.jpg';
-                maskImgUrl = 'ai-mask-kids.png';
-            }
-            
-            document.getElementById('ai-dynamic-base').src = baseImgUrl;
-            // 兼容各种浏览器的 mask 属性设置
-            document.getElementById('ai-dynamic-overlay').style.webkitMaskImage = `url('${maskImgUrl}')`;
-            document.getElementById('ai-dynamic-overlay').style.maskImage = `url('${maskImgUrl}')`;
-
-            // 2. 显示加载动画
-            document.getElementById('interaction-section').classList.add('hidden');
-            const loadingSec = document.getElementById('loading-section');
-            loadingSec.classList.remove('hidden');
-            
-            const loader = document.getElementById('loader');
-            const loadText = document.getElementById('loading-text');
-
-            loader.style.width = '30%';
-            loadText.innerText = "正在分析空间特征与痛点...";
-            setTimeout(() => { loader.style.width = '70%'; loadText.innerText = "正在调用大模型进行深度演算..."; }, 1500);
-
-            try {
-                const workerUrl = "https://color-advisor.gm7520899.workers.dev"; 
-
-                const response = await fetch(workerUrl, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ userMessage: input })
-                });
-
-                if (!response.ok) throw new Error("大模型接口响应异常，请稍后再试");
-
-                const data = await response.json();
-                
-                loader.style.width = '100%';
-                loadText.innerText = "专属方案生成完毕！";
-                
-                setTimeout(() => {
-                    loadingSec.classList.add('hidden');
-                    const aiResultSec = document.getElementById('ai-result-section');
-                    aiResultSec.classList.remove('hidden');
-                    
-                    // 渲染文字
-                    let formattedReply = data.reply.replace(/\n/g, '<br><br>');
-                    document.getElementById('ai-response-text').innerHTML = formattedReply;
-
-                    // 3. 抓取 HEX 并仅在蒙版区域（墙面）染色
-                    const hexMatch = data.reply.match(/#[0-9A-Fa-f]{6}/i);
-                    if (hexMatch) {
-                        const aiHexColor = hexMatch[0]; 
-                        document.getElementById('ai-dynamic-overlay').style.backgroundColor = aiHexColor;
-                        
-                        const badge = document.getElementById('ai-hex-badge');
-                        badge.classList.remove('hidden');
-                        document.getElementById('ai-hex-dot').style.backgroundColor = aiHexColor;
-                        document.getElementById('ai-hex-text').innerText = aiHexColor.toUpperCase();
-                    } else {
-                        document.getElementById('ai-dynamic-overlay').style.backgroundColor = 'transparent';
-                        document.getElementById('ai-hex-badge').classList.add('hidden');
-                    }
-                    
-                    aiResultSec.scrollIntoView({behavior: 'smooth', block: 'center'});
-                }, 800);
-
-            } catch (error) {
-                loadingSec.classList.add('hidden');
-                const aiResultSec = document.getElementById('ai-result-section');
-                aiResultSec.classList.remove('hidden');
-                document.getElementById('ai-response-text').innerHTML = `<span class="text-red-500 font-bold">抱歉，连接失败：</span><br><br>${error.message}`;
-            } finally {
-                setTimeout(() => { loader.style.width = '0%'; }, 2000);
-            }
+        if(mobileMenuBtn && closeMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
         }
     </script>
 </body>
