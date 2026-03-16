@@ -29,17 +29,42 @@
             </a>
             <a href="http://www.yulangroup.cn" target="_blank" class="text-[11px] text-gray-500 hover:text-blue-900 mt-0.5 flex items-center gap-1 transition-colors font-medium tracking-widest w-fit">玉兰集团</a>
         </div>
+        
         <div class="hidden lg:flex items-center space-x-6 text-[14px] font-bold text-slate-700 tracking-wide">
             <a href="story.html" class="px-3 py-2 hover:text-blue-900 transition-colors">品牌故事</a>
             <a href="products.html" class="px-3 py-2 hover:text-blue-900 transition-colors">产品中心</a>
             <a href="ai-color.html" class="px-3 py-2 text-blue-900 border-b-2 border-blue-900 pb-1">AI 色彩顾问</a> 
             <a href="colors.html" class="px-3 py-2 hover:text-blue-900 transition-colors">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="px-3 py-2 hover:text-blue-900 transition-colors flex items-center gap-1">
+                在线色卡 <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
             <a href="contact.html" class="px-3 py-2 hover:text-blue-900 transition-colors">联系我们</a>
         </div>
+
         <div class="flex items-center gap-4">
             <a href="contact.html" class="hidden sm:block bg-slate-900 text-white px-8 py-3 text-sm font-bold hover:bg-blue-900 transition-colors duration-300 shadow-lg">获取样漆</a>
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-900 p-2 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </div>
     </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[9999] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col lg:hidden">
+        <div class="flex justify-between items-center px-6 py-5 border-b border-gray-100">
+            <span class="text-xl font-bold text-blue-900 tracking-tighter">MENU 菜单</span>
+            <button id="close-menu-btn" class="text-slate-900 p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center flex-grow space-y-8 text-2xl font-bold text-slate-800 pb-20">
+            <a href="story.html" class="hover:text-blue-900">品牌故事</a>
+            <a href="products.html" class="hover:text-blue-900">产品中心</a>
+            <a href="ai-color.html" class="text-blue-900">AI 色彩顾问</a>
+            <a href="colors.html" class="hover:text-blue-900">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="hover:text-blue-900">在线色卡</a>
+            <a href="contact.html" class="hover:text-blue-900">联系我们</a>
+        </div>
+    </div>
 
     <section class="relative pt-40 pb-24 px-8 flex flex-col items-center justify-center min-h-[45vh] bg-cover bg-center" style="background-image: url('ai-banner-bg.JPG');">
         <div class="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/10 to-transparent z-0"></div>
@@ -145,16 +170,16 @@
             <div class="md:w-1/2 relative h-[400px] md:h-auto border-r border-slate-100 bg-white overflow-hidden">
                 <img id="ai-dynamic-base" src="ai-blank-living.jpg" class="absolute inset-0 w-full h-full object-cover object-center">
                 
-                <div id="ai-dynamic-overlay" class="absolute inset-0 mix-blend-multiply transition-colors duration-1000 ease-in-out" style="background-color: transparent; -webkit-mask-size: cover; -webkit-mask-position: center; mask-size: cover; mask-position: center;"></div>
+                <div id="ai-dynamic-overlay" class="absolute inset-0 mix-blend-multiply transition-colors duration-1000 ease-in-out" style="background-color: transparent; -webkit-mask-size: cover; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; mask-size: cover; mask-position: center; mask-repeat: no-repeat;"></div>
                 
-                <div id="ai-sheen-overlay" class="absolute inset-0 mix-blend-screen opacity-30 transition-opacity duration-1000 ease-in-out pointer-events-none" style="background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 60%); -webkit-mask-size: cover; -webkit-mask-position: center; mask-size: cover; mask-position: center;"></div>
+                <div id="ai-sheen-overlay" class="absolute inset-0 mix-blend-screen opacity-30 transition-opacity duration-1000 ease-in-out pointer-events-none" style="background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 60%); -webkit-mask-size: cover; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; mask-size: cover; mask-position: center; mask-repeat: no-repeat;"></div>
                 
                 <div class="absolute inset-0 bg-slate-900/5 pointer-events-none"></div>
                 <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-5 py-2.5 text-[10px] font-bold tracking-[0.2em] text-slate-800 rounded-lg shadow-sm">AI 质感渲染系统</div>
                 
-                <div id="ai-hex-badge" class="hidden absolute top-6 right-6 bg-white/90 backdrop-blur-md px-3 py-1.5 text-[10px] font-bold tracking-widest text-slate-800 rounded-full shadow-md flex items-center gap-2 transition-all">
-                    <div id="ai-hex-dot" class="w-2.5 h-2.5 rounded-full border border-slate-200"></div>
-                    <span id="ai-hex-text">#000000</span>
+                <div id="ai-hex-badge" class="hidden absolute top-6 right-6 bg-white/90 backdrop-blur-md px-4 py-2 text-[11px] font-bold tracking-wide text-slate-800 rounded-full shadow-md flex items-center gap-2 transition-all">
+                    <div id="ai-hex-dot" class="w-3 h-3 rounded-full border border-slate-200 shadow-sm"></div>
+                    <span id="ai-hex-text">Miller 色号</span>
                 </div>
             </div>
 
@@ -180,6 +205,20 @@
     </section>
 
     <script>
+        // 移动端菜单
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? '' : 'hidden';
+        }
+        if(mobileMenuBtn && closeMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+
         function switchMode(mode) {
             const tQ = document.getElementById('tab-quiz'), tA = document.getElementById('tab-ai');
             const qC = document.getElementById('quiz-container'), aC = document.getElementById('ai-container');
@@ -276,7 +315,9 @@
             document.getElementById('ai-dynamic-overlay').style.backgroundColor = hex;
             document.getElementById('ai-hex-badge').classList.remove('hidden');
             document.getElementById('ai-hex-dot').style.backgroundColor = hex;
-            document.getElementById('ai-hex-text').innerText = hex.toUpperCase();
+            
+            // 修复：在这里更新为品牌色名，而不是暴露原始 HEX 代码
+            document.getElementById('ai-hex-text').innerText = name;
         };
 
         // --- AI 深度演算与多色提取逻辑 ---
@@ -291,7 +332,6 @@
 
             document.getElementById('ai-dynamic-base').src = baseImgUrl;
             
-            // 给色彩层和光泽层同时加上蒙版
             const colorOverlay = document.getElementById('ai-dynamic-overlay');
             const sheenOverlay = document.getElementById('ai-sheen-overlay');
             colorOverlay.style.webkitMaskImage = `url('${maskImgUrl}')`; colorOverlay.style.maskImage = `url('${maskImgUrl}')`;
@@ -319,6 +359,10 @@
                     document.getElementById('ai-result-section').classList.remove('hidden');
 
                     let formattedReply = data.reply.replace(/\n/g, '<br>');
+                    
+                    // 修复：利用正则表达式将报告文字中所有 (HEX: #XXXXXX) 偷偷删除，让客户看不见
+                    formattedReply = formattedReply.replace(/\s*\(HEX:\s*#[0-9A-Fa-f]{6}\)/gi, '');
+                    
                     document.getElementById('ai-response-text').innerHTML = formattedReply;
 
                     // 正则提取所有 AI 推荐的颜色
@@ -326,10 +370,9 @@
                     const matches = [...data.reply.matchAll(colorRegex)];
 
                     if (matches.length > 0) {
-                        // 默认将第一款颜色染上墙壁
+                        // 默认将第一款颜色染上墙壁，并传递色名供标签显示
                         changeAiColor(matches[0][2], matches[0][1]);
                         
-                        // 动态生成 3 款供点击切换的色块
                         const swatchesContainer = document.getElementById('ai-swatches-container');
                         swatchesContainer.innerHTML = '';
                         matches.forEach(match => {
