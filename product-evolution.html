@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolution 顶级内墙面漆 | 蜜乐涂料 Miller Paint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; }
+        .product-bg { background: radial-gradient(circle, #ffffff 0%, #f1f5f9 100%); }
+        .sheen-btn.active { background-color: #1e3a8a; color: #ffffff; border-color: #1e3a8a; }
+        .sheen-btn { transition: all 0.2s ease-in-out; }
+        .tech-table th { background-color: #1e3a8a; color: white; font-weight: 500; }
+        .tech-table tr:nth-child(even) { background-color: #f8fafc; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+    <nav class="fixed w-full z-[100] flex justify-between items-center px-6 md:px-8 py-5 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100/50">
+        <div class="flex flex-col">
+            <a href="index.html" class="text-2xl font-bold tracking-tighter text-blue-900 flex items-center hover:opacity-80 transition-opacity">
+                MILLER PAINT <span class="ml-2 text-xs font-light bg-blue-900 text-white px-2 py-0.5 rounded tracking-normal">蜜乐涂料</span>
+            </a>
+            <a href="http://www.yulangroup.cn" target="_blank" class="text-[11px] text-gray-500 hover:text-blue-900 mt-0.5 flex items-center gap-1 transition-colors font-medium tracking-widest w-fit">
+                玉兰集团 
+                <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+        </div>
+        
+        <div class="hidden lg:flex items-center space-x-6 text-[14px] font-bold text-slate-700 tracking-wide">
+            <a href="story.html" class="px-3 py-2 hover:text-blue-900 transition-colors">品牌故事</a>
+            <a href="products.html" class="px-3 py-2 text-blue-900 border-b-2 border-blue-900 pb-1">产品中心</a>
+            <a href="ai-color.html" class="px-3 py-2 hover:text-blue-900 transition-colors">AI 色彩顾问</a> 
+            <a href="colors.html" class="px-3 py-2 hover:text-blue-900 transition-colors">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="px-3 py-2 hover:text-blue-900 transition-colors flex items-center gap-1">
+                在线色卡 <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+            <a href="contact.html" class="px-3 py-2 hover:text-blue-900 transition-colors">联系我们</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="contact.html" class="hidden sm:block bg-slate-900 text-white px-8 py-3 text-sm font-bold hover:bg-blue-900 transition-colors duration-300 shadow-lg">获取样漆</a>
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-900 p-2 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[9999] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col lg:hidden">
+        <div class="flex justify-between items-center px-6 py-5 border-b border-gray-100">
+            <span class="text-xl font-bold text-blue-900 tracking-tighter">MENU 菜单</span>
+            <button id="close-menu-btn" class="text-slate-900 p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center flex-grow space-y-8 text-2xl font-bold text-slate-800 pb-20">
+            <a href="story.html" class="hover:text-blue-900">品牌故事</a>
+            <a href="products.html" class="text-blue-900">产品中心</a>
+            <a href="ai-color.html" class="hover:text-blue-900">AI 色彩顾问</a>
+            <a href="colors.html" class="hover:text-blue-900">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="hover:text-blue-900">在线色卡</a>
+            <a href="contact.html" class="hover:text-blue-900">联系我们</a>
+            <a href="contact.html" class="bg-blue-900 text-white px-12 py-4 rounded-sm text-lg mt-4 shadow-lg">获取样漆</a>
+        </div>
+    </div>
+
+    <div class="pt-28 pb-6 px-8 max-w-7xl mx-auto text-sm text-gray-400">
+        <a href="index.html" class="hover:text-blue-900">首页</a> <span class="mx-2">/</span>
+        <a href="products.html" class="hover:text-blue-900">产品中心</a> <span class="mx-2">/</span>
+        <a href="products.html#interior" class="hover:text-blue-900">内墙面漆</a> <span class="mx-2">/</span>
+        <span class="text-blue-900 font-medium">Evolution</span>
+    </div>
+
+    <section class="pb-16 px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row gap-16 items-start">
+            
+            <div class="lg:w-1/2 flex flex-col justify-start items-center sticky top-32 pt-8">
+                <div class="w-full max-w-md lg:max-w-lg xl:max-w-xl cursor-zoom-in overflow-hidden rounded-2xl bg-white" onmousemove="handleZoom(event, this)" onmouseleave="resetZoom(this)">
+                    <img src="prod-evolution.jpg" alt="Miller Paint Evolution Interior" class="w-full h-auto object-contain drop-shadow-2xl transition-transform duration-[400ms] ease-out origin-center block">
+                </div>
+                <div class="text-xs text-gray-400 mt-6 flex items-center justify-center gap-1.5 opacity-60 font-medium tracking-wide">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                    鼠标悬浮至产品图片查看包装细节
+                </div>
+            </div>
+
+            <div class="lg:w-1/2">
+                <div class="flex flex-wrap items-center gap-2 mb-4 mt-4">
+                    <span class="bg-blue-100 text-blue-900 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">Our Finest 顶级品质</span>
+                    <span class="bg-yellow-100 text-yellow-800 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">金级认证</span>
+                    <span class="bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">陶瓷技术</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Evolution® 顶级内墙面漆</h1>
+                
+                <div class="prose prose-slate max-w-none mb-8 text-gray-600 font-light leading-relaxed">
+                    <p class="mb-4 text-lg font-medium text-gray-800">
+                        Evolution Interior 采用先进的树脂系统配制而成，旨在提供更卓越的性能体验。
+                    </p>
+                    <p class="mb-4">
+                        凭借其卓越的覆盖力和出色的遮盖力（Exceptional hide），每一笔涂刷都能让您感受到极致丝滑、奢华的饰面。结合优异的抗飞溅性和耐污渍性，Evolution Interior 始终是房主和专业人士的顶级首选。
+                    </p>
+                    <p>
+                        不仅如此，全系光泽均荣获 SCS Indoor Advantage™ Gold 金级环保认证，为您和家人的室内空气质量提供最严苛的守护。
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-xl border border-gray-100 mb-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="md:w-2/3 w-full">
+                        <div class="flex justify-between items-end mb-4">
+                            <h4 class="text-sm font-bold text-slate-900 uppercase tracking-widest">选择光泽度 (Sheen)</h4>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-3 mb-6" id="sheen-buttons">
+                            <button class="sheen-btn active border border-gray-300 text-slate-700 px-4 py-2 rounded text-sm font-medium hover:border-blue-900" onclick="updateSheen('matte', this)">哑光 Matte</button>
+                            <button class="sheen-btn border border-gray-300 text-slate-700 px-4 py-2 rounded text-sm font-medium hover:border-blue-900" onclick="updateSheen('soft-sheen', this)">柔光 Soft Sheen</button>
+                            <button class="sheen-btn border border-gray-300 text-slate-700 px-4 py-2 rounded text-sm font-medium hover:border-blue-900" onclick="updateSheen('satin-cabinet', this)">橱柜缎光 Satin Cabinet</button>
+                            <button class="sheen-btn border border-gray-300 text-slate-700 px-4 py-2 rounded text-sm font-medium hover:border-blue-900" onclick="updateSheen('semi-cabinet', this)">橱柜半光 Semigloss</button>
+                        </div>
+
+                        <div id="sheen-content" class="min-h-[100px]">
+                            <p class="text-gray-600 text-sm leading-relaxed mb-0">
+                                <strong>哑光 (Matte Finish)：</strong> 我们最优质的内墙涂料，经过<strong>陶瓷技术 (Ceramic Technology)</strong> 增强，专为需要耐用平光饰面的墙壁而设计。它以极低的光反射率提供了卓越的耐洗刷性。也是凹凸不平墙面的绝佳选择。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="md:w-1/3 flex justify-center md:justify-end w-full">
+                        <div class="w-36 h-36 lg:w-44 lg:h-44 bg-white rounded-xl p-4 shadow-sm flex items-center justify-center border border-slate-200 flex-shrink-0 transition-transform hover:scale-105" title="Indoor Advantage Gold Certified">
+                            <img src="image_3cdb5c.png" alt="Indoor Advantage Gold" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="space-y-3 mb-10 text-sm text-gray-600">
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 荣获 SCS 室内空气质量金级认证 (Indoor Advantage™ Gold)</li>
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 先进的丙烯酸树脂系统 (Advanced acrylic resin system)</li>
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 卓越的涂刷覆盖力与极佳的瑕疵遮盖力</li>
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 丝滑、最高品质的饰面 (Smooth, highest quality finish)</li>
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 优异的抗飞溅与卓越的耐水洗性，极易清洁</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-8 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-[1400px] mx-auto flex flex-col gap-12">
+            
+            <div class="flex flex-col md:flex-row gap-12 mb-8 border-b border-slate-200 pb-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4 inline-block">施工规格</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        <strong class="text-slate-800">涂刷面积：</strong> 每加仑约 350-400 平方英尺。建议涂刷两遍以获得均匀的覆盖效果。实际覆盖率取决于基材的孔隙率和表面粗糙度。<br><br>
+                        <strong class="text-slate-800">干燥时间：</strong> 在 70°F (21°C) 且相对湿度为 50% 的环境下，表干极快，仅需 30 分钟，2 小时后即可重涂。<br><br>
+                        <strong class="text-blue-900">完全固化 (Curing Time)：</strong> 虽然漆膜在 2 小时内即可重涂，但高级丙烯酸树脂通常需要 <strong>14 至 28 天</strong> 才能完全交联固化并达到最大硬度。在完全固化前，请务必避免用力擦洗或使用化学清洁剂，以确保漆膜展现最完美的耐污与耐擦洗性能。
+                    </p>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4 inline-block">表面处理与施工</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        表面必须坚固、干燥且无松动的旧漆、灰尘、油脂及其他污染物。所有光滑的表面需通过轻轻打磨进行除光处理。施工时使用前充分搅拌，不建议过度稀释。建议使用优质尼龙/聚酯刷、3/8"-3/4" 合成滚筒或无气喷涂机（0.017" - 0.021" 喷嘴）施工。
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-bold text-blue-900 mb-6 inline-block">Specifications for Evolution 全系技术指标参数</h3>
+                <div class="bg-white border border-slate-200 rounded-lg shadow-sm overflow-x-auto hide-scroll">
+                    <table class="min-w-full text-sm text-center tech-table whitespace-nowrap">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-4 text-left">详细技术指标</th>
+                                <th class="px-4 py-4 border-l border-blue-800">墙面哑光<br>(Matte)</th>
+                                <th class="px-4 py-4 border-l border-blue-800">墙面柔光<br>(Soft Sheen)</th>
+                                <th class="px-4 py-4 border-l border-blue-800">木饰面缎光<br>(Trim Satin)</th>
+                                <th class="px-4 py-4 border-l border-blue-800">木饰面半光<br>(Trim Semigloss)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-gray-700">
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left w-1/5">树脂类型 (Resin)</td>
+                                <td class="px-4 py-3 border-l border-slate-100" colspan="4">先进丙烯酸树脂 (Advanced Acrylic)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">重量固含量 (Weight Solids)</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100">57.0% ± 2%</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100">55.7% ± 2%</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100 text-blue-900">53.0% ± 2%</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100 text-blue-900">48.0% ± 2%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">体积固含量 (Volume Solids)</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100">41.0% ± 2%</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100">41.0% ± 2%</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100 text-blue-900">39.0% ± 2%</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100 text-blue-900">36.5% ± 2%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">每加仑重量 (Weight Per Gal)</td>
+                                <td class="px-4 py-3 border-l border-slate-100">11.6 lbs</td>
+                                <td class="px-4 py-3 border-l border-slate-100">11.4 lbs</td>
+                                <td class="px-4 py-3 border-l border-slate-100 text-blue-900">10.49 lbs</td>
+                                <td class="px-4 py-3 border-l border-slate-100 text-blue-900">10.4 lbs</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">光泽度 (<span class="text-xs">@ 60° / @ 85°</span>)</td>
+                                <td class="px-4 py-3 border-l border-slate-100">0-5 / 0-10<br><span class="text-xs text-gray-400">Level 1</span></td>
+                                <td class="px-4 py-3 border-l border-slate-100">0-10 / 10-20<br><span class="text-xs text-gray-400">Level 2-3</span></td>
+                                <td class="px-4 py-3 border-l border-slate-100 text-blue-900">10-20 / 30-40<br><span class="text-xs text-blue-400">Level 3-4</span></td>
+                                <td class="px-4 py-3 border-l border-slate-100 text-blue-900">35-55 / 60-70<br><span class="text-xs text-blue-400">Level 5</span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">推荐膜厚 (Dry Film)</td>
+                                <td class="px-4 py-3 border-l border-slate-100" colspan="4">1.5 mils (湿膜 4 mils)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">VOC 含量</td>
+                                <td class="px-4 py-3 text-green-700 font-bold border-l border-slate-100" colspan="4">&lt; 50 g/L</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left align-middle">环保合规认证 (Certifications)</td>
+                                <td class="px-4 py-3 text-xs leading-relaxed text-center border-l border-slate-100 text-blue-900 font-bold" colspan="4">
+                                    • SCS Indoor Advantage™ Gold<br>
+                                    • Greenseal GS-11 Standard &nbsp;&nbsp; | &nbsp;&nbsp; • LEED v4 Compliant &nbsp;&nbsp; | &nbsp;&nbsp; • CDPH v1.2 Standard VOC Emissions<br>
+                                    <span class="text-gray-500 font-normal">• EPA (AIM) Compliant &nbsp;&nbsp; | &nbsp;&nbsp; • SCAQMD Compliant &nbsp;&nbsp; | &nbsp;&nbsp; • CARB Compliant</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-white py-12 px-8 text-center border-t border-slate-800">
+        <p class="text-xs opacity-40">© 2026 Miller Paint 蜜乐涂料 | 玉兰集团版权所有</p>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? '' : 'hidden';
+        }
+
+        if(mobileMenuBtn && closeMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        function handleZoom(e, container) {
+            const img = container.querySelector('img');
+            const rect = container.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            
+            img.style.transformOrigin = `${x}% ${y}%`;
+            img.style.transform = 'scale(1.8)';
+            img.classList.remove('drop-shadow-2xl');
+        }
+
+        function resetZoom(container) {
+            const img = container.querySelector('img');
+            img.style.transformOrigin = 'center center';
+            img.style.transform = 'scale(1)';
+            img.classList.add('drop-shadow-2xl');
+        }
+
+        const sheenData = {
+            'matte': { desc: '<strong>哑光 (Matte Finish)：</strong> 我们最优质的内墙涂料，经过<strong>陶瓷技术 (Ceramic Technology)</strong> 增强，专为需要耐用平光饰面的墙壁而设计。它以极低的光反射率提供了卓越的耐洗刷性。也是凹凸不平墙面的绝佳选择。' },
+            'soft-sheen': { desc: '<strong>柔光 (Soft Sheen)：</strong> 我们提供的高品质、浓郁顺滑的耐用墙面涂料。它能够有效减少灰尘附着，且极易清洗。极其适合需要深邃外观，且追求一定光泽度和耐洗性的项目。' },
+            'satin-cabinet': { desc: '<strong>橱柜与木饰面缎光 (Satin Cabinet & Trim)：</strong> 这种独特的丝滑质感能够捕捉并反射深邃的色调。专为门、橱柜和木饰面配制，是处理高频接触表面时的绝佳选择。涂层坚韧，抗污防粘连 (resists blocking)，尽显 Evolution 系列的优雅。' },
+            'semi-cabinet': { desc: '<strong>橱柜与木饰面半光 (Semigloss Cabinet & Trim)：</strong> 这是我们专用于门、木饰面和橱柜的最高品质半光涂料。该饰面具有极其卓越的耐用性，防尘抗污，且极易擦洗。' }
+        };
+
+        function updateSheen(sheenKey, buttonElement) {
+            const buttons = document.querySelectorAll('.sheen-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            buttonElement.classList.add('active');
+
+            const contentDiv = document.getElementById('sheen-content');
+            const data = sheenData[sheenKey];
+            
+            contentDiv.style.opacity = '0';
+            setTimeout(() => {
+                contentDiv.innerHTML = `<p class="text-gray-600 text-sm leading-relaxed mb-0">${data.desc}</p>`;
+                contentDiv.style.opacity = '1';
+                contentDiv.style.transition = 'opacity 0.3s ease-in-out';
+            }, 150);
+        }
+    </script>
+</body>
+</html>

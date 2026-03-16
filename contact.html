@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 | 蜜乐涂料 Miller Paint - 中国运营中心</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; }
+        .contact-hero {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8)), url('contact-hero.jpg');
+            background-size: cover; background-position: center;
+        }
+        .manager-card { transition: all 0.3s ease; }
+        .manager-card:hover {
+            transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #1e3a8a;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="fixed w-full z-[100] flex justify-between items-center px-6 md:px-8 py-5 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100/50">
+        <div class="flex flex-col">
+            <a href="index.html" class="text-2xl font-bold tracking-tighter text-blue-900 flex items-center hover:opacity-80 transition-opacity">
+                MILLER PAINT <span class="ml-2 text-xs font-light bg-blue-900 text-white px-2 py-0.5 rounded tracking-normal">蜜乐涂料</span>
+            </a>
+            <a href="http://www.yulangroup.cn" target="_blank" class="text-[11px] text-gray-500 hover:text-blue-900 mt-0.5 flex items-center gap-1 transition-colors font-medium tracking-widest w-fit">
+                玉兰集团 
+                <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+        </div>
+        
+        <div class="hidden lg:flex items-center space-x-6 text-[14px] font-bold text-slate-700 tracking-wide">
+            <a href="story.html" class="px-3 py-2 hover:text-blue-900 transition-colors">品牌故事</a>
+            <a href="products.html" class="px-3 py-2 hover:text-blue-900 transition-colors">产品中心</a>
+            <a href="ai-color.html" class="px-3 py-2 hover:text-blue-900 transition-colors">AI 色彩顾问</a> 
+            <a href="colors.html" class="px-3 py-2 hover:text-blue-900 transition-colors">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="px-3 py-2 hover:text-blue-900 transition-colors flex items-center gap-1">
+                在线色卡 <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+            <a href="contact.html" class="px-3 py-2 text-blue-900 border-b-2 border-blue-900 pb-1">联系我们</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="contact.html" class="hidden sm:block bg-slate-900 text-white px-8 py-3 text-sm font-bold hover:bg-blue-900 transition-colors duration-300 shadow-lg">获取样漆</a>
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-900 p-2 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[9999] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col lg:hidden">
+        <div class="flex justify-between items-center px-6 py-5 border-b border-gray-100">
+            <span class="text-xl font-bold text-blue-900 tracking-tighter">MENU 菜单</span>
+            <button id="close-menu-btn" class="text-slate-900 p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center flex-grow space-y-8 text-2xl font-bold text-slate-800 pb-20">
+            <a href="story.html" class="hover:text-blue-900">品牌故事</a>
+            <a href="products.html" class="hover:text-blue-900">产品中心</a>
+            <a href="ai-color.html" class="hover:text-blue-900">AI 色彩顾问</a>
+            <a href="colors.html" class="hover:text-blue-900">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="hover:text-blue-900">在线色卡</a>
+            <a href="contact.html" class="text-blue-900">联系我们</a>
+            <a href="contact.html" class="bg-blue-900 text-white px-12 py-4 rounded-sm text-lg mt-4 shadow-lg">获取样漆</a>
+        </div>
+    </div>
+
+    <section class="contact-hero relative h-[60vh] min-h-[450px] px-8 text-center flex flex-col items-center justify-center text-white pt-16">
+        <div class="relative z-10 max-w-4xl mx-auto px-6">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white tracking-tight drop-shadow-lg">联系中国运营中心</h1>
+            <p class="text-lg md:text-xl text-white/90 font-light leading-relaxed max-w-2xl mx-auto drop-shadow-md">
+                无论是商业加盟洽谈，还是个人新居涂装，蜜乐涂料（玉兰集团）的专业色彩顾问随时为您服务。
+            </p>
+        </div>
+    </section>
+
+    <section class="py-20 px-8 max-w-7xl mx-auto -mt-20 relative z-20">
+        <div class="bg-white rounded-2xl shadow-xl p-10 md:p-16 border border-gray-100 flex flex-col lg:flex-row gap-12 justify-between">
+            <div class="lg:w-1/2">
+                <div class="inline-block bg-blue-50 text-blue-900 px-4 py-1.5 rounded-full text-sm font-bold tracking-wider mb-6">总部直联</div>
+                <h2 class="text-3xl font-bold mb-8 text-slate-800">美国蜜乐涂料中国区总代理<br><span class="text-2xl text-gray-500 font-normal mt-2 block">广东玉兰集团股份有限公司</span></h2>
+                
+                <div class="space-y-6 text-gray-600">
+                    <div class="flex items-start">
+                        <span class="text-xl mr-4 mt-0.5">📍</span>
+                        <div>
+                            <p class="font-bold text-slate-800 mb-1">中国运营中心地址</p>
+                            <p>广东省东莞市莞城街道科技园路1号</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-xl mr-4 mt-0.5">📞</span>
+                        <div>
+                            <p class="font-bold text-slate-800 mb-1">全国招商/服务热线</p>
+                            <p class="text-xl text-blue-900 font-bold">0769-22656789</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-xl mr-4 mt-0.5">✉️</span>
+                        <div>
+                            <p class="font-bold text-slate-800 mb-1">商务合作邮箱</p>
+                            <a href="mailto:xiaowei@yulangroup.cn" class="text-blue-600 hover:underline">xiaowei@yulangroup.cn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:w-5/12 bg-slate-50 rounded-xl p-8 flex flex-col items-center justify-center text-center border border-slate-100">
+                <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-sm mb-6">
+                    <span class="text-3xl">🛒</span>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800 mb-4">个人选购，即刻体验</h3>
+                <p class="text-gray-500 mb-8 leading-relaxed">欢迎光临蜜乐涂料官方京东旗舰店。我们为您提供全系产品在线选购、免费调色及送货入户服务。</p>
+                <a href="https://mall.jd.com/index-13289884.html?from=pc&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMSUyM2VudGVyX3Nob3A&cid=25474961" target="_blank" class="bg-[#E1251B] text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-red-700 transition shadow-lg w-full max-w-xs">前往京东旗舰店</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-blue-900 mb-4">大区经理直通车</h2>
+            <p class="text-gray-500">专业色彩·纯正品质 | 寻找您所在区域的专属业务对接人</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="manager-card bg-white p-8 rounded-xl border-l-8 border-blue-900 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-end mb-4">
+                        <h3 class="text-2xl font-bold text-slate-800 mr-3">北部大区</h3>
+                        <span class="text-sm font-bold text-[#c29c6d] uppercase tracking-widest pb-0.5">North Region</span>
+                    </div>
+                    <div class="flex items-center mb-6">
+                        <span class="text-xl font-bold text-slate-800 mr-4">戴继锋</span>
+                        <a href="tel:18928288206" class="bg-slate-100 text-slate-700 px-4 py-1.5 rounded-full font-medium hover:bg-blue-50 transition">189 2828 8206</a>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-slate-100"><p class="text-sm text-gray-500 leading-relaxed">负责区域：北京、天津、河北、山西、山东、河南、内蒙、黑龙江、吉林、辽宁</p></div>
+            </div>
+
+            <div class="manager-card bg-white p-8 rounded-xl border-l-8 border-blue-900 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-end mb-4">
+                        <h3 class="text-2xl font-bold text-slate-800 mr-3">南部大区</h3>
+                        <span class="text-sm font-bold text-[#c29c6d] uppercase tracking-widest pb-0.5">South Region</span>
+                    </div>
+                    <div class="flex items-center mb-6">
+                        <span class="text-xl font-bold text-slate-800 mr-4">胡 松</span>
+                        <a href="tel:18928288217" class="bg-slate-100 text-slate-700 px-4 py-1.5 rounded-full font-medium hover:bg-blue-50 transition">189 2828 8217</a>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-slate-100"><p class="text-sm text-gray-500 leading-relaxed">负责区域：广东、广西、海南、湖北、湖南、江西、福建、安徽</p></div>
+            </div>
+
+            <div class="manager-card bg-white p-8 rounded-xl border-l-8 border-blue-900 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-end mb-4">
+                        <h3 class="text-2xl font-bold text-slate-800 mr-3">西部大区</h3>
+                        <span class="text-sm font-bold text-[#c29c6d] uppercase tracking-widest pb-0.5">West Region</span>
+                    </div>
+                    <div class="flex items-center mb-6">
+                        <span class="text-xl font-bold text-slate-800 mr-4">王 毅</span>
+                        <a href="tel:18928288243" class="bg-slate-100 text-slate-700 px-4 py-1.5 rounded-full font-medium hover:bg-blue-50 transition">189 2828 8243</a>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-slate-100"><p class="text-sm text-gray-500 leading-relaxed">负责区域：陕西、甘肃、青海、宁夏、新疆、云南、贵州、四川、重庆、西藏</p></div>
+            </div>
+
+            <div class="manager-card bg-white p-8 rounded-xl border-l-8 border-blue-900 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-end mb-4">
+                        <h3 class="text-2xl font-bold text-slate-800 mr-3">东部大区</h3>
+                        <span class="text-sm font-bold text-[#c29c6d] uppercase tracking-widest pb-0.5">East Region</span>
+                    </div>
+                    <div class="flex items-center mb-6">
+                        <span class="text-xl font-bold text-slate-800 mr-4">郑云峰</span>
+                        <a href="tel:18928283022" class="bg-slate-100 text-slate-700 px-4 py-1.5 rounded-full font-medium hover:bg-blue-50 transition">189 2828 3022</a>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-slate-100"><p class="text-sm text-gray-500 leading-relaxed">负责区域：上海、浙江、江苏</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-blue-900 text-white text-center">
+        <h3 class="text-2xl font-bold mb-4">关注蜜乐官方矩阵</h3>
+        <p class="text-blue-200 mb-10 max-w-2xl mx-auto">扫码关注我们的各大官方账号，获取最新 2026 流行色彩趋势、墙面施工干货及会员专属福利。</p>
+        
+        <div class="flex flex-wrap justify-center gap-8 md:gap-16 px-4">
+            <div class="text-center">
+                <div class="w-28 h-28 bg-white p-2 rounded-xl shadow-lg mx-auto mb-4 hover:scale-105 transition-transform duration-300">
+                    <img src="qr-wechat.jpg" alt="官方公众号二维码" class="w-full h-full object-cover rounded-md" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'%23e2e8f0\' viewBox=\'0 0 24 24\'%3E%3Cpath d=\'M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v8H8V8zm2 2v4h4v-4h-4z\'/%3E%3C/svg%3E'">
+                </div>
+                <span class="text-sm font-medium tracking-wide opacity-90">官方公众号</span>
+            </div>
+            <div class="text-center">
+                <div class="w-28 h-28 bg-white p-2 rounded-xl shadow-lg mx-auto mb-4 hover:scale-105 transition-transform duration-300">
+                    <img src="qr-douyin.jpg" alt="官方抖音号二维码" class="w-full h-full object-cover rounded-md" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'%23e2e8f0\' viewBox=\'0 0 24 24\'%3E%3Cpath d=\'M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v8H8V8zm2 2v4h4v-4h-4z\'/%3E%3C/svg%3E'">
+                </div>
+                <span class="text-sm font-medium tracking-wide opacity-90">官方抖音号</span>
+            </div>
+            <div class="text-center">
+                <div class="w-28 h-28 bg-white p-2 rounded-xl shadow-lg mx-auto mb-4 hover:scale-105 transition-transform duration-300">
+                    <img src="qr-shipinhao.jpg" alt="官方视频号二维码" class="w-full h-full object-cover rounded-md" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'%23e2e8f0\' viewBox=\'0 0 24 24\'%3E%3Cpath d=\'M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v8H8V8zm2 2v4h4v-4h-4z\'/%3E%3C/svg%3E'">
+                </div>
+                <span class="text-sm font-medium tracking-wide opacity-90">官方视频号</span>
+            </div>
+            <div class="text-center">
+                <div class="w-28 h-28 bg-white p-2 rounded-xl shadow-lg mx-auto mb-4 hover:scale-105 transition-transform duration-300">
+                    <img src="qr-xiaohongshu.jpg" alt="官方小红书号二维码" class="w-full h-full object-cover rounded-md" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'%23e2e8f0\' viewBox=\'0 0 24 24\'%3E%3Cpath d=\'M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v8H8V8zm2 2v4h4v-4h-4z\'/%3E%3C/svg%3E'">
+                </div>
+                <span class="text-sm font-medium tracking-wide opacity-90">官方小红书号</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-white py-12 px-8 text-center border-t border-slate-800">
+        <p class="text-xs opacity-40">© 2026 Miller Paint 蜜乐涂料 | 玉兰集团版权所有</p>
+    </footer>
+
+    <script>
+        // 补充移动端菜单脚本
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? '' : 'hidden';
+        }
+
+        if(mobileMenuBtn && closeMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+    </script>
+</body>
+</html>

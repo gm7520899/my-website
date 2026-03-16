@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蜜乐涂料 Miller Paint | 源自1890年的美国高端色彩</title>
+    
+    <meta property="og:title" content="蜜乐涂料 | 始于1890年的美国色彩专家">
+    <meta property="og:image" content="share-cover.jpg"> 
+    <meta name="description" content="蜜乐涂料（Miller Paint）为中国家庭带来环保、持久且极具艺术感的北美高端墙面解决方案。">
+
+    <link rel="icon" href="favicon.png" type="image/png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        // 在此处粘贴你从百度统计后台获取的 JS 代码
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+        
+        body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+        
+        .font-serif-en { font-family: 'Playfair Display', serif; }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.5)), url('hero-image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .gold-banner-bg {
+            background-image: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.85)), url('gold-banner-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .img-hover-zoom { transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .group:hover .img-hover-zoom { transform: scale(1.05); }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up { animation: fadeUp 1s ease-out forwards; }
+    </style>
+</head>
+<body class="bg-[#faf9f6] text-slate-800">
+
+    <nav class="fixed w-full z-[100] flex justify-between items-center px-6 md:px-8 py-5 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100/50">
+        <div class="flex flex-col">
+            <a href="index.html" class="text-2xl font-bold tracking-tighter text-blue-900 flex items-center hover:opacity-80 transition-opacity">
+                MILLER PAINT <span class="ml-2 text-xs font-light bg-blue-900 text-white px-2 py-0.5 rounded tracking-normal">蜜乐涂料</span>
+            </a>
+            <a href="http://www.yulangroup.cn" target="_blank" class="text-[11px] text-gray-500 hover:text-blue-900 mt-0.5 flex items-center gap-1 transition-colors font-medium tracking-widest w-fit">
+                玉兰集团 
+                <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+        </div>
+        
+        <div class="hidden lg:flex items-center space-x-6 text-[14px] font-bold text-slate-700 tracking-wide">
+            <a href="story.html" class="px-3 py-2 hover:text-blue-900 transition-colors">品牌故事</a>
+            <a href="products.html" class="px-3 py-2 hover:text-blue-900 transition-colors">产品中心</a>
+            <a href="ai-color.html" class="px-3 py-2 hover:text-blue-900 transition-colors">AI 色彩顾问</a> 
+            <a href="colors.html" class="px-3 py-2 hover:text-blue-900 transition-colors">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="px-3 py-2 hover:text-blue-900 transition-colors flex items-center gap-1">
+                在线色卡 <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+            <a href="contact.html" class="px-3 py-2 hover:text-blue-900 transition-colors">联系我们</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="contact.html" class="hidden sm:block bg-slate-900 text-white px-8 py-3 text-sm font-bold hover:bg-blue-900 transition-colors duration-300 shadow-lg">获取样漆</a>
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-900 p-2 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[9999] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col lg:hidden">
+        <div class="flex justify-between items-center px-6 py-5 border-b border-gray-100">
+            <span class="text-xl font-bold text-blue-900 tracking-tighter">MENU 菜单</span>
+            <button id="close-menu-btn" class="text-slate-900 p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center flex-grow space-y-8 text-2xl font-bold text-slate-800 pb-20">
+            <a href="story.html" class="hover:text-blue-900">品牌故事</a>
+            <a href="products.html" class="hover:text-blue-900">产品中心</a>
+            <a href="ai-color.html" class="hover:text-blue-900">AI 色彩顾问</a>
+            <a href="colors.html" class="hover:text-blue-900">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="hover:text-blue-900">在线色卡</a>
+            <a href="contact.html" class="hover:text-blue-900">联系我们</a>
+            <a href="contact.html" class="bg-blue-900 text-white px-12 py-4 rounded-sm text-lg mt-4 shadow-lg">获取样漆</a>
+        </div>
+    </div>
+
+    <section class="relative h-screen flex items-center justify-center hero-bg text-white">
+        <div class="text-center px-4 max-w-5xl relative z-10 animate-fade-up">
+            <span class="font-serif-en text-xl md:text-2xl tracking-[0.3em] uppercase mb-6 block opacity-80">The Art of Paint</span>
+            <h1 class="text-5xl md:text-[5.5rem] font-bold mb-8 leading-[1.1] tracking-tight">色彩，<span class="font-light">空间的灵魂</span></h1>
+            <p class="text-lg md:text-2xl mb-12 font-light opacity-90 max-w-2xl mx-auto leading-relaxed">
+                自 1890 年起，我们将北美的自然灵感、顶尖的光泽控制与纯粹的环保科技，细腻地融入每一滴涂料之中。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6 items-center">
+                <a href="colors.html" class="bg-white text-slate-900 px-10 py-4 font-bold hover:bg-gray-100 transition duration-300 w-full sm:w-auto tracking-wide">探索灵感色系</a>
+                <a href="products.html" class="border border-white/60 px-10 py-4 font-bold hover:bg-white hover:text-slate-900 transition duration-300 backdrop-blur-sm w-full sm:w-auto tracking-wide">浏览专业产品</a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce opacity-60">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </section>
+
+    <section class="py-32 px-8 max-w-7xl mx-auto bg-[#faf9f6]">
+        <div class="grid md:grid-cols-3 gap-16 md:gap-24 relative">
+            <div class="hidden md:block absolute top-12 left-1/6 right-1/6 h-[1px] bg-slate-200 z-0"></div>
+            
+            <div class="text-center relative z-10 group">
+                <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] group-hover:-translate-y-2 transition duration-500">
+                    <svg class="w-10 h-10 text-blue-900 font-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 tracking-wider text-slate-900">极致纯净</h3>
+                <p class="text-slate-500 leading-relaxed font-light">超越国际标准的超低 VOC 排放，甄选顶尖树脂，为您打造真正的“即刷即住”母婴级室内环境。</p>
+            </div>
+            <div class="text-center relative z-10 group">
+                <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] group-hover:-translate-y-2 transition duration-500">
+                    <svg class="w-10 h-10 text-blue-900 font-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 tracking-wider text-slate-900">非凡质感</h3>
+                <p class="text-slate-500 leading-relaxed font-light">得益于独家色彩实验室，从绝美的平光到高阶的丝缎光，完美控制光线折射，展现墙面的奢华肌理。</p>
+            </div>
+            <div class="text-center relative z-10 group">
+                <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] group-hover:-translate-y-2 transition duration-500">
+                    <svg class="w-10 h-10 text-blue-900 font-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 tracking-wider text-slate-900">岁月捍卫</h3>
+                <p class="text-slate-500 leading-relaxed font-light">源自 1890 年的匠心。采用专有陶瓷增强技术与高分子交联树脂，耐擦洗、防霉变，经得起漫长岁月的考验。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col lg:flex-row items-center gap-20">
+            <div class="lg:w-5/12">
+                <h4 class="font-serif-en text-gray-400 tracking-[0.2em] mb-4">TEXTURE & SHEEN</h4>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-slate-900 leading-tight">光影游走间，<br><span class="font-light text-blue-900">重塑空间艺术。</span></h2>
+                <p class="text-slate-500 text-lg leading-relaxed mb-6 font-light">
+                    高级的涂料，不仅仅是颜色的附着。蜜乐涂料（Miller Paint）为您提供从绝对哑光（Flat）到奢华半光（Semi-Gloss）的精密光泽体系。
+                </p>
+                <p class="text-slate-500 text-lg leading-relaxed mb-10 font-light">
+                    哑光饰面犹如柔焦滤镜，能完美吸收光线，巧妙隐藏墙面微小瑕疵；而独特的缎光与柔光，则能在自然光的轻抚下，勾勒出墙面与木饰面最迷人的立体肌理。
+                </p>
+                <a href="products.html" class="group inline-flex items-center text-blue-900 font-bold tracking-widest uppercase border-b border-blue-900 pb-1 hover:text-slate-600 hover:border-slate-600 transition-colors">
+                    了解光泽度体系 
+                    <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+            
+            <div class="lg:w-7/12 relative w-full h-[600px] hidden md:block">
+                <div class="absolute top-0 right-0 w-4/5 h-[500px] overflow-hidden rounded-sm group shadow-2xl z-10">
+                    <img src="texture-main.jpg" alt="涂料肌理展示" class="w-full h-full object-cover img-hover-zoom">
+                </div>
+                <div class="absolute bottom-0 left-0 w-1/2 h-[350px] overflow-hidden rounded-sm group shadow-xl z-20 border-8 border-white">
+                    <img src="texture-detail.jpg" alt="光泽度细节" class="w-full h-full object-cover img-hover-zoom">
+                </div>
+            </div>
+            <div class="w-full h-[350px] overflow-hidden rounded-sm shadow-xl md:hidden">
+                <img src="texture-main.jpg" alt="涂料肌理展示" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 gold-banner-bg text-white relative">
+        <div class="max-w-6xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between relative z-10 gap-12">
+            <div class="md:w-2/3 text-center md:text-left">
+                <span class="text-yellow-400 font-bold tracking-[0.2em] text-sm mb-4 block">GLOBAL STANDARD</span>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">荣获 SCS 室内空气质量<br><span class="text-yellow-400 font-light">金级认证 (Gold)</span></h2>
+                <p class="text-lg font-light opacity-90 leading-relaxed max-w-xl mx-auto md:mx-0">
+                    蜜乐涂料旗下核心内墙全系产品，均通过了全球最严苛的 SCS Indoor Advantage™ Gold 认证，确保零妥协的室内呼吸安全。
+                </p>
+            </div>
+            <div class="md:w-1/3 flex justify-center">
+                <div class="w-40 h-40 md:w-48 md:h-48 bg-white/10 backdrop-blur-md rounded-full p-6 flex items-center justify-center border border-yellow-400/30 shadow-[0_0_50px_rgba(234,179,8,0.2)] hover:scale-105 transition-transform duration-500">
+                    <img src="image_3cdb5c.png" alt="SCS Gold Certified" class="w-full h-full object-contain drop-shadow-lg filter brightness-110 contrast-125">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-[#faf9f6]">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold text-slate-900 mb-6">源自西北太平洋的自然调色盘</h2>
+                <p class="text-slate-500 font-light text-lg max-w-2xl mx-auto">以雄伟的山脉、深邃的森林和多变的海岸线为灵感，我们将大自然最引人入胜的色彩，提炼进每一桶涂料中。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:auto-rows-[250px]">
+                <div class="md:col-span-7 md:row-span-2 h-[300px] md:h-auto overflow-hidden group relative rounded-sm shadow-md">
+                    <img src="color-gallery-1.jpg" alt="空间色彩展示1" class="w-full h-full object-cover img-hover-zoom">
+                    <div class="absolute inset-0 bg-slate-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+                        <span class="text-white font-light tracking-wider text-sm">Miller Paint / Deep Tones</span>
+                    </div>
+                </div>
+                <div class="md:col-span-5 md:row-span-1 h-[200px] md:h-auto overflow-hidden group relative rounded-sm shadow-md bg-blue-900 flex items-center justify-center">
+                    <img src="color-gallery-2.jpg" alt="色彩样板" class="w-full h-full object-cover img-hover-zoom mix-blend-overlay opacity-80">
+                    <h3 class="absolute text-white text-2xl font-serif-en tracking-widest z-10">COLOR INSPIRATION</h3>
+                </div>
+                <div class="md:col-span-5 md:row-span-1 h-[200px] md:h-auto overflow-hidden group relative rounded-sm shadow-md">
+                    <img src="color-gallery-3.jpg" alt="空间色彩展示3" class="w-full h-full object-cover img-hover-zoom">
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="colors.html" class="inline-block border border-slate-300 text-slate-700 px-12 py-4 text-sm font-bold tracking-widest uppercase hover:bg-slate-900 hover:text-white transition-colors duration-300">
+                    探索全色系图谱
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-32 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-20 px-8">
+            <div class="md:w-1/2 relative group hidden md:block">
+                <div class="absolute inset-0 bg-blue-50 transform translate-x-6 translate-y-6 z-0 transition-transform duration-500 group-hover:translate-x-8 group-hover:translate-y-8"></div>
+                <img src="product-showcase.jpg" alt="Miller Paint" class="relative z-10 w-full h-auto object-cover shadow-xl grayscale-[20%] group-hover:grayscale-0 transition duration-700">
+            </div>
+            <div class="w-full md:hidden mb-8">
+                <img src="product-showcase.jpg" alt="Miller Paint" class="w-full h-auto object-cover shadow-lg rounded-sm">
+            </div>
+
+            <div class="md:w-1/2">
+                <h4 class="text-blue-900 font-bold tracking-[0.2em] text-sm mb-4">IN PARTNERSHIP WITH YULAN</h4>
+                <h2 class="text-3xl md:text-5xl font-bold mb-8 text-slate-900 leading-tight">专为中国家庭臻选的<br>全能墙面方案</h2>
+                <p class="text-slate-500 mb-10 text-lg leading-relaxed font-light">
+                    通过玉兰集团深厚的家居审美底蕴，我们将蜜乐涂料引入中国。针对中国多样的气候条件，从底漆到面漆，为您提供系统级的全方位保护。
+                </p>
+                <div class="space-y-6 mb-12">
+                    <div class="flex items-start">
+                        <span class="text-blue-900 mt-1 mr-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+                        <div>
+                            <h5 class="font-bold text-slate-900 mb-1">强效抗污，一抹即净</h5>
+                            <p class="text-sm text-slate-500 font-light">独特的交联树脂配方，轻松抵御指纹与日常污渍。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-blue-900 mt-1 mr-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+                        <div>
+                            <h5 class="font-bold text-slate-900 mb-1">漆膜柔韧，长效保护</h5>
+                            <p class="text-sm text-slate-500 font-light">极高的固含量带来优异的膜厚，有效覆盖基层微小瑕疵与细纹。</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="story.html" class="bg-blue-900 text-white px-10 py-4 font-bold hover:bg-slate-900 transition duration-300 shadow-md inline-block">
+                    阅读品牌故事
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer-contact" class="bg-slate-900 text-slate-300 py-20 px-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="text-center md:text-left">
+                <div class="mb-4 font-bold tracking-[0.2em] uppercase text-xl text-white">Miller Paint</div>
+                <p class="text-sm font-light opacity-60">源自 1890 · 北美色彩专家</p>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="text-sm opacity-60 mb-2">© 2026 Miller Paint. 玉兰集团版权所有</p>
+                <p class="text-xs opacity-40 font-light">The art of living begins with a single stroke.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? '' : 'hidden';
+        }
+
+        if(mobileMenuBtn && closeMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+    </script>
+</body>
+</html>

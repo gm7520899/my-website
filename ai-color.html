@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 智能色彩顾问 | 蜜乐涂料 Miller Paint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+        
+        body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; overflow-x: hidden; background-color: #faf9f6; }
+        .font-serif-en { font-family: 'Playfair Display', serif; }
+        
+        /* 选项卡交互样式 */
+        .option-card { transition: all 0.3s ease; border: 2px solid transparent; background-color: white; }
+        .option-card:hover { border-color: #e2e8f0; transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+        .option-card.selected { border-color: #1e3a8a; background-color: #eff6ff; color: #1e3a8a; }
+        
+        /* 进度条 */
+        .loader-bar { width: 0%; height: 2px; background-color: #1e3a8a; transition: width 0.5s ease; }
+
+        /* Banner淡入动画 */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up { animation: fadeUp 0.8s ease-out forwards; }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <nav class="fixed w-full z-[100] flex justify-between items-center px-6 md:px-8 py-5 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100/50">
+        <div class="flex flex-col">
+            <a href="index.html" class="text-2xl font-bold tracking-tighter text-blue-900 flex items-center hover:opacity-80 transition-opacity">
+                MILLER PAINT <span class="ml-2 text-xs font-light bg-blue-900 text-white px-2 py-0.5 rounded tracking-normal">蜜乐涂料</span>
+            </a>
+            <a href="http://www.yulangroup.cn" target="_blank" class="text-[11px] text-gray-500 hover:text-blue-900 mt-0.5 flex items-center gap-1 transition-colors font-medium tracking-widest w-fit">
+                玉兰集团 
+                <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+        </div>
+        
+        <div class="hidden lg:flex items-center space-x-6 text-[14px] font-bold text-slate-700 tracking-wide">
+            <a href="story.html" class="px-3 py-2 hover:text-blue-900 transition-colors">品牌故事</a>
+            <a href="products.html" class="px-3 py-2 hover:text-blue-900 transition-colors">产品中心</a>
+            <a href="ai-color.html" class="px-3 py-2 text-blue-900 border-b-2 border-blue-900 pb-1">AI 色彩顾问</a> 
+            <a href="colors.html" class="px-3 py-2 hover:text-blue-900 transition-colors">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="px-3 py-2 hover:text-blue-900 transition-colors flex items-center gap-1">
+                在线色卡 <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+            <a href="contact.html" class="px-3 py-2 hover:text-blue-900 transition-colors">联系我们</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="contact.html" class="hidden sm:block bg-slate-900 text-white px-8 py-3 text-sm font-bold hover:bg-blue-900 transition-colors duration-300 shadow-lg">获取样漆</a>
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-900 p-2 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[9999] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col lg:hidden">
+        <div class="flex justify-between items-center px-6 py-5 border-b border-gray-100">
+            <span class="text-xl font-bold text-blue-900 tracking-tighter">MENU 菜单</span>
+            <button id="close-menu-btn" class="text-slate-900 p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center flex-grow space-y-8 text-2xl font-bold text-slate-800 pb-20">
+            <a href="story.html" class="hover:text-blue-900">品牌故事</a>
+            <a href="products.html" class="hover:text-blue-900">产品中心</a>
+            <a href="ai-color.html" class="text-blue-900">AI 色彩顾问</a>
+            <a href="colors.html" class="hover:text-blue-900">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="hover:text-blue-900">在线色卡</a>
+            <a href="contact.html" class="hover:text-blue-900">联系我们</a>
+            <a href="contact.html" class="bg-blue-900 text-white px-12 py-4 rounded-sm text-lg mt-4 shadow-lg">获取样漆</a>
+        </div>
+    </div>
+
+    <section class="relative pt-40 pb-24 px-8 flex flex-col items-center justify-center min-h-[45vh] bg-[url('ai-banner-bg.jpg')] bg-cover bg-center">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/10 to-transparent z-0"></div>
+        <div class="relative z-10 text-center max-w-4xl mx-auto text-white animate-fade-up drop-shadow-xl">
+            <h4 class="font-serif-en tracking-[0.2em] mb-4 text-sm uppercase opacity-90 drop-shadow-md">Miller AI Consultant</h4>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 tracking-wide drop-shadow-md">描绘心中的理想空间</h1>
+            <p class="text-lg font-light max-w-2xl mx-auto leading-relaxed drop-shadow text-white/95">告诉我们您的需求，Miller 智能顾问将为您匹配专属的色彩方案、光泽度及涂料系统。</p>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-3xl mx-auto" id="quiz-container">
+        
+        <div class="mb-12 quiz-step" id="step-1">
+            <h3 class="text-2xl font-bold mb-6 text-slate-900">1. 您计划涂刷哪个空间？</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <button class="option-card p-6 rounded-xl shadow-sm text-center" onclick="selectOption(1, 'living', this)">
+                    <span class="text-3xl block mb-2">🛋️</span><span class="font-bold text-sm text-slate-700">客厅</span>
+                </button>
+                <button class="option-card p-6 rounded-xl shadow-sm text-center" onclick="selectOption(1, 'bedroom', this)">
+                    <span class="text-3xl block mb-2">🛏️</span><span class="font-bold text-sm text-slate-700">卧室</span>
+                </button>
+                <button class="option-card p-6 rounded-xl shadow-sm text-center" onclick="selectOption(1, 'bathroom', this)">
+                    <span class="text-3xl block mb-2">🛁</span><span class="font-bold text-sm text-slate-700">厨卫空间</span>
+                </button>
+                <button class="option-card p-6 rounded-xl shadow-sm text-center" onclick="selectOption(1, 'kids', this)">
+                    <span class="text-3xl block mb-2">🧸</span><span class="font-bold text-sm text-slate-700">儿童房</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mb-12 quiz-step opacity-30 pointer-events-none transition-opacity duration-500" id="step-2">
+            <h3 class="text-2xl font-bold mb-6 text-slate-900">2. 您期望的氛围是？</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <button class="option-card p-6 rounded-xl shadow-sm text-center font-medium text-slate-700 tracking-wider" onclick="selectOption(2, 'warm', this)">温暖治愈</button>
+                <button class="option-card p-6 rounded-xl shadow-sm text-center font-medium text-slate-700 tracking-wider" onclick="selectOption(2, 'minimal', this)">极简清冷</button>
+                <button class="option-card p-6 rounded-xl shadow-sm text-center font-medium text-slate-700 tracking-wider" onclick="selectOption(2, 'luxury', this)">深邃奢华</button>
+            </div>
+        </div>
+
+        <div class="mb-12 quiz-step opacity-30 pointer-events-none transition-opacity duration-500" id="step-3">
+            <h3 class="text-2xl font-bold mb-6 text-slate-900">3. 该空间的自然采光如何？</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <button class="option-card p-6 rounded-xl shadow-sm text-center text-sm font-medium text-slate-700 tracking-wide" onclick="selectOption(3, 'bright', this)">☀️ 采光极佳，阳光充足</button>
+                <button class="option-card p-6 rounded-xl shadow-sm text-center text-sm font-medium text-slate-700 tracking-wide" onclick="selectOption(3, 'dark', this)">☁️ 采光一般，偏暗</button>
+            </div>
+        </div>
+
+        <div class="text-center mt-12">
+            <button id="submit-btn" class="bg-slate-300 text-slate-500 px-12 py-4 rounded-full font-bold transition-all duration-300 pointer-events-none tracking-widest" onclick="generateResult()">智能生成专属方案</button>
+        </div>
+    </section>
+
+    <section id="loading-section" class="hidden py-32 text-center max-w-xl mx-auto">
+        <h3 class="text-xl font-bold text-blue-900 mb-4 animate-pulse tracking-widest uppercase">Analyzing...</h3>
+        <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+            <div class="loader-bar" id="loader"></div>
+        </div>
+        <p class="text-sm text-slate-500 mt-6 tracking-wide" id="loading-text">交叉比对空间光影参数...</p>
+    </section>
+
+    <section id="result-section" class="hidden pb-32 px-6 max-w-6xl mx-auto">
+        <div class="bg-white rounded-[40px] shadow-2xl overflow-hidden flex flex-col md:flex-row border border-slate-100">
+            <div class="md:w-1/2 relative h-[400px] md:h-auto border-r border-slate-100">
+                <img id="res-img" src="" class="w-full h-full object-cover">
+                <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-5 py-2.5 text-[10px] font-bold tracking-[0.2em] text-slate-800 rounded-lg shadow-sm">
+                    MILLER COLOR PALETTE
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center bg-white">
+                <h4 class="text-blue-900 font-bold tracking-[0.2em] text-xs mb-4 uppercase">Your Custom Solution</h4>
+                <h2 class="text-3xl font-bold mb-4 text-slate-900" id="res-title">正在生成...</h2>
+                
+                <div class="flex items-center gap-4 mb-8 bg-slate-50 w-fit px-5 py-3 rounded-lg border border-slate-100">
+                    <div id="res-color-box" class="w-10 h-10 rounded-full shadow-inner border border-black/5"></div>
+                    <div class="flex flex-col">
+                        <span class="text-slate-900 font-bold tracking-wider text-sm" id="res-color-code">Miller 0000</span>
+                        <span class="text-slate-400 font-medium text-[10px] tracking-widest uppercase mt-0.5" id="res-hex">HEX #000000</span>
+                    </div>
+                </div>
+                
+                <p class="text-slate-600 leading-relaxed mb-10 font-light text-sm" id="res-desc">方案描述加载中...</p>
+
+                <div class="bg-slate-50 p-6 rounded-xl mb-10 border border-slate-100">
+                    <h5 class="font-bold text-slate-800 mb-4 border-b border-slate-200 pb-3 text-sm tracking-wide">系统级涂料搭配</h5>
+                    <ul class="space-y-4 text-sm text-slate-600">
+                        <li class="flex flex-col gap-1"><span class="text-xs uppercase tracking-widest text-slate-400">墙面产品</span> <strong id="res-product" class="text-blue-900 font-medium">产品</strong></li>
+                        <li class="flex flex-col gap-1"><span class="text-xs uppercase tracking-widest text-slate-400">推荐光泽</span> <strong id="res-sheen" class="text-blue-900 font-medium">光泽</strong></li>
+                        <li class="flex flex-col gap-1"><span class="text-xs uppercase tracking-widest text-slate-400">底层处理</span> <strong id="res-primer" class="text-slate-800 font-medium">底漆</strong></li>
+                    </ul>
+                </div>
+
+                <a href="contact.html" class="bg-slate-900 text-white text-center py-4 rounded-full text-sm font-bold hover:bg-blue-900 transition-colors shadow-md tracking-widest uppercase">获取样漆与色卡</a>
+                <button class="mt-6 text-xs text-slate-400 hover:text-slate-600 transition-colors uppercase tracking-widest font-medium" onclick="location.reload()">↺ 重新测试其他空间</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-16 px-8 border-t border-slate-800 mt-12">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-[11px] font-medium tracking-[0.2em] uppercase opacity-60">© 2026 Miller Paint. 玉兰集团版权所有</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? '' : 'hidden';
+        }
+        if(mobileMenuBtn && closeMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        let userChoices = { step1: '', step2: '', step3: '' };
+
+        function selectOption(step, value, btnElement) {
+            userChoices[`step${step}`] = value;
+            let siblings = btnElement.parentElement.children;
+            for(let btn of siblings) { btn.classList.remove('selected'); }
+            btnElement.classList.add('selected');
+
+            if(step === 1) {
+                document.getElementById('step-2').classList.remove('opacity-30', 'pointer-events-none');
+            } else if (step === 2) {
+                document.getElementById('step-3').classList.remove('opacity-30', 'pointer-events-none');
+            } else if (step === 3) {
+                let submitBtn = document.getElementById('submit-btn');
+                submitBtn.classList.remove('bg-slate-300', 'text-slate-500', 'pointer-events-none');
+                submitBtn.classList.add('bg-blue-900', 'text-white', 'shadow-lg', 'hover:bg-blue-800');
+            }
+        }
+
+        function generateResult() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('loading-section').classList.remove('hidden');
+            
+            let loader = document.getElementById('loader');
+            let loadText = document.getElementById('loading-text');
+            
+            setTimeout(() => { loader.style.width = '35%'; loadText.innerText = "交叉比对 Miller 百年色彩库..."; }, 600);
+            setTimeout(() => { loader.style.width = '80%'; loadText.innerText = "智能演算底面合一与光泽系统..."; }, 1600);
+            setTimeout(() => { loader.style.width = '100%'; }, 2400);
+
+            setTimeout(() => {
+                document.getElementById('loading-section').classList.add('hidden');
+                showResult();
+            }, 3000);
+        }
+
+        const colorDatabase = {
+            'living_warm_bright': {
+                title: "治愈燕麦 (Warm Oatmeal)", hex: "#E6DFD3", code: "Miller 0192",
+                desc: "【光线放大器】在阳光充足的客厅，温暖的燕麦色能最大限度地折射自然光。它消除了纯白的冰冷感，营造出极其温馨、放松的包裹感，是全家人聚集的绝佳基调色。",
+                prod: "Premium™ 经典面漆", sheen: "Matte (哑光) - 提升高级感", primer: "Premium PVA 封闭底漆", img: "ai-res-living-warm.jpg"
+            },
+            'living_warm_dark': {
+                title: "陶土赤茶 (Terracotta)", hex: "#B86A53", code: "Miller 0054",
+                desc: "【反向设计原理】采光差的房间如果强刷白墙，往往会因为没有光线反射而显得灰暗单调。我们采用高端设计的反向思维：用醇厚的陶土红顺势而为，赋予暗空间极强的艺术张力。搭配室内暖光灯，质感极其惊艳。",
+                prod: "Evolution® 至臻面漆", sheen: "Satin (缎光) - 提升表面折射率", primer: "Premium PVA 封闭底漆", img: "ai-res-living-terracotta.jpg"
+            },
+            'living_minimal_bright': {
+                title: "极简云白 (Cloud White)", hex: "#F4F4F4", code: "Miller 0011",
+                desc: "【通透纯粹】极其适合自然光充沛的极简空间。带有微弱灰度的云白能完美兼容任何现代家具，让公共空间显得开阔、清透且极具艺术画廊的张力。",
+                prod: "Evolution® 至臻面漆", sheen: "Flat (纯平哑光) - 极致隐藏墙面微瑕", primer: "Premium PVA 封闭底漆", img: "ai-res-living-minimal.jpg"
+            },
+            'living_minimal_dark': {
+                title: "高级暖灰 (Warm Grey)", hex: "#8A8A8A", code: "Miller 0540",
+                desc: "【光影层次】在采光偏暗的极简客厅，纯白容易显得冷峻死板。而高级暖灰能在弱光下展现出极其丰富的层次感，让空间显得静谧、内敛且极具设计格调。",
+                prod: "Premium™ 经典面漆", sheen: "Matte (哑光)", primer: "Premium PVA 封闭底漆", img: "ai-res-living-grey.jpg"
+            },
+            'living_luxury_bright': {
+                title: "深林谧境 (Deep Forest)", hex: "#2C3E38", code: "Miller 0452",
+                desc: "【光影剧院】阳光照射下的深邃墨绿，不仅不显压抑，反而能呈现出剧院般的奢华质感与强烈的立体度。它能让您的客厅瞬间拥有难以复刻的老钱风底蕴。",
+                prod: "Evolution® 至臻面漆", sheen: "Satin (缎光) - 凸显丝滑肌理", primer: "Premium PVA 封闭底漆", img: "ai-res-living-forest.jpg"
+            },
+            'living_luxury_dark': {
+                title: "曜石暗影 (Obsidian Dark)", hex: "#22252A", code: "Miller 0588",
+                desc: "【反向设计原理】既然自然采光偏暗，不如顺势将奢华推向极致。放弃无效的提亮，用深邃的曜石色系搭配重点局部照明（射灯或落地灯），能化解无自然光的尴尬，打造出极高阶的私密会客氛围。",
+                prod: "Evolution® 至臻面漆", sheen: "Soft Sheen (柔光) - 折射高级光泽", primer: "Premium PVA 封闭底漆", img: "ai-res-living-dark.jpg"
+            },
+            'bed_warm_bright': {
+                title: "柔和奶白 (Creamy White)", hex: "#FDFBF7", code: "Miller 0005",
+                desc: "【唤醒清晨】卧室光线极佳时，柔和的奶白能让每天清晨的苏醒变得轻盈愉悦。它比纯白多了一丝醇厚的奶油感，视觉上毫无攻击性，极具亲和力。",
+                prod: "Acro Pure® 极净面漆", sheen: "Matte (哑光)", primer: "Acro Pure® 环保底漆", img: "ai-res-bed-cream.jpg"
+            },
+            'bed_warm_dark': {
+                title: "高定灰褐 (Greige Elegance)", hex: "#A59E96", code: "Miller 0214",
+                desc: "【沉浸安眠】在偏暗的卧室中强用亮色会失去质感。高定灰褐是介于灰色与米色之间的完美平衡，它比纯灰更暖，比纯白更包裹，能打造出顶级酒店套房般的安睡环境。",
+                prod: "Acro Pure® 极净面漆", sheen: "Matte (哑光) - 柔和光线", primer: "Acro Pure® 环保底漆", img: "ai-res-bed-greige.jpg"
+            },
+            'bed_minimal': {
+                title: "静谧灰蓝 (Muted Fog Blue)", hex: "#7A8B99", code: "Miller 0632",
+                desc: "【视觉降温】带有灰调的低饱和蓝色，能像轻柔的薄雾一样让人瞬间平静。它具有极佳的视觉降温与助眠效果，是极简风格卧室的绝杀用色。",
+                prod: "Acro Pure® 极净面漆", sheen: "Flat (纯平哑光) - 极致柔和", primer: "Acro Pure® 环保底漆", img: "ai-res-bed-blue.jpg"
+            },
+            'bed_luxury_bright': {
+                title: "深林谧境 (Deep Forest)", hex: "#2C3E38", code: "Miller 0452",
+                desc: "【打破常规】在采光充足的休息区大胆使用墨绿色！它不仅不会压抑，反而能营造出极具安全感的包裹氛围，让整个卧室充满静谧的奢华感。",
+                prod: "Evolution® 至臻面漆", sheen: "Matte (哑光) - 极致安眠体验", primer: "Premium PVA 封闭底漆", img: "ai-res-bed-luxury.jpg"
+            },
+            'bed_luxury_dark': {
+                title: "晨曦玫瑰 (Dusty Rose)", hex: "#C5A8A4", code: "Miller 0089",
+                desc: "【暗调浪漫】暗光环境下的极致奢华。带有灰度的脏玫瑰色在弱光下更能显现出剧院般的丝绒质感，赋予私密空间独特的柔情与高级感。",
+                prod: "Evolution® 至臻面漆", sheen: "Satin (缎光)", primer: "Premium PVA 封闭底漆", img: "ai-res-bed-rose.jpg"
+            },
+            'bathroom': {
+                title: "微风鼠尾草 (Sage Breeze)", hex: "#A8B5A1", code: "Miller 0411",
+                desc: "【功能至上，防潮优先】作为高湿度的特殊空间，“防潮与易洁性”已触发系统最高优先级，凌驾于常规的“氛围与采光”之上。我们为您锁定了水疗般的鼠尾草绿，并强制搭配了 Vapor-Lok 特种防潮底漆系统，无惧发霉隐患。",
+                prod: "Acro HP® 高性能面漆", sheen: "Semi-Gloss (半光) - 强效耐水抗污", primer: "Vapor-Lok 特种防潮底漆", img: "ai-res-bathroom.jpg"
+            },
+            'kids': {
+                title: "柔和奶黄 (Soft Butter)", hex: "#FCF5D8", code: "Miller 0122",
+                desc: "【安全至上，健康优先】儿童房是全屋最特殊的空间，“极致的环保安全性”已触发系统最高优先级，凌驾于所有选项之上。我们为您屏蔽了常规配方，强制匹配了趋零VOC的母婴级 Acro Pure 极净底面系统，确保最高级别的呼吸安全。",
+                prod: "Acro Pure® 极净面漆", sheen: "Satin (缎光) - 极佳的耐擦洗性", primer: "Acro Pure® 环保底漆", img: "ai-res-kids.jpg"
+            }
+        };
+
+        function showResult() {
+            let res;
+            const c = userChoices;
+
+            if (c.step1 === 'kids') { res = colorDatabase['kids']; }
+            else if (c.step1 === 'bathroom') { res = colorDatabase['bathroom']; }
+            else if (c.step1 === 'living') {
+                if (c.step2 === 'warm' && c.step3 === 'bright') res = colorDatabase['living_warm_bright'];
+                else if (c.step2 === 'warm' && c.step3 === 'dark') res = colorDatabase['living_warm_dark'];
+                else if (c.step2 === 'minimal' && c.step3 === 'bright') res = colorDatabase['living_minimal_bright'];
+                else if (c.step2 === 'minimal' && c.step3 === 'dark') res = colorDatabase['living_minimal_dark'];
+                else if (c.step2 === 'luxury' && c.step3 === 'bright') res = colorDatabase['living_luxury_bright'];
+                else if (c.step2 === 'luxury' && c.step3 === 'dark') res = colorDatabase['living_luxury_dark'];
+                else res = colorDatabase['living_warm_bright'];
+            }
+            else if (c.step1 === 'bedroom') {
+                if (c.step2 === 'warm' && c.step3 === 'bright') res = colorDatabase['bed_warm_bright'];
+                else if (c.step2 === 'warm' && c.step3 === 'dark') res = colorDatabase['bed_warm_dark'];
+                else if (c.step2 === 'minimal') res = colorDatabase['bed_minimal']; 
+                else if (c.step2 === 'luxury' && c.step3 === 'bright') res = colorDatabase['bed_luxury_bright']; 
+                else if (c.step2 === 'luxury' && c.step3 === 'dark') res = colorDatabase['bed_luxury_dark']; 
+                else res = colorDatabase['bed_warm_bright'];
+            }
+            else { res = colorDatabase['living_warm_bright']; }
+
+            document.getElementById('res-title').innerText = res.title;
+            document.getElementById('res-color-box').style.backgroundColor = res.hex;
+            document.getElementById('res-color-code').innerText = res.code; 
+            document.getElementById('res-hex').innerText = "HEX " + res.hex; 
+            
+            document.getElementById('res-desc').innerText = res.desc;
+            document.getElementById('res-product').innerText = res.prod;
+            document.getElementById('res-sheen').innerText = res.sheen;
+            document.getElementById('res-primer').innerText = res.primer; 
+            document.getElementById('res-img').src = res.img;
+
+            document.getElementById('result-section').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('result-section').scrollIntoView({behavior: 'smooth', block: 'center'});
+            }, 100);
+        }
+    </script>
+</body>
+</html>

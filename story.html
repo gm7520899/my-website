@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百年传奇 | 蜜乐涂料 Miller Paint - 跨越136年的色彩旅程</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; overflow-x: hidden; } 
+        
+        .history-hero {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('history-hero.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .timeline-container::before {
+            content: ''; position: absolute; left: 50%; width: 1px; height: 100%; background: #cbd5e1; transform: translateX(-50%);
+        }
+        @media (max-width: 768px) { .timeline-container::before { left: 20px; } }
+        
+        .zoom-container {
+            position: relative; z-index: 10;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s ease, z-index 0s;
+            cursor: zoom-in; border-radius: 0.25rem;
+        }
+        .zoom-container:hover {
+            transform: scale(2.0); z-index: 100;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8);
+        }
+        .color-transition { transition: filter 0.6s ease; }
+        @media (max-width: 768px) { .zoom-container:hover { transform: scale(1.4); } }
+
+        .advantage-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .advantage-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(30, 58, 138, 0.1); border-color: #bfdbfe; }
+        .advantage-icon-wrapper { transition: all 0.4s ease; }
+        .advantage-card:hover .advantage-icon-wrapper { background-color: #1e3a8a; color: #ffffff; transform: scale(1.1); }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+    <nav class="fixed w-full z-[100] flex justify-between items-center px-6 md:px-8 py-5 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100/50">
+        <div class="flex flex-col">
+            <a href="index.html" class="text-2xl font-bold tracking-tighter text-blue-900 flex items-center hover:opacity-80 transition-opacity">
+                MILLER PAINT <span class="ml-2 text-xs font-light bg-blue-900 text-white px-2 py-0.5 rounded tracking-normal">蜜乐涂料</span>
+            </a>
+            <a href="http://www.yulangroup.cn" target="_blank" class="text-[11px] text-gray-500 hover:text-blue-900 mt-0.5 flex items-center gap-1 transition-colors font-medium tracking-widest w-fit">
+                玉兰集团 
+                <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+        </div>
+        
+        <div class="hidden lg:flex items-center space-x-6 text-[14px] font-bold text-slate-700 tracking-wide">
+            <a href="story.html" class="px-3 py-2 text-blue-900 border-b-2 border-blue-900 pb-1">品牌故事</a>
+            <a href="products.html" class="px-3 py-2 hover:text-blue-900 transition-colors">产品中心</a>
+            <a href="ai-color.html" class="px-3 py-2 hover:text-blue-900 transition-colors">AI 色彩顾问</a> 
+            <a href="colors.html" class="px-3 py-2 hover:text-blue-900 transition-colors">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="px-3 py-2 hover:text-blue-900 transition-colors flex items-center gap-1">
+                在线色卡 <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+            <a href="contact.html" class="px-3 py-2 hover:text-blue-900 transition-colors">联系我们</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="contact.html" class="hidden sm:block bg-slate-900 text-white px-8 py-3 text-sm font-bold hover:bg-blue-900 transition-colors duration-300 shadow-lg">获取样漆</a>
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-900 p-2 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[9999] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col lg:hidden">
+        <div class="flex justify-between items-center px-6 py-5 border-b border-gray-100">
+            <span class="text-xl font-bold text-blue-900 tracking-tighter">MENU 菜单</span>
+            <button id="close-menu-btn" class="text-slate-900 p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center flex-grow space-y-8 text-2xl font-bold text-slate-800 pb-20">
+            <a href="story.html" class="text-blue-900">品牌故事</a>
+            <a href="products.html" class="hover:text-blue-900">产品中心</a>
+            <a href="ai-color.html" class="hover:text-blue-900">AI 色彩顾问</a>
+            <a href="colors.html" class="hover:text-blue-900">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="hover:text-blue-900">在线色卡</a>
+            <a href="contact.html" class="hover:text-blue-900">联系我们</a>
+            <a href="contact.html" class="bg-blue-900 text-white px-12 py-4 rounded-sm text-lg mt-4 shadow-lg">获取样漆</a>
+        </div>
+    </div>
+
+    <section class="relative h-[60vh] min-h-[450px] flex items-center justify-center history-hero text-white pt-16">
+        <div class="text-center max-w-3xl px-6">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">我们的历史</h1>
+            <p class="text-lg md:text-xl font-light leading-relaxed opacity-80">
+                一段始于1890年波特兰的传奇。为了抵御西北太平洋的风雨，我们定义了高品质涂料的标准。
+            </p>
+        </div>
+    </section>
+
+    <section class="py-24 px-8 bg-white border-b border-gray-50">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-20">
+            <div class="md:w-1/2">
+                <div class="relative">
+                    <div class="zoom-container shadow-2xl relative z-10 bg-white">
+                        <img src="founder-ernest.jpg" alt="Ernest Miller" class="w-full grayscale hover:grayscale-0 color-transition rounded-sm">
+                    </div>
+                    <div class="absolute -top-4 -left-4 w-full h-full border-2 border-blue-900 z-0 hidden md:block"></div>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <h3 class="text-4xl font-bold mb-8 text-blue-900">Ernest Miller：不仅仅是创始人</h3>
+                <p class="text-gray-600 leading-relaxed mb-6 text-lg">1890年，年仅20多岁的德国移民 Ernest Miller 跨越半个地球来到俄勒冈州波特兰。作为一名建筑工人，他深感当时市面上的涂料无法抵御当地多雨、潮湿的气候。</p>
+                <p class="text-gray-600 leading-relaxed mb-6">在波特兰的一间简陋作坊里，他开始用手工搅拌的方式，配比出第一桶专为西北地区气候设计的涂料。**“Made Here. For Here.”** 这句口号不仅是他的座右铭，更是蜜乐涂料（Miller Paint）流淌了百年的血液。</p>
+                <p class="text-gray-600 leading-relaxed italic">“我们不是在制造油漆，我们是在为人们的家穿上一层守护的盔甲。” —— Ernest Miller</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-8 bg-slate-50">
+        <div class="max-w-6xl mx-auto relative timeline-container">
+            <div class="relative flex flex-col md:flex-row items-center mb-32">
+                <div class="md:w-1/2 md:pr-16 md:text-right mb-8 md:mb-0">
+                    <span class="text-blue-900 font-bold text-4xl block mb-2">1890</span>
+                    <h5 class="text-xl font-bold mb-4">波特兰的第一缕晨光</h5>
+                    <p class="text-gray-500 text-sm leading-relaxed">Ernest Miller 在波特兰开设了第一家门店。他亲自驾驶马车，将一桶桶新鲜调制的涂料送到客户手中。这种“服务至上”的品质至今未变。</p>
+                </div>
+                <div class="absolute left-[20px] md:left-1/2 w-3 h-3 bg-blue-900 rounded-full transform -translateX-1/2 z-10 shadow-[0_0_0_8px_rgba(30,58,138,0.1)]"></div>
+                <div class="md:w-1/2 md:pl-16">
+                    <div class="zoom-container shadow-lg w-full md:w-96 bg-white">
+                        <img src="milestone-1890.jpg" class="w-full grayscale hover:grayscale-0 color-transition rounded">
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative flex flex-col md:flex-row-reverse items-center mb-32">
+                <div class="md:w-1/2 md:pl-16 mb-8 md:mb-0">
+                    <span class="text-blue-900 font-bold text-4xl block mb-2">1944</span>
+                    <h5 class="text-xl font-bold mb-4">经历二战的洗礼</h5>
+                    <p class="text-gray-500 text-sm leading-relaxed">在原材料极度匮乏的战争时期，Miller Paint 拒绝降低标准。这种对品质的顽固坚守，让品牌在大萧条和战争中幸存并发展壮大。</p>
+                </div>
+                <div class="absolute left-[20px] md:left-1/2 w-3 h-3 bg-blue-900 rounded-full transform -translateX-1/2 z-10 shadow-[0_0_0_8px_rgba(30,58,138,0.1)]"></div>
+                <div class="md:w-1/2 md:pr-16 md:text-right flex justify-end">
+                    <div class="zoom-container shadow-lg w-full md:w-96 bg-white transform origin-center md:origin-right">
+                        <img src="milestone-1944.jpg" class="w-full grayscale hover:grayscale-0 color-transition rounded">
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative flex flex-col md:flex-row items-center mb-32">
+                <div class="md:w-1/2 md:pr-16 md:text-right mb-8 md:mb-0">
+                    <span class="text-blue-900 font-bold text-4xl block mb-2">1999</span>
+                    <h5 class="text-xl font-bold mb-4">员工持股：每一个员工都是主人</h5>
+                    <p class="text-gray-500 text-sm leading-relaxed">Miller 家族决定将公司转变为员工持股（ESOP）。这不仅是一次商业变革，更确保了每一个在柜台服务你的员工，都对品牌品质有着百分之百的责任感。</p>
+                </div>
+                <div class="absolute left-[20px] md:left-1/2 w-3 h-3 bg-blue-900 rounded-full transform -translateX-1/2 z-10 shadow-[0_0_0_8px_rgba(30,58,138,0.1)]"></div>
+                <div class="md:w-1/2 md:pl-16">
+                    <div class="zoom-container shadow-lg w-full md:w-96 bg-white">
+                        <img src="milestone-1999.jpg" class="w-full grayscale hover:grayscale-0 color-transition rounded">
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative flex flex-col md:flex-row-reverse items-center mb-32">
+                <div class="md:w-1/2 md:pl-16 mb-8 md:mb-0">
+                    <span class="text-blue-900 font-bold text-4xl block mb-2">2020</span>
+                    <h5 class="text-xl font-bold mb-4">波特兰色彩实验室诞生</h5>
+                    <p class="text-gray-500 text-sm leading-relaxed">我们建立了最先进的 Northwest Color Lab。通过模拟自然光影，为全球消费者精准调校数千种具有艺术感染力的流行色。</p>
+                </div>
+                <div class="absolute left-[20px] md:left-1/2 w-3 h-3 bg-blue-900 rounded-full transform -translateX-1/2 z-10 shadow-[0_0_0_8px_rgba(30,58,138,0.1)]"></div>
+                <div class="md:w-1/2 md:pr-16 md:text-right flex justify-end">
+                    <div class="zoom-container shadow-lg w-full md:w-96 bg-white transform origin-center md:origin-right">
+                        <img src="milestone-2020.jpg" class="w-full grayscale hover:grayscale-0 color-transition rounded">
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-16 md:text-right mb-8 md:mb-0">
+                    <span class="text-blue-900 font-bold text-4xl block mb-2">2023</span>
+                    <h5 class="text-xl font-bold mb-4">携手玉兰，落户中国</h5>
+                    <p class="text-gray-600 font-medium leading-relaxed">蜜乐涂料正式开启中国市场新篇章。通过玉兰集团深厚的家居渠道，我们将百年的北美涂料工艺与环保标准，带给每一个向往品质生活的中国家庭。</p>
+                </div>
+                <div class="absolute left-[20px] md:left-1/2 w-4 h-4 bg-blue-900 rounded-full transform -translateX-1/2 z-10 ring-4 ring-blue-100"></div>
+                <div class="md:w-1/2 md:pl-16">
+                    <div class="zoom-container shadow-2xl w-full md:w-96 border-4 border-white bg-white">
+                        <img src="milestone-2023.jpg" class="w-full grayscale hover:grayscale-0 color-transition rounded">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-8 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">为什么选择 Miller 蜜乐涂料？</h2>
+                <div class="w-16 h-1 bg-blue-900 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                
+                <div class="advantage-card bg-white p-8 md:p-10 rounded-2xl border border-slate-100 flex flex-col md:flex-row gap-6 items-start">
+                    <div class="advantage-icon-wrapper w-14 h-14 bg-blue-50 text-blue-900 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">百年品牌传承</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">自 1890 年创立以来，130 多年来始终专注涂料研发与生产，沉淀了深厚的工艺底蕴与品牌信誉。纯正美国血统，100% 原装进口。</p>
+                    </div>
+                </div>
+
+                <div class="advantage-card bg-white p-8 md:p-10 rounded-2xl border border-slate-100 flex flex-col md:flex-row gap-6 items-start">
+                    <div class="advantage-icon-wrapper w-14 h-14 bg-yellow-50 text-yellow-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">卓越环保标准</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">始终将健康与环保放在首位。旗下多款核心产品均实现超低 VOC，更荣获全球严苛的 SCS Indoor Advantage™ Gold（室内空气质量金级认证），从源头守护家人健康。</p>
+                    </div>
+                </div>
+
+                <div class="advantage-card bg-white p-8 md:p-10 rounded-2xl border border-slate-100 flex flex-col md:flex-row gap-6 items-start">
+                    <div class="advantage-icon-wrapper w-14 h-14 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">应对极端气候</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">诞生于气候多变的美国西北部（高温、多雨、高湿），极其严苛的测试环境造就了其极佳的耐候性、抗飞溅和抗霉菌能力，完美适配中国多样化的居住环境。</p>
+                    </div>
+                </div>
+
+                <div class="advantage-card bg-white p-8 md:p-10 rounded-2xl border border-slate-100 flex flex-col md:flex-row gap-6 items-start">
+                    <div class="advantage-icon-wrapper w-14 h-14 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">非凡色彩表现</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">采用高级丙烯酸树脂与前沿的增强技术，遮盖力极强，漆膜细腻平滑。拥有极佳的色彩保留度，在当今流行的深色系（Deep-toned colors）涂装中表现极其出色。</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-8 text-center bg-slate-50">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold mb-8 text-blue-900">“我们不预测未来，我们为未来刷上色彩。”</h2>
+            <p class="text-gray-500 leading-relaxed mb-10 text-lg">无论世界如何改变，蜜乐涂料对环保、品质和色彩艺术的追求永远不会改变。我们邀请您，与我们一起书写下一个百年的色彩传奇。</p>
+            <a href="products.html" class="inline-block bg-blue-900 text-white px-10 py-4 rounded-sm font-bold hover:shadow-xl transition">了解我们的产品 →</a>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-white py-12 px-8 text-center border-t border-slate-800">
+        <p class="text-xs opacity-40">© 2026 Miller Paint 蜜乐涂料 | 玉兰集团版权所有</p>
+    </footer>
+
+    <script>
+        // 补充移动端菜单脚本
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? '' : 'hidden';
+        }
+
+        if(mobileMenuBtn && closeMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+    </script>
+</body>
+</html>

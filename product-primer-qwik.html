@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QWIK PREP PLUS 高厚涂底漆 | 蜜乐涂料 Miller Paint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; }
+        .tech-table th { background-color: #1e3a8a; color: white; font-weight: 500; }
+        .tech-table tr:nth-child(even) { background-color: #f8fafc; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+    <nav class="fixed w-full z-[100] flex justify-between items-center px-6 md:px-8 py-5 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100/50">
+        <div class="flex flex-col">
+            <a href="index.html" class="text-2xl font-bold tracking-tighter text-blue-900 flex items-center hover:opacity-80 transition-opacity">
+                MILLER PAINT <span class="ml-2 text-xs font-light bg-blue-900 text-white px-2 py-0.5 rounded tracking-normal">蜜乐涂料</span>
+            </a>
+            <a href="http://www.yulangroup.cn" target="_blank" class="text-[11px] text-gray-500 hover:text-blue-900 mt-0.5 flex items-center gap-1 transition-colors font-medium tracking-widest w-fit">
+                玉兰集团 
+                <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+        </div>
+        
+        <div class="hidden lg:flex items-center space-x-6 text-[14px] font-bold text-slate-700 tracking-wide">
+            <a href="story.html" class="px-3 py-2 hover:text-blue-900 transition-colors">品牌故事</a>
+            <a href="products.html" class="px-3 py-2 text-blue-900 border-b-2 border-blue-900 pb-1">产品中心</a>
+            <a href="ai-color.html" class="px-3 py-2 hover:text-blue-900 transition-colors">AI 色彩顾问</a> 
+            <a href="colors.html" class="px-3 py-2 hover:text-blue-900 transition-colors">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="px-3 py-2 hover:text-blue-900 transition-colors flex items-center gap-1">
+                在线色卡 <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+            <a href="contact.html" class="px-3 py-2 hover:text-blue-900 transition-colors">联系我们</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="contact.html" class="hidden sm:block bg-slate-900 text-white px-8 py-3 text-sm font-bold hover:bg-blue-900 transition-colors duration-300 shadow-lg">获取样漆</a>
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-900 p-2 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[9999] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col lg:hidden">
+        <div class="flex justify-between items-center px-6 py-5 border-b border-gray-100">
+            <span class="text-xl font-bold text-blue-900 tracking-tighter">MENU 菜单</span>
+            <button id="close-menu-btn" class="text-slate-900 p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center flex-grow space-y-8 text-2xl font-bold text-slate-800 pb-20">
+            <a href="story.html" class="hover:text-blue-900">品牌故事</a>
+            <a href="products.html" class="text-blue-900">产品中心</a>
+            <a href="ai-color.html" class="hover:text-blue-900">AI 色彩顾问</a>
+            <a href="colors.html" class="hover:text-blue-900">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="hover:text-blue-900">在线色卡</a>
+            <a href="contact.html" class="hover:text-blue-900">联系我们</a>
+            <a href="contact.html" class="bg-blue-900 text-white px-12 py-4 rounded-sm text-lg mt-4 shadow-lg">获取样漆</a>
+        </div>
+    </div>
+
+    <div class="pt-28 pb-6 px-8 max-w-7xl mx-auto text-sm text-gray-400">
+        <a href="index.html" class="hover:text-blue-900">首页</a> <span class="mx-2">/</span>
+        <a href="products.html" class="hover:text-blue-900">产品中心</a> <span class="mx-2">/</span>
+        <a href="products.html#primer" class="hover:text-blue-900">专业底漆系列</a> <span class="mx-2">/</span>
+        <span class="text-blue-900 font-medium">QWIK PREP PLUS</span>
+    </div>
+
+    <section class="pb-16 px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row gap-12 items-start">
+            
+            <div class="lg:w-1/2 flex flex-col justify-start items-center sticky top-32 pt-8">
+                <div class="w-full max-w-md lg:max-w-lg xl:max-w-xl cursor-zoom-in overflow-hidden rounded-2xl bg-white" onmousemove="handleZoom(event, this)" onmouseleave="resetZoom(this)">
+                    <img src="prod-qwik-prep.jpg" alt="Miller Paint QWIK PREP PLUS High Build Primer" class="w-full h-auto object-contain drop-shadow-2xl transition-transform duration-[400ms] ease-out origin-center block">
+                </div>
+                <div class="text-xs text-gray-400 mt-6 flex items-center justify-center gap-1.5 opacity-60 font-medium tracking-wide">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>鼠标悬浮至产品图片查看包装细节
+                </div>
+            </div>
+
+            <div class="lg:w-1/2">
+                <div class="mb-8 mt-4">
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                        <span class="bg-blue-100 text-blue-900 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">专业级封闭底漆</span>
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">金级认证</span>
+                        <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">Level 5 高厚涂</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-2">QWIK PREP PLUS</h1>
+                    <p class="text-sm text-slate-500 font-medium uppercase tracking-wider">Professional Grade High Build Interior Primer</p>
+                </div>
+
+                <div class="prose prose-slate max-w-none mb-8 text-gray-600 font-light leading-relaxed">
+                    <p class="mb-4 text-lg font-medium text-gray-800">
+                        QWIK PREP PLUS 是一款荣获金级认证、专为室内墙板配制的专业级高厚涂型 (High Build) PVA 封闭底漆。
+                    </p>
+                    <p class="mb-4">
+                        它具有极佳的覆盖力，并能轻松打磨至平滑表面。该产品能有效封闭多孔基层，确保后续面漆涂层展现出完美均匀的色彩与质感。
+                    </p>
+                    <p class="font-medium text-blue-900">
+                        突破性的 Level 5 饰面能力：<br>
+                        <span class="text-gray-600 font-light">在 6-10 mils 的湿膜厚度下，QWIK PREP PLUS 可以直接将 4 级饰面提升至 5 级饰面，无需传统耗时的手工批刮找平 (Skim coat by hand)。</span>
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-xl border border-gray-100 mb-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="md:w-2/3 w-full">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="text-2xl">✨</span>
+                            <h4 class="text-lg font-bold text-slate-900">表面光泽 (Gloss Level)</h4>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-0">
+                            作为一款底层封闭漆，本产品固化后呈现 <strong>极低哑光 (0-5 @ 60°)</strong>，可为面漆提供最佳的附着力与抓取基础。
+                        </p>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center md:justify-end w-full">
+                        <div class="w-36 h-36 lg:w-44 lg:h-44 bg-white rounded-xl p-4 shadow-sm flex items-center justify-center border border-slate-200 flex-shrink-0 transition-transform hover:scale-105" title="Indoor Advantage Gold Certified">
+                            <img src="image_3cdb5c.png" alt="Indoor Advantage Gold" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="space-y-3 mb-10 text-sm text-gray-600">
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 荣获 SCS 室内空气质量金级认证 (Indoor Advantage™ Gold)</li>
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 卓越的填充性能，高厚涂配方打造 Level 5 饰面</li>
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 极易打磨 (Sands easily)，节省大量施工时间</li>
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 气味极低，极低 VOC (&lt; 15 g/L)</li>
+                </ul>
+
+                <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                    <a href="contact.html" class="bg-blue-900 text-white text-center px-10 py-4 rounded-sm font-bold hover:bg-blue-800 transition shadow-lg hover:shadow-xl">联系购买</a>
+                    <a href="products.html" class="border-2 border-slate-300 text-slate-700 text-center px-10 py-4 rounded-sm font-bold hover:bg-slate-50 transition">浏览配套面漆</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-8 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-[1400px] mx-auto flex flex-col gap-12">
+            <div class="flex flex-col md:flex-row gap-12 mb-8 border-b border-slate-200 pb-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4 inline-block">施工规格</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        <strong class="text-slate-800">涂刷面积：</strong> Level 5 高厚涂施工时，每加仑约覆盖 160-250 平方英尺。<br><br>
+                        <strong class="text-slate-800">干燥时间：</strong> 在 70°F (21°C) 且相对湿度为 50% 的环境下，1 小时可表干，4 小时后可打磨或重涂面漆。<br><br>
+                        <strong class="text-blue-900">固化与打磨：</strong> 请确保底漆彻底干燥（至少 4 小时）后再进行手工打磨操作，以防止漆膜发生卷边或粘连。打磨后必须彻底清除表面粉尘。完全固化需 14-28 天。
+                    </p>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4 inline-block">适用场景与处理</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        推荐用于老旧混凝土、灰泥、砌体、混凝土砌块 (CMU) 以及石膏墙板 (Gypsum Wallboard)。表面必须无松动的粉尘、油污或蜡脂。环保水性配方，施工后可使用肥皂和清水轻松清洗工具。
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-bold text-blue-900 mb-6 inline-block">Specifications for QWIK PREP PLUS</h3>
+                <div class="bg-white border border-slate-200 rounded-lg shadow-sm overflow-x-auto hide-scroll">
+                    <table class="min-w-full text-sm text-center tech-table whitespace-nowrap">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-4 text-left">技术指标 (Technical Data)</th>
+                                <th class="px-4 py-4 border-l border-blue-800">详细参数</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-gray-700">
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left w-1/3">树脂类型 (Resin)</td>
+                                <td class="px-4 py-3 border-l border-slate-100">聚乙烯基丙烯酸 (Polyvinyl Acrylic)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">重量固含量 (Solids by Weight)</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100">55% ± 2%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">体积固含量 (Solids by Volume)</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100">33% ± 2%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">每加仑重量 (Weight Per Gal)</td>
+                                <td class="px-4 py-3 border-l border-slate-100">12.5 lbs</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">膜厚控制 (Film Thickness)</td>
+                                <td class="px-4 py-3 border-l border-slate-100">
+                                    <strong>标准应用：</strong> 湿膜 5-6 mils<br>
+                                    <strong class="text-blue-900">Level 5 应用：</strong> 湿膜 6-10 mils | 干膜 2-3.3 mils
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">VOC 含量 (VOC Content)</td>
+                                <td class="px-4 py-3 text-green-700 font-bold border-l border-slate-100">&lt; 15 g/L</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left align-middle">国际环保合规 (Certifications)</td>
+                                <td class="px-4 py-3 text-xs leading-relaxed text-center border-l border-slate-100 text-blue-900 font-bold">
+                                    • SCS Indoor Advantage™ Gold<br>
+                                    • Greenseal GS-11 Standard &nbsp;&nbsp; | &nbsp;&nbsp; • LEED v4 Compliant &nbsp;&nbsp; | &nbsp;&nbsp; • CDPH v1.2<br>
+                                    <span class="text-gray-500 font-normal">• EPA (AIM) / SCAQMD / CARB Compliant</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-white py-12 px-8 text-center border-t border-slate-800">
+        <p class="text-xs opacity-40">© 2026 Miller Paint 蜜乐涂料 | 玉兰集团版权所有</p>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? '' : 'hidden';
+        }
+
+        if(mobileMenuBtn && closeMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        function handleZoom(e, container) {
+            const img = container.querySelector('img');
+            const rect = container.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            img.style.transformOrigin = `${x}% ${y}%`;
+            img.style.transform = 'scale(1.8)';
+            img.classList.remove('drop-shadow-2xl');
+        }
+        function resetZoom(container) {
+            const img = container.querySelector('img');
+            img.style.transformOrigin = 'center center';
+            img.style.transform = 'scale(1)';
+            img.classList.add('drop-shadow-2xl');
+        }
+    </script>
+</body>
+</html>

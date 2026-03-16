@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium PVA 内墙封闭底漆 | 蜜乐涂料 Miller Paint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; }
+        .sheen-btn.active { background-color: #1e3a8a; color: #ffffff; border-color: #1e3a8a; }
+        .sheen-btn { transition: all 0.2s ease-in-out; }
+        .tech-table th { background-color: #1e3a8a; color: white; font-weight: 500; }
+        .tech-table tr:nth-child(even) { background-color: #f8fafc; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+    <nav class="fixed w-full z-[100] flex justify-between items-center px-6 md:px-8 py-5 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100/50">
+        <div class="flex flex-col">
+            <a href="index.html" class="text-2xl font-bold tracking-tighter text-blue-900 flex items-center hover:opacity-80 transition-opacity">
+                MILLER PAINT <span class="ml-2 text-xs font-light bg-blue-900 text-white px-2 py-0.5 rounded tracking-normal">蜜乐涂料</span>
+            </a>
+            <a href="http://www.yulangroup.cn" target="_blank" class="text-[11px] text-gray-500 hover:text-blue-900 mt-0.5 flex items-center gap-1 transition-colors font-medium tracking-widest w-fit">
+                玉兰集团 
+                <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+        </div>
+        
+        <div class="hidden lg:flex items-center space-x-6 text-[14px] font-bold text-slate-700 tracking-wide">
+            <a href="story.html" class="px-3 py-2 hover:text-blue-900 transition-colors">品牌故事</a>
+            <a href="products.html" class="px-3 py-2 text-blue-900 border-b-2 border-blue-900 pb-1">产品中心</a>
+            <a href="ai-color.html" class="px-3 py-2 hover:text-blue-900 transition-colors">AI 色彩顾问</a> 
+            <a href="colors.html" class="px-3 py-2 hover:text-blue-900 transition-colors">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="px-3 py-2 hover:text-blue-900 transition-colors flex items-center gap-1">
+                在线色卡 <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+            <a href="contact.html" class="px-3 py-2 hover:text-blue-900 transition-colors">联系我们</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="contact.html" class="hidden sm:block bg-slate-900 text-white px-8 py-3 text-sm font-bold hover:bg-blue-900 transition-colors duration-300 shadow-lg">获取样漆</a>
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-900 p-2 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[9999] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col lg:hidden">
+        <div class="flex justify-between items-center px-6 py-5 border-b border-gray-100">
+            <span class="text-xl font-bold text-blue-900 tracking-tighter">MENU 菜单</span>
+            <button id="close-menu-btn" class="text-slate-900 p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center flex-grow space-y-8 text-2xl font-bold text-slate-800 pb-20">
+            <a href="story.html" class="hover:text-blue-900">品牌故事</a>
+            <a href="products.html" class="text-blue-900">产品中心</a>
+            <a href="ai-color.html" class="hover:text-blue-900">AI 色彩顾问</a>
+            <a href="colors.html" class="hover:text-blue-900">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="hover:text-blue-900">在线色卡</a>
+            <a href="contact.html" class="hover:text-blue-900">联系我们</a>
+            <a href="contact.html" class="bg-blue-900 text-white px-12 py-4 rounded-sm text-lg mt-4 shadow-lg">获取样漆</a>
+        </div>
+    </div>
+
+    <div class="pt-28 pb-6 px-8 max-w-7xl mx-auto text-sm text-gray-400">
+        <a href="index.html" class="hover:text-blue-900">首页</a> <span class="mx-2">/</span>
+        <a href="products.html" class="hover:text-blue-900">产品中心</a> <span class="mx-2">/</span>
+        <a href="products.html#primer" class="hover:text-blue-900">专业底漆</a> <span class="mx-2">/</span>
+        <span class="text-blue-900 font-medium">Premium PVA Primer</span>
+    </div>
+
+    <section class="pb-16 px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row gap-12 items-start">
+            
+            <div class="lg:w-1/2 flex flex-col justify-start items-center sticky top-32 pt-8">
+                <div class="w-full max-w-md lg:max-w-lg xl:max-w-xl cursor-zoom-in overflow-hidden rounded-2xl bg-white" onmousemove="handleZoom(event, this)" onmouseleave="resetZoom(this)">
+                    <img src="prod-premium-pva.jpg" alt="Miller Paint Premium PVA Interior Primer" class="w-full h-auto object-contain drop-shadow-2xl transition-transform duration-[400ms] ease-out origin-center block">
+                </div>
+                <div class="text-xs text-gray-400 mt-6 flex items-center justify-center gap-1.5 opacity-60 font-medium tracking-wide">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>鼠标悬浮至产品图片查看包装细节
+                </div>
+            </div>
+
+            <div class="lg:w-1/2">
+                <div class="mb-8 mt-4">
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                        <span class="bg-blue-100 text-blue-900 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">强效封闭</span>
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">金级认证</span>
+                        <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">优异覆盖力</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-2">Premium PVA 内墙底漆</h1>
+                    <p class="text-sm text-slate-500 font-medium uppercase tracking-wider">Superior Quality High-Build Interior Wall Sealer</p>
+                </div>
+                
+                <div class="prose prose-slate max-w-none mb-8 text-gray-600 font-light leading-relaxed">
+                    <p class="mb-4 text-lg font-medium text-gray-800">
+                        Premium™ PVA 是一款品质卓越、荣获室内空气质量金级认证的高厚涂型室内乳胶墙面封闭底漆，特别适用于新建住宅及商业空间墙板的处理。
+                    </p>
+                    <p class="mb-4">
+                        它具有极佳的覆盖力（Good coverage），能强效封闭多孔且未经处理的墙面基材。通过其改性的聚乙烯基丙烯酸（PVA）树脂配方，填平墙面的微细孔洞，创造出一个平滑且致密的底层。
+                    </p>
+                    <p>
+                        使用 Premium PVA 封底后，可以确保后续涂刷的面漆展现出极其均匀的光泽（Uniform sheen holdout），防止面漆因基材吸水不均而出现“发花”或光泽不匀的现象。
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-xl border border-gray-100 mb-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="md:w-2/3 w-full">
+                        <div class="flex justify-between items-end mb-4">
+                            <h4 class="text-sm font-bold text-slate-900 uppercase tracking-widest">表面光泽 (Sheen)</h4>
+                        </div>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <button class="sheen-btn active border border-gray-300 text-slate-700 px-5 py-2.5 rounded font-medium hover:border-blue-900 cursor-default">封闭底漆 (Primer)</button>
+                        </div>
+                        <div class="min-h-[60px]">
+                            <p class="text-gray-600 text-sm leading-relaxed mb-0">
+                                <strong>专业底漆：</strong> 极低反光的纯哑光表面 (0-5 @ 60°)。其核心功能是填平微小瑕疵、强效封闭多孔基材（如新石膏板、腻子墙），防止面漆泛碱并发花，确保最终饰面的质感与色彩均匀。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center md:justify-end w-full">
+                        <div class="w-36 h-36 lg:w-44 lg:h-44 bg-white rounded-xl p-4 shadow-sm flex items-center justify-center border border-slate-200 flex-shrink-0 transition-transform hover:scale-105" title="Indoor Advantage Gold Certified">
+                            <img src="image_3cdb5c.png" alt="Indoor Advantage Gold" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="space-y-3 mb-10 text-sm text-gray-600">
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 荣获 SCS 室内空气质量金级认证 (Indoor Advantage™ Gold)</li>
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 专为新建住宅及商业石膏板设计的经典封底产品</li>
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 改性聚乙烯基丙烯酸 (PVA) 树脂，优异的墙体封闭性</li>
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 确保面漆呈现极致均匀的色彩与光泽 (Sheen holdout)</li>
+                </ul>
+
+                <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                    <a href="contact.html" class="bg-blue-900 text-white text-center px-10 py-4 rounded-sm font-bold hover:bg-blue-800 transition shadow-lg hover:shadow-xl">联系购买</a>
+                    <a href="product-premium.html" class="border-2 border-slate-300 text-slate-700 text-center px-10 py-4 rounded-sm font-bold hover:bg-slate-50 transition">浏览 Premium 面漆</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-8 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-[1400px] mx-auto flex flex-col gap-12">
+            <div class="flex flex-col md:flex-row gap-12 mb-8 border-b border-slate-200 pb-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4 inline-block">底漆专属施工规范</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        <strong class="text-slate-800">涂刷面积：</strong> 每加仑约 300-350 平方英尺。实际覆盖率取决于墙面的多孔性和施工方法。<br><br>
+                        <strong class="text-slate-800">干燥与重涂：</strong> 在 70°F (21°C) 且相对湿度为 50% 的环境下，1 小时可表干触碰，<strong>4 小时后</strong> 才能打磨或重涂面漆。施工温度不得低于 45°F (7.2°C)。<br><br>
+                        <strong class="text-blue-900">完全固化 (Curing Time)：</strong> 虽然底漆干燥极快，但彻底交联固化仍需要 <strong>14 至 28 天</strong>。在打磨操作时，请确保涂层已经彻底干燥以防“卷边”。
+                    </p>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4 inline-block">基材处理与工艺</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        表面必须坚固、干燥，并清除任何松动的旧漆、粉尘、污垢或油脂。新建的混凝土或灰泥必须彻底养护 30 天，<strong>并且水分含量须低于 12%，pH 值在 7-11 之间</strong> 方可施工。<br><br>
+                        <strong class="text-slate-800">推荐工艺：</strong> 在大面积新建平整墙面上，推荐采用<strong>喷涂并配合滚筒回滚 (Spraying and Backrolling)</strong> 的方式，以达到最优的微孔封闭效果。
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-bold text-blue-900 mb-6 inline-block">Specifications for Premium PVA Primer (220011) 技术指标</h3>
+                <div class="bg-white border border-slate-200 rounded-lg shadow-sm overflow-x-auto hide-scroll">
+                    <table class="min-w-full text-sm text-center tech-table whitespace-nowrap">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-4 text-left">详细技术指标</th>
+                                <th class="px-4 py-4 border-l border-blue-800">封闭底漆参数</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-gray-700">
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left w-1/3">树脂类型 (Resin)</td>
+                                <td class="px-4 py-3 border-l border-slate-100">聚乙烯基丙烯酸 (Polyvinyl Acrylic)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">重量固含量 (Weight Solids)</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100">48.3% ± 2%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">体积固含量 (Volume Solids)</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100">32.3% ± 2%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">每加仑重量 (Weight Per Gal)</td>
+                                <td class="px-4 py-3 border-l border-slate-100">10.9 lbs</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">MPI 涂装标准认证</td>
+                                <td class="px-4 py-3 font-bold text-indigo-700 border-l border-slate-100">MPI #50</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">推荐膜厚 (Film Thickness)</td>
+                                <td class="px-4 py-3 border-l border-slate-100">干膜 1.5 mils (湿膜 5.0 mils)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">VOC 含量 (VOC Content)</td>
+                                <td class="px-4 py-3 text-green-700 font-bold border-l border-slate-100">&lt; 100 g/L</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left align-middle">国际环保合规认证 (Certifications)</td>
+                                <td class="px-4 py-3 text-xs leading-relaxed text-center border-l border-slate-100 text-blue-900 font-bold">
+                                    • SCS Indoor Advantage™ Gold<br>
+                                    • Greenseal GS-11 Standard &nbsp;&nbsp; | &nbsp;&nbsp; • LEED v4 Compliant &nbsp;&nbsp; | &nbsp;&nbsp; • CDPH v1.2<br>
+                                    <span class="text-gray-500 font-normal">• EPA (AIM) / SCAQMD / CARB Compliant</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-white py-12 px-8 text-center border-t border-slate-800">
+        <p class="text-xs opacity-40">© 2026 Miller Paint 蜜乐涂料 | 玉兰集团版权所有</p>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? '' : 'hidden';
+        }
+
+        if(mobileMenuBtn && closeMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        function handleZoom(e, container) {
+            const img = container.querySelector('img');
+            const rect = container.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            img.style.transformOrigin = `${x}% ${y}%`;
+            img.style.transform = 'scale(1.8)';
+            img.classList.remove('drop-shadow-2xl');
+        }
+        function resetZoom(container) {
+            const img = container.querySelector('img');
+            img.style.transformOrigin = 'center center';
+            img.style.transform = 'scale(1)';
+            img.classList.add('drop-shadow-2xl');
+        }
+    </script>
+</body>
+</html>

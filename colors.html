@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>色彩灵感 | 蜜乐涂料 Miller Paint - 发现属于你的西北色彩</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; }
+        
+        .colors-main-hero {
+            background-image: url('colors-main-hero.jpg'); background-size: cover; background-position: center;
+        }
+        .colors-main-hero::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.7) 100%); z-index: 1;
+        }
+        .masonry-grid { column-count: 1; column-gap: 1.5rem; }
+        @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
+        @media (min-width: 768px) { .masonry-grid { column-count: 3; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 4; } }
+
+        .color-card {
+            break-inside: avoid; margin-bottom: 1.5rem; position: relative; overflow: hidden;
+            border-radius: 0.25rem; cursor: pointer; transition: all 0.3s ease; animation: fadeIn 0.5s ease-out forwards;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .color-card img { width: 100%; height: auto; display: block; transition: opacity 0.3s ease; }
+        .color-card:hover img { opacity: 0.8; }
+        .card-info {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.75); padding: 0.6rem 1.2rem; color: white; font-weight: 500;
+            font-size: 0.95rem; white-space: nowrap; opacity: 0; transition: opacity 0.3s ease;
+            pointer-events: none; border-radius: 2px; letter-spacing: 0.05em;
+        }
+        .color-card:hover .card-info { opacity: 1; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .hidden-card { display: none !important; }
+        
+        .filter-btn { color: #64748b; transition: all 0.2s ease; }
+        .filter-btn:hover { color: #1e3a8a; }
+        .filter-btn.active { background-color: #cbd5e1; color: #334155; font-weight: 500; }
+
+        #lightbox {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); z-index: 1000; align-items: center; justify-content: center; padding: 2rem;
+        }
+        #lightbox.active { display: flex; }
+        #lightbox img { max-width: 90%; max-height: 80vh; border-radius: 0.25rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        #lightbox-caption { position: absolute; bottom: 3rem; color: white; font-weight: 500; font-size: 1.125rem; }
+        #lightbox-close { position: absolute; top: 2rem; right: 2rem; color: white; font-size: 2rem; cursor: pointer; background: none; border: none; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+    <nav class="fixed w-full z-[100] flex justify-between items-center px-6 md:px-8 py-5 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100/50">
+        <div class="flex flex-col">
+            <a href="index.html" class="text-2xl font-bold tracking-tighter text-blue-900 flex items-center hover:opacity-80 transition-opacity">
+                MILLER PAINT <span class="ml-2 text-xs font-light bg-blue-900 text-white px-2 py-0.5 rounded tracking-normal">蜜乐涂料</span>
+            </a>
+            <a href="http://www.yulangroup.cn" target="_blank" class="text-[11px] text-gray-500 hover:text-blue-900 mt-0.5 flex items-center gap-1 transition-colors font-medium tracking-widest w-fit">
+                玉兰集团 
+                <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+        </div>
+        
+        <div class="hidden lg:flex items-center space-x-6 text-[14px] font-bold text-slate-700 tracking-wide">
+            <a href="story.html" class="px-3 py-2 hover:text-blue-900 transition-colors">品牌故事</a>
+            <a href="products.html" class="px-3 py-2 hover:text-blue-900 transition-colors">产品中心</a>
+            <a href="ai-color.html" class="px-3 py-2 hover:text-blue-900 transition-colors">AI 色彩顾问</a> 
+            <a href="colors.html" class="px-3 py-2 text-blue-900 border-b-2 border-blue-900 pb-1">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="px-3 py-2 hover:text-blue-900 transition-colors flex items-center gap-1">
+                在线色卡 <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+            <a href="contact.html" class="px-3 py-2 hover:text-blue-900 transition-colors">联系我们</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="contact.html" class="hidden sm:block bg-slate-900 text-white px-8 py-3 text-sm font-bold hover:bg-blue-900 transition-colors duration-300 shadow-lg">获取色卡</a>
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-900 p-2 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[9999] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col lg:hidden">
+        <div class="flex justify-between items-center px-6 py-5 border-b border-gray-100">
+            <span class="text-xl font-bold text-blue-900 tracking-tighter">MENU 菜单</span>
+            <button id="close-menu-btn" class="text-slate-900 p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center flex-grow space-y-8 text-2xl font-bold text-slate-800 pb-20">
+            <a href="story.html" class="hover:text-blue-900">品牌故事</a>
+            <a href="products.html" class="hover:text-blue-900">产品中心</a>
+            <a href="ai-color.html" class="hover:text-blue-900">AI 色彩顾问</a>
+            <a href="colors.html" class="text-blue-900">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="hover:text-blue-900">在线色卡</a>
+            <a href="contact.html" class="hover:text-blue-900">联系我们</a>
+            <a href="contact.html" class="bg-blue-900 text-white px-12 py-4 rounded-sm text-lg mt-4 shadow-lg">获取色卡</a>
+        </div>
+    </div>
+
+    <section class="colors-main-hero relative h-[60vh] min-h-[450px] px-8 text-center border-b border-slate-200 bg-slate-900 flex flex-col items-center justify-center text-white pt-16">
+        <div class="relative z-10 max-w-4xl mx-auto px-6">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white tracking-tight drop-shadow-lg">灵感图库 (Inspiration)</h1>
+            <p class="text-xl text-white/90 font-light leading-relaxed max-w-2xl mx-auto drop-shadow-md">色彩塑造了家。看看我们的色调是如何在整个太平洋西北地区的家庭中被运用的，今天就找到您完美的调色板。</p>
+        </div>
+    </section>
+
+    <section class="py-6 px-8 bg-white border-b border-slate-100 sticky top-[80px] z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto flex space-x-2 overflow-x-auto no-scrollbar pb-2 items-center justify-center lg:justify-start">
+            <button onclick="filterColors('all', this)" class="filter-btn active px-4 py-1.5 text-[15px] rounded whitespace-nowrap">All 全部</button>
+            <button onclick="filterColors('greens', this)" class="filter-btn px-4 py-1.5 text-[15px] rounded whitespace-nowrap">Greens 绿色系</button>
+            <button onclick="filterColors('whites', this)" class="filter-btn px-4 py-1.5 text-[15px] rounded whitespace-nowrap">Whites 白色系</button>
+            <button onclick="filterColors('aquas', this)" class="filter-btn px-4 py-1.5 text-[15px] rounded whitespace-nowrap">Aquas 水蓝色</button>
+            <button onclick="filterColors('blues', this)" class="filter-btn px-4 py-1.5 text-[15px] rounded whitespace-nowrap">Blues 蓝色系</button>
+            <button onclick="filterColors('yellows', this)" class="filter-btn px-4 py-1.5 text-[15px] rounded whitespace-nowrap">Yellows 黄色系</button>
+            <button onclick="filterColors('grays', this)" class="filter-btn px-4 py-1.5 text-[15px] rounded whitespace-nowrap">Grays 灰色系</button>
+            <button onclick="filterColors('blacks', this)" class="filter-btn px-4 py-1.5 text-[15px] rounded whitespace-nowrap">Blacks 暗黑色</button>
+            <button onclick="filterColors('pinks', this)" class="filter-btn px-4 py-1.5 text-[15px] rounded whitespace-nowrap">Pinks 粉色系</button>
+            <button onclick="filterColors('oranges', this)" class="filter-btn px-4 py-1.5 text-[15px] rounded whitespace-nowrap">Oranges 橙色系</button>
+            <button onclick="filterColors('browns', this)" class="filter-btn px-4 py-1.5 text-[15px] rounded whitespace-nowrap">Browns 大地色</button>
+            <button onclick="filterColors('purples', this)" class="filter-btn px-4 py-1.5 text-[15px] rounded whitespace-nowrap">Purples 紫色系</button>
+        </div>
+    </section>
+
+    <section class="py-12 px-8 max-w-[1400px] mx-auto min-h-screen">
+        <div class="masonry-grid" id="gallery-container"></div>
+    </section>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <button id="lightbox-close">&times;</button>
+        <img id="lightbox-img" src="" alt="Zoomed Color">
+        <div id="lightbox-caption">Color Details</div>
+    </div>
+
+    <footer class="bg-slate-900 text-white py-12 px-8 text-center mt-12">
+        <p class="text-xs opacity-40">© 2026 Miller Paint 蜜乐涂料 | 玉兰集团版权所有</p>
+    </footer>
+
+    <script>
+        // 补充移动端菜单脚本
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? '' : 'hidden';
+        }
+
+        if(mobileMenuBtn && closeMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        const colorData = [
+            { filename: 'insp_0001_Sugar-Dust-_-0011_white.jpg', color: 'Sugar Dust | 0011', tags: ['whites'] },
+            { filename: 'insp_0002_Polished-Cotton-0629-walls-Fire-Dance-0799-table.jpg', color: 'Polished Cotton | 0629 / Fire Dance | 0799', tags: ['grays', 'oranges', 'blues'] },
+            { filename: 'insp_0003_Cotton-Ball-0007-walls-Dreaming-of-The-Day-0470-dresser.jpg', color: 'Cotton Ball | 0007 / Dreaming of The Day | 0470', tags: ['whites'] },
+            { filename: 'insp_0004_Coin-Purse-0896-siding-Casa-Blanca-0008-trim-_-yellow.jpg', color: 'Coin Purse | 0896 / Casa Blanca | 0008', tags: ['yellows', 'whites'] },
+            { filename: 'inspiration_0000_Melting-Glacier-0600.jpg', color: 'Melting Glacier | 0600', tags: ['grays', 'blues'] },
+            { filename: 'inspiration_0001_Deep-Space-0487-_-1.jpg', color: 'Deep Space | 0487', tags: ['blacks', 'blues'] },
+            { filename: 'inspiration_0003_Copy-of-Sugar-Dust-0011-3.jpg', color: 'Sugar Dust | 0011', tags: ['whites'] },
+            { filename: 'inspiration_0004_Copy-of-Mystic-Fog-0019.jpg', color: 'Mystic Fog | 0019', tags: ['grays'] },
+            { filename: 'inspiration_0005_Acapulco-Dive-0639.jpg', color: 'Acapulco Dive | 0639', tags: ['aquas', 'blues'] },
+            { filename: 'inspire_0000_Miller-JULY21-Allies-House02.jpg.jpg', color: 'Exterior Design', tags: ['whites', 'grays'] },
+            { filename: 'inspire_0001_Miller-JULY21-Allies-House04.jpg.jpg', color: 'Exterior Design', tags: ['whites', 'grays'] },
+            { filename: 'inspire_0002_Miller-JULY21-Allies-House07.jpg.jpg', color: 'Exterior Design', tags: ['whites', 'grays'] },
+            { filename: 'inspire_0016_Miller-JUNE21-Shannon-DIYs07.jpg.jpg', color: 'Bedroom Design', tags: ['pinks'] },
+            { filename: 'inspire_0017_Miller-JUNE21-Shannon-DIYs35.jpg.jpg', color: 'Interior Cabinets', tags: ['greens'] },
+            { filename: 'inspo_0000_-Happy-Tune-_-0648-bookshelf-Beryl-Pearl-_-0509-walls-_-gray-and-blue.jpg.jpg', color: 'Happy Tune | 0648 / Beryl Pearl | 0509', tags: ['greens', 'yellows'] },
+            { filename: 'inspo_0003_Georgia-on-my-Mind-0361-_-green-.jpg.jpg', color: 'Georgia on my Mind | 0361', tags: ['oranges'] },
+            { filename: 'inspo_0004_Happy-Tune-0648.jpg.jpg', color: 'Happy Tune | 0648', tags: ['greens', 'yellows'] },
+            { filename: 'inspo_0005_Into-The-Stratosphere-0627-_-blue.jpg.jpg', color: 'Into The Stratosphere | 0627', tags: ['blues'] },
+            { filename: 'inspo_0010_Silky-Mint-0720-_-green.jpg.jpg', color: 'Silky Mint | 0720', tags: ['greens', 'aquas'] },
+            { filename: 'inspo_0011_Wafer-E0119-bricks-Casper-White-E0157-trim-_-white.jpg.jpg', color: 'Wafer | E0119 / Casper White | E0157', tags: ['browns', 'whites'] },
+            { filename: 'inspriration_0000_-Kingdom-Keys-2.jpg.jpg', color: 'Kingdom\'s Keys | 0160', tags: ['yellows'] },
+            { filename: 'inspriration_0001_-Smoky-Day-0491.jpg.jpg', color: 'Smoky Day | 0491', tags: ['grays', 'blues'] },
+            { filename: 'inspriration_0003_Black-Licorice-0529_Door.jpg.jpg', color: 'Black Licorice | 0529', tags: ['blacks'] },
+            { filename: 'inspriration_0005_Calm-Thoughts-0698.jpg.jpg', color: 'Calm Thoughts | 0698', tags: ['aquas'] },
+            { filename: 'inspriration_0008_Dave_s-Den-0420.jpg.jpg', color: 'Dave\'s Den | 0420', tags: ['blacks'] },
+            { filename: '0000_Deep-Space-0487-2.jpg', color: 'Deep Space | 0487', tags: ['blacks', 'blues'] },
+            { filename: 'blue2_0001_Polar-Pond-0492.jpg.jpg', color: 'Polar Pond | 0492', tags: ['aquas', 'blues'] },
+            { filename: 'insp_0000_White-Kitten-0022-siding-Soft-Blue-0651-trim-Chic-Shade-0745-door-.jpg', color: 'White Kitten | 0022', tags: ['whites'] }
+        ];
+
+        const galleryContainer = document.getElementById('gallery-container');
+
+        function renderGallery() {
+            let htmlContent = '';
+            colorData.forEach(item => {
+                const tagClasses = item.tags.join(' ');
+                htmlContent += `
+                    <div class="color-card ${tagClasses}" data-tags="${tagClasses}" onclick="openLightbox('${item.filename}', '${item.color}')">
+                        <img src="${item.filename}" loading="lazy">
+                        <div class="card-info">${item.color}</div>
+                    </div>
+                `;
+            });
+            galleryContainer.innerHTML = htmlContent;
+        }
+
+        function filterColors(category, clickedBtn) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            clickedBtn.classList.add('active');
+
+            const cards = document.querySelectorAll('.color-card');
+            cards.forEach(card => {
+                const tags = card.getAttribute('data-tags');
+                if (category === 'all' || tags.includes(category)) {
+                    card.classList.remove('hidden-card');
+                } else {
+                    card.classList.add('hidden-card');
+                }
+            });
+        }
+
+        function openLightbox(src, caption) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-caption').innerText = caption;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        window.onload = renderGallery;
+    </script>
+</body>
+</html>

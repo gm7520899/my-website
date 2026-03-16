@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StratusXT 全天候外墙漆 | 蜜乐涂料 Miller Paint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; }
+        .sheen-btn.active { background-color: #1e3a8a; color: #ffffff; border-color: #1e3a8a; }
+        .sheen-btn { transition: all 0.2s ease-in-out; }
+        .tech-table th { background-color: #1e3a8a; color: white; font-weight: 500; }
+        .tech-table tr:nth-child(even) { background-color: #f8fafc; }
+        
+        /* 隐藏滚动条以配合放大的沉浸感 */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+    <nav class="fixed w-full z-[100] flex justify-between items-center px-6 md:px-8 py-5 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100/50">
+        <div class="flex flex-col">
+            <a href="index.html" class="text-2xl font-bold tracking-tighter text-blue-900 flex items-center hover:opacity-80 transition-opacity">
+                MILLER PAINT <span class="ml-2 text-xs font-light bg-blue-900 text-white px-2 py-0.5 rounded tracking-normal">蜜乐涂料</span>
+            </a>
+            <a href="http://www.yulangroup.cn" target="_blank" class="text-[11px] text-gray-500 hover:text-blue-900 mt-0.5 flex items-center gap-1 transition-colors font-medium tracking-widest w-fit">
+                玉兰集团 
+                <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+        </div>
+        
+        <div class="hidden lg:flex items-center space-x-6 text-[14px] font-bold text-slate-700 tracking-wide">
+            <a href="story.html" class="px-3 py-2 hover:text-blue-900 transition-colors">品牌故事</a>
+            <a href="products.html" class="px-3 py-2 text-blue-900 border-b-2 border-blue-900 pb-1">产品中心</a>
+            <a href="ai-color.html" class="px-3 py-2 hover:text-blue-900 transition-colors">AI 色彩顾问</a> 
+            <a href="colors.html" class="px-3 py-2 hover:text-blue-900 transition-colors">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="px-3 py-2 hover:text-blue-900 transition-colors flex items-center gap-1">
+                在线色卡 <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+            <a href="contact.html" class="px-3 py-2 hover:text-blue-900 transition-colors">联系我们</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="contact.html" class="hidden sm:block bg-slate-900 text-white px-8 py-3 text-sm font-bold hover:bg-blue-900 transition-colors duration-300 shadow-lg">获取样漆</a>
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-900 p-2 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[9999] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col lg:hidden">
+        <div class="flex justify-between items-center px-6 py-5 border-b border-gray-100">
+            <span class="text-xl font-bold text-blue-900 tracking-tighter">MENU 菜单</span>
+            <button id="close-menu-btn" class="text-slate-900 p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center flex-grow space-y-8 text-2xl font-bold text-slate-800 pb-20">
+            <a href="story.html" class="hover:text-blue-900">品牌故事</a>
+            <a href="products.html" class="text-blue-900">产品中心</a>
+            <a href="ai-color.html" class="hover:text-blue-900">AI 色彩顾问</a>
+            <a href="colors.html" class="hover:text-blue-900">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="hover:text-blue-900">在线色卡</a>
+            <a href="contact.html" class="hover:text-blue-900">联系我们</a>
+            <a href="contact.html" class="bg-blue-900 text-white px-12 py-4 rounded-sm text-lg mt-4 shadow-lg">获取样漆</a>
+        </div>
+    </div>
+
+    <div class="pt-28 pb-6 px-8 max-w-7xl mx-auto text-sm text-gray-400">
+        <a href="index.html" class="hover:text-blue-900">首页</a> <span class="mx-2">/</span>
+        <a href="products.html" class="hover:text-blue-900">产品中心</a> <span class="mx-2">/</span>
+        <a href="products.html#exterior" class="hover:text-blue-900">外墙防护涂料</a> <span class="mx-2">/</span>
+        <span class="text-blue-900 font-medium">Stratus XT Exterior</span>
+    </div>
+
+    <section class="pb-16 px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row gap-12 items-start">
+            
+            <div class="lg:w-1/2 flex flex-col justify-start items-center sticky top-32 pt-8">
+                <div class="w-full max-w-md lg:max-w-lg xl:max-w-xl cursor-zoom-in overflow-hidden rounded-2xl bg-white" onmousemove="handleZoom(event, this)" onmouseleave="resetZoom(this)">
+                    <img src="prod-stratusxt.jpg" alt="Miller Paint Stratus XT Exterior" class="w-full h-auto object-contain drop-shadow-2xl transition-transform duration-[400ms] ease-out origin-center block">
+                </div>
+                <div class="text-xs text-gray-400 mt-6 flex items-center justify-center gap-1.5 opacity-60 font-medium tracking-wide">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                    鼠标悬浮至产品图片查看包装细节
+                </div>
+            </div>
+
+            <div class="lg:w-1/2">
+                <div class="mb-8 mt-4">
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                        <span class="bg-blue-100 text-blue-900 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">100% 纯丙烯酸</span>
+                        <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">全天候保护</span>
+                        <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">15年有限质保</span>
+                        <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">Greenseal 认证</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-2">Stratus XT™ 外墙漆</h1>
+                    <p class="text-sm text-slate-500 font-medium uppercase tracking-wider">Exterior Siding & Trim Paint</p>
+                </div>
+
+                <div class="prose prose-slate max-w-none mb-8 text-gray-600 font-light leading-relaxed">
+                    <p class="mb-4 text-lg font-medium text-gray-800">
+                        为了保护您的房屋免受太平洋西北部严苛气候的侵袭而生，Stratus XT™ 是一款提供卓越色彩保持力和极致耐用性的 100% 纯丙烯酸外墙涂料。
+                    </p>
+                    <p class="mb-4">
+                        它专为极端气候配制，能够轻松抵御从极度高温到高湿度的剧烈气候转变，是全年适用于任何商业或住宅建筑的理想之选。
+                    </p>
+                    <p>
+                        Stratus XT 具有极佳的施工性，适用于大多数妥善处理过的外部基材，包括木材、混凝土、灰泥、金属及人造壁板，为您提供全天候的终极守护。
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-xl border border-gray-100 mb-10">
+                    <div class="flex justify-between items-end mb-4">
+                        <h4 class="text-sm font-bold text-slate-900 uppercase tracking-widest">选择光泽度 (Sheen)</h4>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-3 mb-6" id="sheen-buttons">
+                        <button class="sheen-btn active border border-gray-300 text-slate-700 px-5 py-2.5 rounded font-medium hover:border-blue-900" onclick="updateSheen('flat', this)">哑光 Flat</button>
+                        <button class="sheen-btn border border-gray-300 text-slate-700 px-5 py-2.5 rounded font-medium hover:border-blue-900" onclick="updateSheen('velvet', this)">天鹅绒光 Velvet</button>
+                        <button class="sheen-btn border border-gray-300 text-slate-700 px-5 py-2.5 rounded font-medium hover:border-blue-900" onclick="updateSheen('satin', this)">缎光 Satin</button>
+                    </div>
+
+                    <div id="sheen-content" class="min-h-[100px]">
+                        <p class="text-gray-600 text-sm leading-relaxed mb-0">
+                            <strong>哑光 (Flat)：</strong> 提供无反光的表面，通过减少光线折射来最大限度地降低墙面瑕疵的可见度。它是粗糙基材或需要定期翻新表面的最佳选择。
+                        </p>
+                    </div>
+                </div>
+
+                <ul class="space-y-3 mb-10 text-sm text-gray-600">
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 100% 纯丙烯酸配方，提供极佳的色彩保留与耐久度</li>
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 专为剧烈气候波动（从酷热到高湿）设计，防起泡剥落</li>
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 宽温域施工能力，在 35°F (约1.6°C) 低温下依然可施工</li>
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 原厂提供极其自信的 Limited 15 Year Warranty (15年有限质保)</li>
+                    <li class="flex items-center"><span class="text-blue-900 font-bold mr-3">✓</span> 符合 Greenseal GS-11 及加州严格的 VOC 排放标准</li>
+                </ul>
+
+                <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                    <a href="contact.html" class="bg-blue-900 text-white text-center px-10 py-4 rounded-sm font-bold hover:bg-blue-800 transition shadow-lg hover:shadow-xl">联系购买</a>
+                    <a href="colors.html" class="border-2 border-slate-300 text-slate-700 text-center px-10 py-4 rounded-sm font-bold hover:bg-slate-50 transition">搭配色彩灵感</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-8 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-[1400px] mx-auto flex flex-col gap-12">
+            
+            <div class="flex flex-col md:flex-row gap-12 mb-8 border-b border-slate-200 pb-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4 inline-block">外墙施工规格</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        <strong class="text-slate-800">涂刷面积：</strong> 每加仑约 250-400 平方英尺。建议涂刷两遍以获得最佳的外墙耐久性。实际覆盖率取决于外墙孔隙率。<br><br>
+                        
+                        <strong class="text-slate-800">环境要求：</strong> 表面和空气温度在施工期间及施工后 48 小时内应保持在 35°F 至 95°F 之间，且表面温度必须高于露点 5°F。若预计有大雨、雪或过度结露，请勿施工。<br><br>
+                        <strong class="text-slate-800">干燥时间：</strong> 1 小时表干，2 小时后即可重涂。<br><br>
+                        <strong class="text-blue-900">完全固化：</strong> 外墙纯丙烯酸涂层需要 <strong>14 至 28 天</strong> 才能完全交联固化并达到最大耐候性与附着力。
+                    </p>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4 inline-block">表面处理</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        所有表面必须坚固、干燥且无灰尘、油污、蜡脂或霉菌。光滑的表面需轻轻打磨除光。新建混凝土或灰泥必须养护至少 30 天，测试含水率低于 12% 且 pH 值在 7-11 之间方可施工。<br><br>
+                        建议根据基材选用对应的 Miller 封闭底漆，例如：<br>
+                        - <strong class="text-slate-700">木材：</strong> All Purpose Int/Ext Stain Blocking Primer 470011<br>
+                        - <strong class="text-slate-700">金属：</strong> Acrimetal DTM Low Sheen Primer 310210
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-bold text-blue-900 mb-6 inline-block">Specifications for Stratus XT 全系技术指标参数</h3>
+                <div class="bg-white border border-slate-200 rounded-lg shadow-sm overflow-x-auto hide-scroll">
+                    <table class="min-w-full text-sm text-center tech-table whitespace-nowrap">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-4 text-left">详细技术指标</th>
+                                <th class="px-4 py-4 border-l border-blue-800">外墙哑光<br>(Flat 5201)</th>
+                                <th class="px-4 py-4 border-l border-blue-800">外墙天鹅绒光<br>(Velvet 5202)</th>
+                                <th class="px-4 py-4 border-l border-blue-800">外墙缎光<br>(Satin 5204)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-gray-700">
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left w-1/4">树脂类型 (Resin)</td>
+                                <td class="px-4 py-3 border-l border-slate-100" colspan="3">100% 纯丙烯酸耐候树脂 (100% Acrylic)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">重量固含量 (Weight Solids)</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100">53.0% ± 2%</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100">52.0% ± 2%</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100 text-blue-900">48.0% ± 2%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">体积固含量 (Volume Solids)</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100">35.0% ± 2%</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100">35.0% ± 2%</td>
+                                <td class="px-4 py-3 font-medium border-l border-slate-100 text-blue-900">36.0% ± 2%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">每加仑重量 (Weight Per Gal)</td>
+                                <td class="px-4 py-3 border-l border-slate-100">11.4 lbs</td>
+                                <td class="px-4 py-3 border-l border-slate-100">10.9 lbs</td>
+                                <td class="px-4 py-3 border-l border-slate-100 text-blue-900">10.4 lbs</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">光泽度 (<span class="text-xs">@ 60° / @ 85°</span>)</td>
+                                <td class="px-4 py-3 border-l border-slate-100">0-5 / 0-5</td>
+                                <td class="px-4 py-3 border-l border-slate-100">0-8 / 8-20</td>
+                                <td class="px-4 py-3 border-l border-slate-100 text-blue-900">10-20 / 30-40</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">MPI 涂装标准认证</td>
+                                <td class="px-4 py-3 font-bold text-indigo-700 border-l border-slate-100">MPI #10</td>
+                                <td class="px-4 py-3 font-bold text-gray-400 border-l border-slate-100">-</td>
+                                <td class="px-4 py-3 font-bold text-indigo-700 border-l border-slate-100">MPI #15</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">推荐膜厚 (Dry Film)</td>
+                                <td class="px-4 py-3 border-l border-slate-100" colspan="3">1.5 - 2 mils (湿膜 4-5 mils)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left">VOC 含量 (VOC Content)</td>
+                                <td class="px-4 py-3 text-green-700 font-bold border-l border-slate-100" colspan="3">&lt; 50 g/L</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-slate-900 text-left align-middle">国际环保合规 (Certifications)</td>
+                                <td class="px-4 py-3 text-xs leading-relaxed text-center border-l border-slate-100" colspan="3">
+                                    • Greenseal GS-11 Standard<br>
+                                    • EPA (AIM) Compliant &nbsp;&nbsp; | &nbsp;&nbsp; • SCAQMD Compliant &nbsp;&nbsp; | &nbsp;&nbsp; • CARB Compliant
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-white py-12 px-8 text-center border-t border-slate-800">
+        <p class="text-xs opacity-40">© 2026 Miller Paint 蜜乐涂料 | 玉兰集团版权所有</p>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? '' : 'hidden';
+        }
+
+        if(mobileMenuBtn && closeMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        function handleZoom(e, container) {
+            const img = container.querySelector('img');
+            const rect = container.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            
+            img.style.transformOrigin = `${x}% ${y}%`;
+            img.style.transform = 'scale(1.8)';
+            img.classList.remove('drop-shadow-2xl');
+        }
+
+        function resetZoom(container) {
+            const img = container.querySelector('img');
+            img.style.transformOrigin = 'center center';
+            img.style.transform = 'scale(1)';
+            img.classList.add('drop-shadow-2xl');
+        }
+
+        const sheenData = {
+            'flat': { desc: '<strong>哑光 (Flat)：</strong> 提供无反光的表面，通过减少光线折射来最大限度地降低墙面瑕疵的可见度。它是粗糙基材或需要定期翻新表面的最佳选择。' },
+            'velvet': { desc: '<strong>天鹅绒光 (Velvet)：</strong> 极其适合那些渴望深邃丰富外观，且只需极其微弱光泽的项目。能有效减少灰尘附着（Dirt pick-up），并提供一定程度的可清洗性。是墙面状况良好的外墙立面的绝佳选择。' },
+            'satin': { desc: '<strong>缎光 (Satin)：</strong> 这种饰面可极大限度地减少灰尘附着，且极易冲洗清洁。非常适合需要一定光泽度的大面积外墙施工。建议在表面无明显瑕疵时使用。' }
+        };
+
+        function updateSheen(sheenKey, buttonElement) {
+            const buttons = document.querySelectorAll('.sheen-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            buttonElement.classList.add('active');
+
+            const contentDiv = document.getElementById('sheen-content');
+            const data = sheenData[sheenKey];
+            
+            contentDiv.style.opacity = '0';
+            setTimeout(() => {
+                contentDiv.innerHTML = `<p class="text-gray-600 text-sm leading-relaxed mb-0">${data.desc}</p>`;
+                contentDiv.style.opacity = '1';
+                contentDiv.style.transition = 'opacity 0.3s ease-in-out';
+            }, 150);
+        }
+    </script>
+</body>
+</html>

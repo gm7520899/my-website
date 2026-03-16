@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品中心 | 蜜乐涂料 Miller Paint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; }
+        .products-hero {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.6)), url('products-hero.jpg');
+            background-size: cover; background-position: center;
+        }
+        .product-card { transition: all 0.3s ease; }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="fixed w-full z-[100] flex justify-between items-center px-6 md:px-8 py-5 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100/50">
+        <div class="flex flex-col">
+            <a href="index.html" class="text-2xl font-bold tracking-tighter text-blue-900 flex items-center hover:opacity-80 transition-opacity">
+                MILLER PAINT <span class="ml-2 text-xs font-light bg-blue-900 text-white px-2 py-0.5 rounded tracking-normal">蜜乐涂料</span>
+            </a>
+            <a href="http://www.yulangroup.cn" target="_blank" class="text-[11px] text-gray-500 hover:text-blue-900 mt-0.5 flex items-center gap-1 transition-colors font-medium tracking-widest w-fit">
+                玉兰集团 
+                <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+        </div>
+        
+        <div class="hidden lg:flex items-center space-x-6 text-[14px] font-bold text-slate-700 tracking-wide">
+            <a href="story.html" class="px-3 py-2 hover:text-blue-900 transition-colors">品牌故事</a>
+            <a href="products.html" class="px-3 py-2 text-blue-900 border-b-2 border-blue-900 pb-1">产品中心</a>
+            <a href="ai-color.html" class="px-3 py-2 hover:text-blue-900 transition-colors">AI 色彩顾问</a> 
+            <a href="colors.html" class="px-3 py-2 hover:text-blue-900 transition-colors">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="px-3 py-2 hover:text-blue-900 transition-colors flex items-center gap-1">
+                在线色卡 <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+            <a href="contact.html" class="px-3 py-2 hover:text-blue-900 transition-colors">联系我们</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="contact.html" class="hidden sm:block bg-slate-900 text-white px-8 py-3 text-sm font-bold hover:bg-blue-900 transition-colors duration-300 shadow-lg">获取样漆</a>
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-900 p-2 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[9999] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col lg:hidden">
+        <div class="flex justify-between items-center px-6 py-5 border-b border-gray-100">
+            <span class="text-xl font-bold text-blue-900 tracking-tighter">MENU 菜单</span>
+            <button id="close-menu-btn" class="text-slate-900 p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center flex-grow space-y-8 text-2xl font-bold text-slate-800 pb-20">
+            <a href="story.html" class="hover:text-blue-900">品牌故事</a>
+            <a href="products.html" class="text-blue-900">产品中心</a>
+            <a href="ai-color.html" class="hover:text-blue-900">AI 色彩顾问</a>
+            <a href="colors.html" class="hover:text-blue-900">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="hover:text-blue-900">在线色卡</a>
+            <a href="contact.html" class="hover:text-blue-900">联系我们</a>
+            <a href="contact.html" class="bg-blue-900 text-white px-12 py-4 rounded-sm text-lg mt-4 shadow-lg">获取样漆</a>
+        </div>
+    </div>
+
+    <section class="relative h-[60vh] min-h-[450px] flex items-center justify-center products-hero text-white pt-16">
+        <div class="text-center max-w-3xl px-6">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">探索我们的产品家族</h1>
+            <p class="text-lg md:text-xl font-light opacity-90">专为中国多变气候精选，从内墙到外墙，提供超越期待的色彩与保护。</p>
+        </div>
+    </section>
+
+    <div class="sticky top-[80px] z-40 bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-8 flex justify-center space-x-8 md:space-x-16 py-4 text-sm font-medium text-gray-500">
+            <a href="#interior" class="hover:text-blue-900 transition">内墙面漆</a>
+            <a href="#primer" class="hover:text-blue-900 transition">专业底漆</a>
+            <a href="#exterior" class="hover:text-blue-900 transition">外墙涂料</a>
+        </div>
+    </div>
+
+    <section id="interior" class="py-24 px-8 max-w-7xl mx-auto scroll-mt-32">
+        <div class="mb-12 text-center md:text-left">
+            <h2 class="text-3xl font-bold text-blue-900 mb-4">内墙面漆系列</h2>
+            <p class="text-gray-500">赋予墙面高级质感，卓越的耐擦洗与环保性能，为您打造安心的室内空间。</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-xl p-8 product-card border border-gray-100 flex flex-col items-center text-center">
+                <img src="prod-evolution.jpg" alt="Evolution" class="h-48 object-contain mb-6 drop-shadow-md">
+                <h3 class="text-xl font-bold text-blue-900 mb-2">Evolution</h3>
+                <p class="text-gray-500 text-sm mb-6 flex-grow">极具高级感的丝光质感，极致的耐磨防刮性能。</p>
+                <a href="product-evolution.html" class="bg-[#304256] text-white w-full py-2.5 rounded font-medium hover:bg-blue-900 transition">了解详情</a>
+            </div>
+            <div class="bg-white rounded-xl p-8 product-card border border-gray-100 flex flex-col items-center text-center">
+                <img src="prod-acro-pure.jpg" alt="Acro Pure" class="h-48 object-contain mb-6 drop-shadow-md">
+                <h3 class="text-xl font-bold text-blue-900 mb-2">Acro Pure</h3>
+                <p class="text-gray-500 text-sm mb-6 flex-grow">超低气味，极低VOC，为母婴级安全标准打造。</p>
+                <a href="product-acro-pure.html" class="bg-[#304256] text-white w-full py-2.5 rounded font-medium hover:bg-blue-900 transition">了解详情</a>
+            </div>
+            <div class="bg-white rounded-xl p-8 product-card border border-gray-100 flex flex-col items-center text-center">
+                <img src="prod-acro-hp.jpg" alt="Acro HP" class="h-48 object-contain mb-6 drop-shadow-md">
+                <h3 class="text-xl font-bold text-blue-900 mb-2">Acro HP</h3>
+                <p class="text-gray-500 text-sm mb-6 flex-grow">100%纯丙烯酸配方，卓越的附着力与持久度。</p>
+                <a href="product-acro-hp.html" class="bg-[#304256] text-white w-full py-2.5 rounded font-medium hover:bg-blue-900 transition">了解详情</a>
+            </div>
+            <div class="bg-white rounded-xl p-8 product-card border border-gray-100 flex flex-col items-center text-center">
+                <img src="prod-premium.jpg" alt="Premium" class="h-48 object-contain mb-6 drop-shadow-md">
+                <h3 class="text-xl font-bold text-blue-900 mb-2">Premium</h3>
+                <p class="text-gray-500 text-sm mb-6 flex-grow">经典的高品质内墙漆，出色的覆盖力与流平性。</p>
+                <a href="product-premium.html" class="bg-[#304256] text-white w-full py-2.5 rounded font-medium hover:bg-blue-900 transition">了解详情</a>
+            </div>
+            <div class="bg-white rounded-xl p-8 product-card border border-gray-100 flex flex-col items-center text-center">
+                <img src="prod-pf-pro.jpg" alt="PF Pro" class="h-48 object-contain mb-6 drop-shadow-md">
+                <h3 class="text-xl font-bold text-blue-900 mb-2">PF Pro</h3>
+                <p class="text-gray-500 text-sm mb-6 flex-grow">商用级高性价比底面合一产品，极佳的施工便捷性。</p>
+                <a href="product-pf-pro.html" class="bg-[#304256] text-white w-full py-2.5 rounded font-medium hover:bg-blue-900 transition">了解详情</a>
+            </div>
+            <div class="bg-white rounded-xl p-8 product-card border border-gray-100 flex flex-col items-center text-center">
+                <img src="prod-ceiling.png" alt="Ceiling Paint" class="h-48 object-contain mb-6 drop-shadow-md">
+                <h3 class="text-xl font-bold text-blue-900 mb-2">Flat Latex Ceiling Paint</h3>
+                <p class="text-gray-500 text-sm mb-6 flex-grow">专为天花板打造的纯平哑光饰面，有效隐藏修补痕迹与瑕疵。</p>
+                <a href="product-ceiling.html" class="bg-[#304256] text-white w-full py-2.5 rounded font-medium hover:bg-blue-900 transition">了解详情</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="primer" class="py-24 px-8 max-w-7xl mx-auto scroll-mt-32 border-t border-gray-200">
+        <div class="mb-12 text-center md:text-left">
+            <h2 class="text-3xl font-bold text-blue-900 mb-4">专业底漆系列</h2>
+            <p class="text-gray-500">完美的色彩展现源于扎实的基础。强效封固，抗碱防霉，提升面漆表现力。</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white rounded-xl p-8 product-card border border-gray-100 flex flex-col items-center text-center">
+                <img src="prod-acro-pure-primer.jpg" alt="Acro Pure Primer" class="h-48 object-contain mb-6 drop-shadow-md">
+                <h3 class="text-xl font-bold text-blue-900 mb-2">Acro Pure 底漆</h3>
+                <p class="text-gray-500 text-sm mb-6 flex-grow">搭配 Acro Pure 面漆使用，极低气味，优异的抗霉菌性能。</p>
+                <a href="product-primer-acro.html" class="bg-[#304256] text-white w-full py-2.5 rounded font-medium hover:bg-blue-900 transition">了解详情</a>
+            </div>
+            <div class="bg-white rounded-xl p-8 product-card border border-gray-100 flex flex-col items-center text-center">
+                <img src="prod-premium-pva.jpg" alt="Premium PVA" class="h-48 object-contain mb-6 drop-shadow-md">
+                <h3 class="text-xl font-bold text-blue-900 mb-2">Premium PVA</h3>
+                <p class="text-gray-500 text-sm mb-6 flex-grow">强效封闭多孔基材，提供出色的附着面与高固含量。</p>
+                <a href="product-primer-pva.html" class="bg-[#304256] text-white w-full py-2.5 rounded font-medium hover:bg-blue-900 transition">了解详情</a>
+            </div>
+            <div class="bg-white rounded-xl p-8 product-card border border-gray-100 flex flex-col items-center text-center">
+                <img src="prod-qwik-prep.jpg" alt="QWIK PREP PLUS" class="h-48 object-contain mb-6 drop-shadow-md">
+                <h3 class="text-xl font-bold text-blue-900 mb-2">QWIK PREP PLUS</h3>
+                <p class="text-gray-500 text-sm mb-6 flex-grow">高厚涂型 PVA 封闭底漆，优异的流平性与表面成膜能力。</p>
+                <a href="product-primer-qwik.html" class="bg-[#304256] text-white w-full py-2.5 rounded font-medium hover:bg-blue-900 transition">了解详情</a>
+            </div>
+            <div class="bg-white rounded-xl p-8 product-card border border-gray-100 flex flex-col items-center text-center">
+                <img src="prod-vapor-lok.jpg" alt="Vapor-Lok Primer" class="h-48 object-contain mb-6 drop-shadow-md">
+                <h3 class="text-xl font-bold text-blue-900 mb-2">Vapor-Lok 防潮底漆</h3>
+                <p class="text-gray-500 text-sm mb-6 flex-grow">强效防潮防汽屏障，渗透率评级低于1的特种底层解决方案。</p>
+                <a href="product-primer-vapor.html" class="bg-[#304256] text-white w-full py-2.5 rounded font-medium hover:bg-blue-900 transition">了解详情</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="exterior" class="py-24 px-8 max-w-7xl mx-auto scroll-mt-32 border-t border-gray-200">
+        <div class="mb-12 text-center md:text-left">
+            <h2 class="text-3xl font-bold text-blue-900 mb-4">外墙防护涂料</h2>
+            <p class="text-gray-500">直面风雨考验，采用尖端配方，赋予建筑外立面持久如新的强效保护膜。</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white rounded-xl p-8 product-card border border-gray-100 flex flex-col items-center text-center">
+                <img src="prod-stratusxt.jpg" alt="StratusXT Exterior" class="h-48 object-contain mb-6 drop-shadow-md">
+                <h3 class="text-xl font-bold text-blue-900 mb-2">StratusXT</h3>
+                <p class="text-gray-500 text-sm mb-6 flex-grow">全天候 100% 纯丙烯酸外墙漆，提供顶级抗紫外线与抗雨水能力。</p>
+                <a href="product-exterior-stratus.html" class="bg-[#304256] text-white w-full py-2.5 rounded font-medium hover:bg-blue-900 transition">了解详情</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-white py-12 px-8 text-center mt-12">
+        <p class="text-xs opacity-40">© 2026 Miller Paint 蜜乐涂料 | 玉兰集团版权所有</p>
+    </footer>
+
+    <script>
+        // 补充移动端菜单脚本
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? '' : 'hidden';
+        }
+
+        if(mobileMenuBtn && closeMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+    </script>
+</body>
+</html>
