@@ -10,206 +10,211 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
         body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; overflow-x: hidden; background-color: #faf9f6; }
         .font-serif-en { font-family: 'Playfair Display', serif; }
-        
         .option-card { transition: all 0.3s ease; border: 2px solid transparent; background-color: white; }
-        .option-card:hover { border-color: #e2e8f0; transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
         .option-card.selected { border-color: #1e3a8a; background-color: #eff6ff; color: #1e3a8a; }
-        
         .loader-bar { width: 0%; height: 2px; background-color: #1e3a8a; transition: width 0.5s ease; }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-fade-up { animation: fadeUp 0.8s ease-out forwards; }
     </style>
 </head>
 <body class="text-slate-800 antialiased">
 
-    <nav class="fixed w-full z-[100] flex justify-between items-center px-6 md:px-8 py-5 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100/50">
+    <nav class="fixed w-full z-[100] flex justify-between items-center px-5 md:px-8 py-4 md:py-5 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b">
         <div class="flex flex-col">
-            <a href="index.html" class="text-2xl font-bold tracking-tighter text-blue-900 flex items-center hover:opacity-80 transition-opacity">
-                MILLER PAINT <span class="ml-2 text-xs font-light bg-blue-900 text-white px-2 py-0.5 rounded tracking-normal">蜜乐涂料</span>
+            <a href="index.html" class="text-xl md:text-2xl font-bold tracking-tighter text-blue-900 flex items-center">
+                MILLER PAINT <span class="ml-2 text-[10px] md:text-xs font-light bg-blue-900 text-white px-2 py-0.5 rounded tracking-normal">蜜乐涂料</span>
             </a>
-            <a href="http://www.yulangroup.cn" target="_blank" class="text-[11px] text-gray-500 hover:text-blue-900 mt-0.5 flex items-center gap-1 transition-colors font-medium tracking-widest w-fit">玉兰集团</a>
+            <a href="http://www.yulangroup.cn" target="_blank" class="text-[10px] md:text-[11px] text-gray-500 hover:text-blue-900 mt-0.5 flex items-center gap-1 transition-colors font-medium tracking-widest w-fit">玉兰集团</a>
         </div>
         <div class="hidden lg:flex items-center space-x-6 text-[14px] font-bold text-slate-700 tracking-wide">
-            <a href="story.html" class="px-3 py-2 hover:text-blue-900 transition-colors">品牌故事</a>
-            <a href="products.html" class="px-3 py-2 hover:text-blue-900 transition-colors">产品中心</a>
-            <a href="ai-color.html" class="px-3 py-2 text-blue-900 border-b-2 border-blue-900 pb-1">AI 色彩顾问</a> 
-            <a href="colors.html" class="px-3 py-2 hover:text-blue-900 transition-colors">色彩灵感</a>
-            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="px-3 py-2 hover:text-blue-900 transition-colors flex items-center gap-1">
+            <a href="story.html" class="hover:text-blue-900">品牌故事</a>
+            <a href="products.html" class="hover:text-blue-900">产品中心</a>
+            <a href="ai-color.html" class="text-blue-900 border-b-2 border-blue-900 pb-1">AI 色彩顾问</a> 
+            <a href="colors.html" class="hover:text-blue-900">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="hover:text-blue-900 flex items-center gap-1">
                 在线色卡 <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
             </a>
-            <a href="contact.html" class="px-3 py-2 hover:text-blue-900 transition-colors">联系我们</a>
+            <a href="contact.html" class="hover:text-blue-900">联系我们</a>
         </div>
-        <div class="flex items-center gap-4">
-            <a href="contact.html" class="hidden sm:block bg-slate-900 text-white px-8 py-3 text-sm font-bold shadow-lg">获取样漆</a>
+        <div class="flex items-center gap-3">
+            <a href="contact.html" class="hidden sm:block bg-slate-900 text-white px-6 py-2.5 text-sm font-bold shadow-lg">获取样漆</a>
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-900 p-1 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </div>
     </nav>
 
-    <section class="relative pt-40 pb-24 px-8 flex flex-col items-center justify-center min-h-[45vh] bg-cover bg-center" style="background-image: url('ai-banner-bg.JPG');">
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[9999] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col lg:hidden">
+        <div class="flex justify-between items-center px-6 py-5 border-b border-gray-100">
+            <span class="text-xl font-bold text-blue-900 tracking-tighter">MENU 菜单</span>
+            <button id="close-menu-btn" class="text-slate-900 p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center flex-grow space-y-8 text-2xl font-bold text-slate-800 pb-20">
+            <a href="story.html" class="hover:text-blue-900">品牌故事</a>
+            <a href="products.html" class="hover:text-blue-900">产品中心</a>
+            <a href="ai-color.html" class="text-blue-900">AI 色彩顾问</a>
+            <a href="colors.html" class="hover:text-blue-900">色彩灵感</a>
+            <a href="https://www.millerpaint.com/digital-fandeck/" target="_blank" class="hover:text-blue-900">在线色卡</a>
+            <a href="contact.html" class="hover:text-blue-900">联系我们</a>
+        </div>
+    </div>
+
+    <section class="relative pt-32 md:pt-40 pb-16 md:pb-24 px-6 md:px-8 flex flex-col items-center justify-center min-h-[40vh] md:min-h-[45vh] bg-cover bg-center" style="background-image: url('ai-banner-bg.JPG');">
         <div class="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/10 to-transparent z-0"></div>
-        <div class="relative z-10 text-center max-w-4xl mx-auto text-white drop-shadow-xl">
-            <h4 class="font-serif-en tracking-[0.2em] mb-4 text-sm uppercase opacity-90 drop-shadow-md">Miller AI Consultant</h4>
-            <h1 class="text-4xl md:text-5xl font-bold mb-6 tracking-wide">描绘心中的理想空间</h1>
-            <p class="text-lg font-light max-w-2xl mx-auto leading-relaxed">告诉我们您的需求，Miller 智能顾问将为您匹配专属的色彩方案、光泽度及涂料系统。</p>
+        <div class="relative z-10 text-center max-w-4xl mx-auto text-white drop-shadow-xl mt-8">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6 tracking-wide leading-tight">描绘心中的理想空间</h1>
+            <p class="text-base md:text-lg font-light max-w-2xl mx-auto leading-relaxed opacity-95">基于 Miller 官方色卡库，Miller 智能顾问将为您匹配专属的方案。</p>
         </div>
     </section>
 
-    <section class="py-24 px-6 max-w-3xl mx-auto" id="interaction-section">
-        <div class="flex justify-center mb-12 animate-fade-up">
+    <section class="py-16 md:py-24 px-4 md:px-6 max-w-3xl mx-auto" id="interaction-section">
+        <div class="flex justify-center mb-10 md:mb-12">
             <div class="bg-slate-100 p-1.5 rounded-full inline-flex relative shadow-inner">
-                <button id="tab-quiz" onclick="switchMode('quiz')" class="relative z-10 px-8 py-3 text-sm font-bold rounded-full transition-all duration-300 text-white bg-blue-900 shadow-md">引导选择</button>
-                <button id="tab-ai" onclick="switchMode('ai')" class="relative z-10 px-8 py-3 text-sm font-bold rounded-full transition-all duration-300 text-slate-500 hover:text-slate-800">AI 定制</button>
+                <button id="tab-quiz" onclick="switchMode('quiz')" class="relative z-10 px-6 md:px-8 py-2.5 md:py-3 text-sm font-bold rounded-full transition-all duration-300 text-white bg-blue-900 shadow-md">引导选择</button>
+                <button id="tab-ai" onclick="switchMode('ai')" class="relative z-10 px-6 md:px-8 py-2.5 md:py-3 text-sm font-bold rounded-full transition-all duration-300 text-slate-500 hover:text-slate-800">AI 定制</button>
             </div>
         </div>
 
         <div id="quiz-container" class="block transition-all duration-500">
-            <div class="mb-12 quiz-step" id="step-1">
-                <h3 class="text-2xl font-bold mb-6 text-slate-900 text-center">1. 您计划涂刷哪个空间？</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center" onclick="selectOption(1, 'living', this)"><span class="text-3xl block mb-2">🛋️</span><span class="font-bold text-sm text-slate-700">客厅</span></button>
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center" onclick="selectOption(1, 'bedroom', this)"><span class="text-3xl block mb-2">🛏️</span><span class="font-bold text-sm text-slate-700">卧室</span></button>
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center" onclick="selectOption(1, 'bathroom', this)"><span class="text-3xl block mb-2">🛁</span><span class="font-bold text-sm text-slate-700">厨卫空间</span></button>
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center" onclick="selectOption(1, 'kids', this)"><span class="text-3xl block mb-2">🧸</span><span class="font-bold text-sm text-slate-700">儿童房</span></button>
+            <div class="mb-10 md:mb-12 quiz-step" id="step-1">
+                <h3 class="text-xl md:text-2xl font-bold mb-6 text-slate-900 text-center">1. 您计划涂刷哪个空间？</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+                    <button class="option-card p-5 md:p-6 rounded-[20px] shadow-sm text-center border" onclick="selectOption(1, 'living', this)">🛋️<br><span class="font-bold text-sm text-slate-700 mt-1 block">客厅</span></button>
+                    <button class="option-card p-5 md:p-6 rounded-[20px] shadow-sm text-center border" onclick="selectOption(1, 'bedroom', this)">🛏️<br><span class="font-bold text-sm text-slate-700 mt-1 block">卧室</span></button>
+                    <button class="option-card p-5 md:p-6 rounded-[20px] shadow-sm text-center border" onclick="selectOption(1, 'bathroom', this)">🛁<br><span class="font-bold text-sm text-slate-700 mt-1 block">厨卫</span></button>
+                    <button class="option-card p-5 md:p-6 rounded-[20px] shadow-sm text-center border" onclick="selectOption(1, 'kids', this)">🧸<br><span class="font-bold text-sm text-slate-700 mt-1 block">儿童房</span></button>
                 </div>
             </div>
-
-            <div class="mb-12 quiz-step opacity-30 pointer-events-none transition-opacity duration-500" id="step-2">
-                <h3 class="text-2xl font-bold mb-6 text-slate-900 text-center">2. 您期望的氛围是？</h3>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center font-medium text-slate-700 tracking-wider" onclick="selectOption(2, 'warm', this)">温暖治愈</button>
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center font-medium text-slate-700 tracking-wider" onclick="selectOption(2, 'minimal', this)">极简清冷</button>
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center font-medium text-slate-700 tracking-wider" onclick="selectOption(2, 'luxury', this)">深邃奢华</button>
-                </div>
-            </div>
-
-            <div class="mb-12 quiz-step opacity-30 pointer-events-none transition-opacity duration-500" id="step-3">
-                <h3 class="text-2xl font-bold mb-6 text-slate-900 text-center">3. 该空间的自然采光如何？</h3>
-                <div class="grid grid-cols-2 gap-4">
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center text-sm font-medium text-slate-700 tracking-wide" onclick="selectOption(3, 'bright', this)">☀️ 采光极佳，阳光充足</button>
-                    <button class="option-card p-6 rounded-xl shadow-sm text-center text-sm font-medium text-slate-700 tracking-wide" onclick="selectOption(3, 'dark', this)">☁️ 采光一般，偏暗</button>
-                </div>
-            </div>
-
-            <div class="text-center mt-12">
-                <button id="submit-btn" class="bg-slate-300 text-slate-500 px-12 py-4 rounded-full font-bold transition-all duration-300 pointer-events-none tracking-widest" onclick="generateResult()">生成专属方案</button>
+            <div class="text-center mt-10 md:mt-12">
+                <button id="submit-btn" class="w-full md:w-auto bg-slate-300 text-slate-500 px-12 py-4 rounded-full font-bold transition-all duration-300 pointer-events-none" onclick="generateResult()">生成方案</button>
             </div>
         </div>
 
         <div id="ai-container" class="hidden transition-all duration-500">
-            <div class="bg-white p-8 md:p-12 rounded-[32px] shadow-sm border border-slate-100">
-                <textarea id="userInput" rows="6" class="w-full p-6 rounded-2xl border-2 border-slate-100 bg-slate-50 focus:bg-white focus:border-blue-900 outline-none transition-all" placeholder="告诉我们您的想法，例如：我的卧室采光偏暗，想要深邃的黑色系效果，且要好打理..."></textarea>
+            <div class="bg-white p-6 md:p-12 rounded-[24px] md:rounded-[32px] shadow-sm border border-slate-100">
+                <textarea id="userInput" rows="6" class="w-full p-5 rounded-2xl border-2 border-slate-100 bg-slate-50 focus:bg-white focus:border-blue-900 outline-none transition-all text-sm md:text-base" placeholder="例如：我的卧室采光偏暗，想要深邃的黑色系效果，且要好打理..."></textarea>
                 <div class="text-center mt-6">
-                    <button class="bg-blue-900 text-white px-12 py-4 rounded-full font-bold shadow-lg" onclick="askAI()">深度演算专属方案</button>
+                    <button class="w-full md:w-auto bg-blue-900 text-white px-12 py-4 rounded-full font-bold shadow-lg" onclick="askAI()">深度演算专属方案</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="loading-section" class="hidden py-32 text-center max-w-xl mx-auto"><div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden"><div class="loader-bar" id="loader"></div></div><p class="text-sm text-slate-500 mt-6 tracking-wide" id="loading-text">正在交叉比对色彩库...</p></section>
+    <section id="loading-section" class="hidden py-24 md:py-32 px-6 text-center max-w-xl mx-auto"><div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden"><div class="loader-bar" id="loader"></div></div><p class="text-sm text-slate-500 mt-6 tracking-wide" id="loading-text">正在交叉比对色彩库...</p></section>
 
-    <section id="result-section" class="hidden pb-32 px-6 max-w-6xl mx-auto">
-        <div class="bg-white rounded-[40px] shadow-2xl overflow-hidden flex flex-col md:flex-row border border-slate-100">
-            <div class="md:w-1/2 relative h-[400px] md:h-auto border-r border-slate-100">
+    <section id="result-section" class="hidden pb-24 md:pb-32 px-4 md:px-6 max-w-6xl mx-auto">
+        <div class="bg-white rounded-[32px] md:rounded-[40px] shadow-xl overflow-hidden flex flex-col md:flex-row border border-slate-100">
+            <div class="w-full md:w-1/2 relative h-[300px] md:h-auto border-b md:border-b-0 md:border-r border-slate-100">
                 <img id="res-img" src="" class="w-full h-full object-cover object-center">
-                <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-5 py-2.5 text-[10px] font-bold tracking-[0.2em] text-slate-800 rounded-lg shadow-sm">MILLER COLOR PALETTE</div>
+                <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-white/90 backdrop-blur-md px-4 md:px-5 py-2 text-[10px] font-bold tracking-[0.2em] text-slate-800 rounded-lg shadow-sm">MILLER COLOR PALETTE</div>
             </div>
-            <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center bg-white">
+            <div class="w-full md:w-1/2 p-6 sm:p-10 md:p-16 flex flex-col justify-center bg-white relative">
                 <h4 class="text-blue-900 font-bold tracking-[0.2em] text-xs mb-4 uppercase">Your Custom Solution</h4>
-                <h2 class="text-3xl font-bold mb-4 text-slate-900" id="res-title">正在生成...</h2>
-                <div class="flex items-center gap-4 mb-8 bg-slate-50 w-fit px-5 py-3 rounded-lg border border-slate-100">
-                    <div id="res-color-box" class="w-10 h-10 rounded-full shadow-inner border border-black/5"></div>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-slate-900" id="res-title">正在生成...</h2>
+                <div class="flex items-center gap-4 mb-6 md:mb-8 bg-slate-50 w-fit px-4 md:px-5 py-2.5 md:py-3 rounded-lg border border-slate-100">
+                    <div id="res-color-box" class="w-8 h-8 md:w-10 md:h-10 rounded-full shadow-inner border border-black/5"></div>
                     <div class="flex flex-col">
-                        <span class="text-slate-900 font-bold tracking-wider text-sm" id="res-color-code">Miller 0000</span>
+                        <span class="text-slate-900 font-bold tracking-wider text-xs md:text-sm" id="res-color-code">Miller 0000</span>
                     </div>
                 </div>
-                <p class="text-slate-600 leading-relaxed mb-10 font-light text-sm" id="res-desc">方案描述加载中...</p>
-                <div class="bg-slate-50 p-6 rounded-xl mb-10 border border-slate-100">
-                    <h5 class="font-bold text-slate-800 mb-4 border-b border-slate-200 pb-3 text-sm tracking-wide">系统级涂料搭配</h5>
-                    <ul class="space-y-4 text-sm text-slate-600">
-                        <li class="flex flex-col gap-1"><span class="text-xs uppercase tracking-widest text-slate-400">墙面产品</span> <strong id="res-product" class="text-blue-900 font-medium">产品</strong></li>
-                        <li class="flex flex-col gap-1"><span class="text-xs uppercase tracking-widest text-slate-400">推荐光泽</span> <strong id="res-sheen" class="text-blue-900 font-medium">光泽</strong></li>
-                        <li class="flex flex-col gap-1"><span class="text-xs uppercase tracking-widest text-slate-400">底层处理</span> <strong id="res-primer" class="text-slate-800 font-medium">底漆</strong></li>
+                <p class="text-slate-600 leading-relaxed mb-8 font-light text-sm md:text-base" id="res-desc">方案描述加载中...</p>
+                <div class="bg-slate-50 p-5 md:p-6 rounded-xl mb-8 border border-slate-100">
+                    <h5 class="font-bold text-slate-800 mb-3 md:mb-4 border-b border-slate-200 pb-2 md:pb-3 text-xs md:text-sm tracking-wide">系统级涂料搭配</h5>
+                    <ul class="space-y-3 md:space-y-4 text-sm text-slate-600">
+                        <li class="flex flex-col gap-1"><span class="text-[10px] md:text-xs uppercase tracking-widest text-slate-400">墙面产品</span> <strong id="res-product" class="text-blue-900 font-medium">产品</strong></li>
+                        <li class="flex flex-col gap-1"><span class="text-[10px] md:text-xs uppercase tracking-widest text-slate-400">推荐光泽</span> <strong id="res-sheen" class="text-blue-900 font-medium">光泽</strong></li>
+                        <li class="flex flex-col gap-1"><span class="text-[10px] md:text-xs uppercase tracking-widest text-slate-400">底层处理</span> <strong id="res-primer" class="text-slate-800 font-medium">底漆</strong></li>
                     </ul>
                 </div>
-                <div class="flex items-center gap-4"><a href="contact.html" class="bg-slate-900 text-white text-center px-8 py-3.5 rounded-full text-sm font-bold shadow-md uppercase">获取样漆与色卡</a><button class="text-xs text-slate-400 font-medium" onclick="location.reload()">↺ 重新选择</button></div>
+                <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mt-auto">
+                    <a href="contact.html" class="w-full sm:w-auto bg-slate-900 text-white text-center px-8 py-3.5 rounded-full text-sm font-bold shadow-md uppercase">获取样漆与色卡</a>
+                    <button class="w-full sm:w-auto text-xs text-slate-400 font-medium py-3" onclick="location.reload()">↺ 重新选择</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="ai-result-section" class="hidden pb-32 px-6 max-w-6xl mx-auto">
-        <div class="bg-white rounded-[40px] shadow-2xl overflow-hidden flex flex-col md:flex-row border border-slate-100">
-            <div class="md:w-1/2 relative h-[400px] md:h-auto border-r border-slate-100 bg-white overflow-hidden">
+    <section id="ai-result-section" class="hidden pb-24 md:pb-32 px-4 md:px-6 max-w-6xl mx-auto">
+        <div class="bg-white rounded-[32px] md:rounded-[40px] shadow-xl overflow-hidden flex flex-col md:flex-row border border-slate-100">
+            <div class="w-full md:w-1/2 relative h-[300px] md:h-auto md:min-h-[500px] border-b md:border-b-0 md:border-r border-slate-100 bg-white overflow-hidden">
                 <img id="ai-dynamic-base" src="ai-blank-living.jpg" class="absolute inset-0 w-full h-full object-cover object-center">
                 <div id="ai-dynamic-overlay" class="absolute inset-0 mix-blend-multiply transition-colors duration-1000 ease-in-out" style="background-color: transparent; -webkit-mask-size: cover; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; mask-size: cover; mask-position: center; mask-repeat: no-repeat;"></div>
                 <div id="ai-sheen-overlay" class="absolute inset-0 mix-blend-screen opacity-30 transition-opacity duration-1000 ease-in-out pointer-events-none" style="background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 60%); -webkit-mask-size: cover; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; mask-size: cover; mask-position: center; mask-repeat: no-repeat;"></div>
                 <div class="absolute inset-0 bg-slate-900/5 pointer-events-none"></div>
-                <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-5 py-2.5 text-[10px] font-bold tracking-[0.2em] text-slate-800 rounded-lg shadow-sm">AI 质感渲染系统</div>
-                <div id="ai-hex-badge" class="hidden absolute top-6 right-6 bg-white/90 backdrop-blur-md px-4 py-2 text-[11px] font-bold tracking-wide text-slate-800 rounded-full shadow-md flex items-center gap-2 transition-all">
-                    <div id="ai-hex-dot" class="w-3 h-3 rounded-full border border-slate-200 shadow-sm"></div>
+                <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-white/90 backdrop-blur-md px-4 py-2 text-[10px] font-bold tracking-[0.2em] text-slate-800 rounded-lg shadow-sm">AI 质感渲染系统</div>
+                <div id="ai-hex-badge" class="hidden absolute top-4 right-4 md:top-6 md:right-6 bg-white/90 backdrop-blur-md px-3 md:px-4 py-1.5 md:py-2 text-[10px] md:text-[11px] font-bold tracking-wide text-slate-800 rounded-full shadow-md flex items-center gap-2 transition-all">
+                    <div id="ai-hex-dot" class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full border border-slate-200 shadow-sm"></div>
                     <span id="ai-hex-text">Miller 色号</span>
                 </div>
             </div>
-            <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center bg-white relative">
-                <h4 class="text-blue-900 font-bold tracking-[0.2em] text-xs mb-6 uppercase flex items-center gap-2">
+
+            <div class="w-full md:w-1/2 p-6 sm:p-10 md:p-16 flex flex-col justify-center bg-white relative">
+                <h4 class="text-blue-900 font-bold tracking-[0.2em] text-xs mb-4 md:mb-6 uppercase flex items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
                     深度定制报告
                 </h4>
                 
-                <div id="ai-response-text" class="text-slate-700 leading-relaxed mb-6 font-light text-[14px] space-y-3">方案加载中...</div>
+                <div id="ai-response-text" class="text-slate-700 leading-relaxed mb-6 font-light text-sm md:text-[15px] space-y-2 md:space-y-3">方案加载中...</div>
                 
-                <div id="ai-color-options" class="mb-10 hidden">
-                    <h5 class="font-bold text-slate-800 mb-4 text-xs tracking-widest uppercase border-b border-slate-100 pb-2">点击预览推荐色号</h5>
-                    <div id="ai-swatches-container" class="flex flex-col gap-3"></div>
+                <div id="ai-color-options" class="mb-8 md:mb-10 hidden">
+                    <h5 class="font-bold text-slate-800 mb-3 md:mb-4 text-[11px] md:text-xs tracking-widest uppercase border-b border-slate-100 pb-2">点击预览推荐方案</h5>
+                    <div id="ai-swatches-container" class="flex flex-col gap-2 md:gap-3"></div>
                 </div>
 
-                <div class="border-t border-slate-100 pt-8 mt-auto flex flex-col sm:flex-row gap-4 items-center">
-                    <a href="contact.html" class="w-full sm:w-auto bg-slate-900 text-white text-center px-8 py-3.5 rounded-full text-sm font-bold hover:bg-blue-900 transition-colors shadow-md tracking-widest uppercase">获取样漆与色卡</a>
-                    <button class="text-xs text-slate-400 hover:text-slate-600 transition-colors uppercase tracking-widest font-medium" onclick="location.reload()">↺ 提出新需求</button>
+                <div class="border-t border-slate-100 pt-6 md:pt-8 mt-auto flex flex-col sm:flex-row gap-3 sm:gap-4 items-center">
+                    <a href="contact.html" class="w-full sm:w-auto bg-slate-900 text-white text-center px-8 py-3.5 rounded-full text-sm font-bold shadow-md uppercase">获取样漆与色卡</a>
+                    <button class="w-full sm:w-auto text-xs text-slate-400 font-medium py-3" onclick="location.reload()">↺ 提出新需求</button>
                 </div>
             </div>
         </div>
     </section>
 
+    <footer class="bg-slate-900 text-slate-400 py-12 md:py-16 px-6 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-[10px] md:text-[11px] font-medium tracking-[0.2em] uppercase opacity-60">© 2026 Miller Paint. 玉兰集团版权所有</p>
+        </div>
+    </footer>
+
     <script>
-        // 模式切换
+        // 移动端菜单逻辑
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? '' : 'hidden';
+        }
+        if(mobileMenuBtn && closeMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+
         function switchMode(m){
             document.getElementById('quiz-container').classList.toggle('hidden', m==='ai');
             document.getElementById('ai-container').classList.toggle('hidden', m==='quiz');
-            document.getElementById('tab-quiz').className = m==='quiz' ? "relative z-10 px-8 py-3 text-sm font-bold rounded-full text-white bg-blue-900 shadow-md" : "relative z-10 px-8 py-3 text-sm font-bold rounded-full text-slate-500 hover:text-slate-800";
-            document.getElementById('tab-ai').className = m==='ai' ? "relative z-10 px-8 py-3 text-sm font-bold rounded-full text-white bg-blue-900 shadow-md" : "relative z-10 px-8 py-3 text-sm font-bold rounded-full text-slate-500 hover:text-slate-800";
+            document.getElementById('tab-quiz').className = m==='quiz' ? "relative z-10 px-6 md:px-8 py-2.5 md:py-3 text-sm font-bold rounded-full text-white bg-blue-900 shadow-md" : "relative z-10 px-6 md:px-8 py-2.5 md:py-3 text-sm font-bold rounded-full text-slate-500 hover:text-slate-800";
+            document.getElementById('tab-ai').className = m==='ai' ? "relative z-10 px-6 md:px-8 py-2.5 md:py-3 text-sm font-bold rounded-full text-white bg-blue-900 shadow-md" : "relative z-10 px-6 md:px-8 py-2.5 md:py-3 text-sm font-bold rounded-full text-slate-500 hover:text-slate-800";
         }
 
-        // 三步引导逻辑
-        let userChoices = { step1: '', step2: '', step3: '' };
+        // 精简引导选择逻辑
+        let userRoom = '';
         function selectOption(step, value, btnElement) {
-            userChoices[`step${step}`] = value;
+            // 目前因为去掉了繁琐的三步，只做了一步选择房间，直接应用逻辑
+            userRoom = value;
             let siblings = btnElement.parentElement.children;
-            for(let btn of siblings) { btn.classList.remove('selected'); }
-            btnElement.classList.add('selected');
+            for(let btn of siblings) { btn.classList.remove('selected', 'border-blue-900', 'bg-blue-50'); }
+            btnElement.classList.add('selected', 'border-blue-900', 'bg-blue-50');
 
-            if(step === 1) {
-                document.getElementById('step-2').classList.remove('opacity-30', 'pointer-events-none');
-            } else if (step === 2) {
-                document.getElementById('step-3').classList.remove('opacity-30', 'pointer-events-none');
-            } else if (step === 3) {
-                let submitBtn = document.getElementById('submit-btn');
-                submitBtn.classList.remove('bg-slate-300', 'text-slate-500', 'pointer-events-none');
-                submitBtn.classList.add('bg-blue-900', 'text-white', 'shadow-lg');
-            }
+            let submitBtn = document.getElementById('submit-btn');
+            submitBtn.classList.remove('bg-slate-300', 'text-slate-500', 'pointer-events-none');
+            submitBtn.classList.add('bg-blue-900', 'text-white', 'shadow-lg');
         }
 
         const colorDatabase = {
-            'living_warm_bright': { title: "治愈燕麦 (Warm Oatmeal)", hex: "#E6DFD3", code: "Miller 0192", desc: "温暖的燕麦色能最大限度地折射自然光。营造极其温馨、放松的包裹感。", prod: "Premium™ 经典面漆", sheen: "Matte (哑光)", primer: "Premium PVA 封闭底漆", img: "ai-res-living-warm.JPG" },
-            'living_warm_dark': { title: "陶土赤茶 (Terracotta)", hex: "#B86A53", code: "Miller 0054", desc: "采光差的房间如果强刷白墙，会显得灰暗单调。醇厚的陶土红能赋予暗空间极强的艺术张力。", prod: "Evolution® 至臻面漆", sheen: "Satin (缎光)", primer: "Premium PVA 封闭底漆", img: "ai-res-living-terracotta.JPG" },
-            'living_minimal_bright': { title: "极简云白 (Cloud White)", hex: "#F4F4F4", code: "Miller 0011", desc: "带有微弱灰度的云白能完美兼容现代家具，让公共空间显得开阔。", prod: "Evolution® 至臻面漆", sheen: "Flat (纯平哑光)", primer: "Premium PVA 封闭底漆", img: "ai-res-living-minimal.JPG" },
-            'living_minimal_dark': { title: "高级暖灰 (Warm Grey)", hex: "#8A8A8A", code: "Miller 0540", desc: "高级暖灰能在弱光下展现出极其丰富的层次感，让空间显得静谧。", prod: "Premium™ 经典面漆", sheen: "Matte (哑光)", primer: "Premium PVA 封闭底漆", img: "ai-res-living-grey.JPG" },
-            'living_luxury_bright': { title: "深林谧境 (Deep Forest)", hex: "#2C3E38", code: "Miller 0452", desc: "阳光照射下的深邃墨绿不显压抑，反而能呈现出剧院般的奢华质感。", prod: "Evolution® 至臻面漆", sheen: "Satin (缎光)", primer: "Premium PVA 封闭底漆", img: "ai-res-living-forest.JPG" },
-            'living_luxury_dark': { title: "曜石暗影 (Obsidian Dark)", hex: "#22252A", code: "Miller 0588", desc: "顺势将奢华推向极致。用深邃的曜石色系搭配重点局部照明。", prod: "Evolution® 至臻面漆", sheen: "Soft Sheen (柔光)", primer: "Premium PVA 封闭底漆", img: "ai-res-living-dark.JPG" },
-            'bed_warm_bright': { title: "柔和奶白 (Creamy White)", hex: "#FDFBF7", code: "Miller 0005", desc: "比纯白多了一丝醇厚的奶油感，视觉上毫无攻击性，极具亲和力。", prod: "Acro Pure® 极净面漆", sheen: "Matte (哑光)", primer: "Acro Pure® 环保底漆", img: "ai-res-bed-cream.JPG" },
-            'bed_warm_dark': { title: "高定灰褐 (Greige Elegance)", hex: "#A59E96", code: "Miller 0214", desc: "介于灰色与米色之间的完美平衡，打造顶级酒店套房般的安睡环境。", prod: "Acro Pure® 极净面漆", sheen: "Matte (哑光)", primer: "Acro Pure® 环保底漆", img: "ai-res-bed-greige.JPG" },
-            'bed_minimal': { title: "静谧灰蓝 (Muted Fog Blue)", hex: "#7A8B99", code: "Miller 0632", desc: "像轻柔的薄雾一样让人瞬间平静。具有极佳的视觉降温与助眠效果。", prod: "Acro Pure® 极净面漆", sheen: "Flat (纯平哑光)", primer: "Acro Pure® 环保底漆", img: "ai-res-bed-blue.jpg" },
-            'bed_luxury_bright': { title: "深林谧境 (Deep Forest)", hex: "#2C3E38", code: "Miller 0452", desc: "在采光充足的休息区大胆使用墨绿色！营造出极具安全感的包裹氛围。", prod: "Evolution® 至臻面漆", sheen: "Matte (哑光)", primer: "Premium PVA 封闭底漆", img: "ai-res-bed-luxury.JPG" },
-            'bed_luxury_dark': { title: "晨曦玫瑰 (Dusty Rose)", hex: "#C5A8A4", code: "Miller 0089", desc: "暗调浪漫。带有灰度的脏玫瑰色在弱光下更能显现出剧院般的丝绒质感。", prod: "Evolution® 至臻面漆", sheen: "Satin (缎光)", primer: "Premium PVA 封闭底漆", img: "ai-res-bed-rose.JPG" },
-            'bathroom': { title: "微风鼠尾草 (Sage Breeze)", hex: "#A8B5A1", code: "Miller 0411", desc: "水疗般的鼠尾草绿，强制搭配 Vapor-Lok 特种防潮底漆系统。", prod: "Acro HP® 高性能面漆", sheen: "Semi-Gloss (半光)", primer: "Vapor-Lok 特种防潮底漆", img: "ai-res-bathroom.JPG" },
+            'living': { title: "治愈燕麦 (Warm Oatmeal)", hex: "#E6DFD3", code: "Miller 0192", desc: "温暖的燕麦色能最大限度地折射自然光。营造极其温馨、放松的包裹感。", prod: "Premium™ 经典面漆", sheen: "Matte (哑光)", primer: "Premium PVA 封闭底漆", img: "ai-res-living-warm.JPG" },
+            'bedroom': { title: "柔和奶白 (Creamy White)", hex: "#FDFBF7", code: "Miller 0005", desc: "比纯白多了一丝醇厚的奶油感，视觉上毫无攻击性，极具亲和力，是安眠的最佳选择。", prod: "Acro Pure® 极净面漆", sheen: "Matte (哑光)", primer: "Acro Pure® 环保底漆", img: "ai-res-bed-cream.JPG" },
+            'bathroom': { title: "微风鼠尾草 (Sage Breeze)", hex: "#A8B5A1", code: "Miller 0411", desc: "水疗般的鼠尾草绿，强制搭配 Vapor-Lok 特种防潮底漆系统，无惧发霉隐患。", prod: "Acro HP® 高性能面漆", sheen: "Semi-Gloss (半光)", primer: "Vapor-Lok 特种防潮底漆", img: "ai-res-bathroom.JPG" },
             'kids': { title: "柔和奶黄 (Soft Butter)", hex: "#FCF5D8", code: "Miller 0122", desc: "强制匹配趋零VOC的母婴级 Acro Pure 极净底面系统，确保呼吸安全。", prod: "Acro Pure® 极净面漆", sheen: "Satin (缎光)", primer: "Acro Pure® 环保底漆", img: "ai-res-kids.JPG" }
         };
 
@@ -222,27 +227,7 @@
             setTimeout(() => { 
                 document.getElementById('loading-section').classList.add('hidden');
                 
-                const c = userChoices; let res;
-                if (c.step1 === 'kids') res = colorDatabase['kids'];
-                else if (c.step1 === 'bathroom') res = colorDatabase['bathroom'];
-                else if (c.step1 === 'living') {
-                    if (c.step2 === 'warm' && c.step3 === 'bright') res = colorDatabase['living_warm_bright'];
-                    else if (c.step2 === 'warm' && c.step3 === 'dark') res = colorDatabase['living_warm_dark'];
-                    else if (c.step2 === 'minimal' && c.step3 === 'bright') res = colorDatabase['living_minimal_bright'];
-                    else if (c.step2 === 'minimal' && c.step3 === 'dark') res = colorDatabase['living_minimal_dark'];
-                    else if (c.step2 === 'luxury' && c.step3 === 'bright') res = colorDatabase['living_luxury_bright'];
-                    else if (c.step2 === 'luxury' && c.step3 === 'dark') res = colorDatabase['living_luxury_dark'];
-                    else res = colorDatabase['living_warm_bright'];
-                }
-                else if (c.step1 === 'bedroom') {
-                    if (c.step2 === 'warm' && c.step3 === 'bright') res = colorDatabase['bed_warm_bright'];
-                    else if (c.step2 === 'warm' && c.step3 === 'dark') res = colorDatabase['bed_warm_dark'];
-                    else if (c.step2 === 'minimal') res = colorDatabase['bed_minimal']; 
-                    else if (c.step2 === 'luxury' && c.step3 === 'bright') res = colorDatabase['bed_luxury_bright']; 
-                    else if (c.step2 === 'luxury' && c.step3 === 'dark') res = colorDatabase['bed_luxury_dark']; 
-                    else res = colorDatabase['bed_warm_bright'];
-                }
-                else res = colorDatabase['living_warm_bright'];
+                let res = colorDatabase[userRoom] || colorDatabase['living'];
 
                 document.getElementById('res-title').innerText = res.title;
                 document.getElementById('res-color-box').style.backgroundColor = res.hex;
@@ -254,7 +239,7 @@
                 document.getElementById('res-img').src = res.img;
 
                 document.getElementById('result-section').classList.remove('hidden');
-                document.getElementById('result-section').scrollIntoView({behavior: 'smooth', block: 'center'});
+                document.getElementById('result-section').scrollIntoView({behavior: 'smooth', block: 'start'});
             }, 2000);
         }
 
@@ -265,7 +250,7 @@
             document.getElementById('ai-hex-text').innerText = name; 
         };
 
-        // 核心：彻底绕过 Cloudflare，直连国内大模型 API
+        // 直连国内大模型 API
         async function askAI() {
             const input = document.getElementById('userInput').value.trim();
             if (!input) return alert("请先告诉顾问您的具体需求哦！");
@@ -292,7 +277,6 @@
             }, 1200);
 
             try {
-                // 前端代码直接请求白山智算的地址！不再经过 Cloudflare
                 const response = await fetch("https://api.edgefn.net/v1/chat/completions", {
                     method: "POST",
                     headers: {
@@ -343,7 +327,6 @@
                     document.getElementById('ai-result-section').classList.remove('hidden');
 
                     let replyText = replyRaw.replace(/\n/g, '<br>');
-                    // 隐藏文本中的 HEX
                     replyText = replyText.replace(/\s*\(HEX:\s*#[0-9A-Fa-f]{6}\)/gi, '');
                     document.getElementById('ai-response-text').innerHTML = replyText;
 
@@ -355,20 +338,20 @@
                         const container = document.getElementById('ai-swatches-container');
                         container.innerHTML = '';
                         matches.forEach(m => {
-                            container.innerHTML += `<button onclick="changeAiColor('${m[2]}', '${m[1]}')" class="flex items-center gap-4 p-3 rounded-xl border hover:border-blue-900 bg-slate-50 hover:bg-white transition-all shadow-sm">
-                                <div class="w-8 h-8 rounded-full border border-black/10 shadow-inner" style="background-color: ${m[2]}"></div>
-                                <div class="flex flex-col"><span class="text-sm font-bold text-slate-800">${m[1]}</span><span class="text-[10px] text-slate-400">点击预览效果</span></div>
+                            container.innerHTML += `<button onclick="changeAiColor('${m[2]}', '${m[1]}')" class="flex items-center gap-3 md:gap-4 p-2.5 md:p-3 rounded-xl border hover:border-blue-900 bg-slate-50 hover:bg-white transition-all shadow-sm">
+                                <div class="w-6 h-6 md:w-8 md:h-8 rounded-full border border-black/10 shadow-inner flex-shrink-0" style="background-color: ${m[2]}"></div>
+                                <div class="flex flex-col text-left"><span class="text-xs md:text-sm font-bold text-slate-800">${m[1]}</span><span class="text-[9px] md:text-[10px] text-slate-400">点击预览效果</span></div>
                             </button>`;
                         });
                         document.getElementById('ai-color-options').classList.remove('hidden');
                     }
-                    document.getElementById('ai-result-section').scrollIntoView({behavior: 'smooth', block: 'center'});
+                    document.getElementById('ai-result-section').scrollIntoView({behavior: 'smooth', block: 'start'});
                 }, 800);
 
             } catch (e) {
                 document.getElementById('loading-section').classList.add('hidden');
                 document.getElementById('ai-result-section').classList.remove('hidden');
-                document.getElementById('ai-response-text').innerHTML = `<span class="text-red-500 font-bold">抱歉，连接失败：</span><br><br>${e.message}。`;
+                document.getElementById('ai-response-text').innerHTML = `<span class="text-red-500 font-bold">抱歉，连接失败：</span><br><br>${e.message}。由于网络原因未能接通。`;
             }
         }
     </script>
